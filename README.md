@@ -112,3 +112,4 @@ Example request:
 - Vite proxies `/api/*` requests to the Express server in development.
 - After a production build, the Express server can also serve the built frontend from `dist/`.
 "# edvieye-website" 
+"# Edvieye" 
