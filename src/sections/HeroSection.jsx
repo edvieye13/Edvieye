@@ -31,7 +31,7 @@ function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-3 gap-8"
+          className="mx-auto mt-10 grid max-w-2xl grid-cols-3 gap-8"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...transition, delay: 0.3 }}
@@ -47,33 +47,25 @@ function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="relative mx-auto mt-8 flex w-fit justify-center"
-          initial={{ opacity: 0, y: 24, scale: 0.96 }}
+          className="relative mx-auto mt-10 mb-4 flex w-fit justify-center"
+          initial={{ opacity: 0, y: 24, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ ...transition, delay: 0.42 }}
         >
-          <div className="absolute inset-2 rounded-[1.75rem] bg-[radial-gradient(circle,rgba(59,130,246,0.38),rgba(34,211,238,0.14)_55%,transparent_78%)] blur-2xl" />
+          <div
+            className="pointer-events-none absolute -inset-8 rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.5),rgba(59,130,246,0.22)_55%,transparent_78%)] blur-3xl"
+            aria-hidden="true"
+          />
           <img
             src={logoReference}
             alt="EDVIEYE Logo"
-            className="relative w-24 rounded-[1.5rem] object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.5)] sm:w-28 md:w-32 lg:w-36 xl:w-40"
+            className="relative w-32 animate-float object-contain drop-shadow-[0_0_25px_rgba(56,189,248,0.55)] md:w-44 lg:w-48"
           />
-        </motion.div>
-
-        <motion.div
-          className="mt-5"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...transition, delay: 0.48 }}
-        >
-          <div className="text-xs font-semibold uppercase tracking-[0.45em] text-neon-cyan">
-            EDVIEYE
-          </div>
         </motion.div>
 
         <motion.h1
           id="hero-heading"
-          className="mt-4 font-display text-5xl font-bold sm:text-6xl md:text-7xl lg:text-8xl"
+          className="mt-6 font-display text-5xl font-bold sm:text-6xl md:text-7xl lg:text-8xl"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...transition, delay: 0.55 }}
