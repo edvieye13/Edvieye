@@ -30,20 +30,6 @@ function HeroSection() {
           </span>
         </motion.div>
 
-        <motion.div
-          className="relative mx-auto mb-7 flex w-fit justify-center"
-          initial={{ opacity: 0, y: 24, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ ...transition, delay: 0.08 }}
-        >
-          <div className="absolute inset-2 rounded-[1.75rem] bg-[radial-gradient(circle,rgba(59,130,246,0.38),rgba(34,211,238,0.14)_55%,transparent_78%)] blur-2xl" />
-          <img
-            src={logoReference}
-            alt="EDVIEYE Logo"
-            className="relative w-24 rounded-[1.5rem] object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.5)] sm:w-28 md:w-36 lg:w-40 xl:w-44"
-          />
-        </motion.div>
-
         <motion.h1
           id="hero-heading"
           className="mb-6 font-display text-5xl font-bold sm:text-6xl md:text-7xl lg:text-8xl"
@@ -102,6 +88,20 @@ function HeroSection() {
               </div>
             </div>
           ))}
+        </motion.div>
+
+        <motion.div
+          className="relative mx-auto mt-10 flex w-fit justify-center"
+          initial={{ opacity: 0, y: 24, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ ...transition, delay: 0.65 }}
+        >
+          <div className="absolute inset-2 rounded-[1.75rem] bg-[radial-gradient(circle,rgba(59,130,246,0.38),rgba(34,211,238,0.14)_55%,transparent_78%)] blur-2xl" />
+          <img
+            src={logoReference}
+            alt="EDVIEYE Logo"
+            className="relative w-24 rounded-[1.5rem] object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.5)] sm:w-28 md:w-36 lg:w-40 xl:w-44"
+          />
         </motion.div>
       </div>
     </section>
