@@ -30,12 +30,53 @@ function HeroSection() {
           </span>
         </motion.div>
 
-        <motion.h1
-          id="hero-heading"
-          className="mb-6 font-display text-5xl font-bold sm:text-6xl md:text-7xl lg:text-8xl"
+        <motion.div
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-3 gap-8"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ...transition, delay: 0.1 }}
+          transition={{ ...transition, delay: 0.3 }}
+        >
+          {heroStats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-2xl font-bold text-gradient md:text-3xl">{stat.value}</div>
+              <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="relative mx-auto mt-8 flex w-fit justify-center"
+          initial={{ opacity: 0, y: 24, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ ...transition, delay: 0.42 }}
+        >
+          <div className="absolute inset-2 rounded-[1.75rem] bg-[radial-gradient(circle,rgba(59,130,246,0.38),rgba(34,211,238,0.14)_55%,transparent_78%)] blur-2xl" />
+          <img
+            src={logoReference}
+            alt="EDVIEYE Logo"
+            className="relative w-24 rounded-[1.5rem] object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.5)] sm:w-28 md:w-32 lg:w-36 xl:w-40"
+          />
+        </motion.div>
+
+        <motion.div
+          className="mt-5"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...transition, delay: 0.48 }}
+        >
+          <div className="text-xs font-semibold uppercase tracking-[0.45em] text-neon-cyan">
+            EDVIEYE
+          </div>
+        </motion.div>
+
+        <motion.h1
+          id="hero-heading"
+          className="mt-4 font-display text-5xl font-bold sm:text-6xl md:text-7xl lg:text-8xl"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...transition, delay: 0.55 }}
         >
           <span className="text-foreground">AI FLOW,</span>
           <br />
@@ -43,10 +84,10 @@ function HeroSection() {
         </motion.h1>
 
         <motion.p
-          className="mx-auto mb-10 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl"
+          className="mx-auto mb-10 mt-6 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ...transition, delay: 0.25 }}
+          transition={{ ...transition, delay: 0.68 }}
         >
           The operating system for modern schools. Automate operations, unlock predictive
           insights, and elevate every classroom with Edvieye.
@@ -56,7 +97,7 @@ function HeroSection() {
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ...transition, delay: 0.4 }}
+          transition={{ ...transition, delay: 0.8 }}
         >
           <a
             href="#contact"
@@ -72,36 +113,6 @@ function HeroSection() {
           >
             Watch Demo
           </a>
-        </motion.div>
-
-        <motion.div
-          className="mx-auto mt-20 grid max-w-2xl grid-cols-3 gap-8"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...transition, delay: 0.55 }}
-        >
-          {heroStats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-2xl font-bold text-gradient md:text-3xl">{stat.value}</div>
-              <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          className="relative mx-auto mt-10 flex w-fit justify-center"
-          initial={{ opacity: 0, y: 24, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ ...transition, delay: 0.65 }}
-        >
-          <div className="absolute inset-2 rounded-[1.75rem] bg-[radial-gradient(circle,rgba(59,130,246,0.38),rgba(34,211,238,0.14)_55%,transparent_78%)] blur-2xl" />
-          <img
-            src={logoReference}
-            alt="EDVIEYE Logo"
-            className="relative w-24 rounded-[1.5rem] object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.5)] sm:w-28 md:w-36 lg:w-40 xl:w-44"
-          />
         </motion.div>
       </div>
     </section>
