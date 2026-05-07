@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import LogoMark from '../ui/LogoMark';
+import logoReference from '../../assets/edvieye-logo-reference.png';
 import { navigation } from '../../data/site';
 
 function Navbar() {
@@ -36,13 +36,13 @@ function Navbar() {
 
         <a
           href="#"
-          className="group relative z-10 flex items-center rounded-[1.2rem] border border-white/90 bg-white/88 px-3 py-2 shadow-[0_14px_30px_-22px_rgba(8,31,98,0.45)]"
+          className="group relative z-10 flex items-center rounded-[1.25rem] border border-sky-200/90 bg-[linear-gradient(135deg,rgba(248,252,255,0.98),rgba(225,241,255,0.98))] px-3 py-2 shadow-[0_14px_30px_-22px_rgba(8,31,98,0.45)]"
           aria-label="Edvieye home"
         >
-          <LogoMark
-            showTagline
-            glow={false}
-            className="w-[12rem] transition-transform duration-300 group-hover:scale-[1.01] sm:w-[13rem] xl:w-[14rem]"
+          <img
+            src={logoReference}
+            alt="Edvieye"
+            className="w-[12.4rem] transition-transform duration-300 group-hover:scale-[1.01] sm:w-[13.6rem] xl:w-[14.8rem]"
           />
         </a>
 
