@@ -1,7 +1,10 @@
 import express from 'express';
+import 'dotenv/config';
 import path from 'node:path';
+import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { addLead, getLeadStats, getLeads } from './storage.js';
+import { isMailerConfigured, sendDemoRequestEmail } from './mailer.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,6 +13,8 @@ const distDir = path.join(rootDir, 'dist');
 
 const app = express();
 const port = Number(process.env.PORT) || 3001;
+const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
+const adminSessions = new Set();
 
 app.use(express.json());
 
@@ -32,26 +37,77 @@ app.get('/api/leads', async (_request, response) => {
   });
 });
 
+function requireAdmin(request, response, next) {
+  const header = request.get('authorization') || '';
+  const token = header.startsWith('Bearer ') ? header.slice(7) : '';
+
+  if (!token || !adminSessions.has(token)) {
+    return response.status(401).json({
+      ok: false,
+      message: 'Please login again.',
+    });
+  }
+
+  return next();
+}
+
+app.post('/api/admin/login', (request, response) => {
+  const { password = '' } = request.body ?? {};
+
+  if (password !== adminPassword) {
+    return response.status(401).json({
+      ok: false,
+      message: 'Invalid admin password.',
+    });
+  }
+
+  const token = randomUUID();
+  adminSessions.add(token);
+
+  return response.json({
+    ok: true,
+    token,
+  });
+});
+
+app.get('/api/admin/leads', requireAdmin, async (_request, response) => {
+  const leads = await getLeads();
+
+  response.json({
+    leads,
+    total: leads.length,
+  });
+});
+
 app.post('/api/contact', async (request, response) => {
   const { name = '', email = '', organization = '' } = request.body ?? {};
+  const lead = {
+    name: name.trim(),
+    email: email.trim(),
+    organization: organization.trim(),
+  };
 
-  if (!name.trim() || !email.trim() || !organization.trim()) {
+  if (!lead.name || !lead.email || !lead.organization) {
     return response.status(400).json({
       ok: false,
       message: 'Please fill in all fields.',
     });
   }
 
-  const lead = await addLead({
-    name: name.trim(),
-    email: email.trim(),
-    organization: organization.trim(),
-  });
+  const savedLead = await addLead(lead);
+
+  if (isMailerConfigured()) {
+    try {
+      await sendDemoRequestEmail(savedLead);
+    } catch (error) {
+      console.error('Unable to send demo request email:', error);
+    }
+  }
 
   return response.status(201).json({
     ok: true,
-    message: 'Thanks! Our team will reach out within 24 hours.',
-    lead,
+    message: 'Thanks! Your demo request has been received.',
+    lead: savedLead,
   });
 });
 

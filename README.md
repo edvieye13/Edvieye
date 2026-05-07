@@ -1,6 +1,6 @@
 # Edvieye Reference Clone
 
-This project recreates the provided Edvieye Lovable preview as a responsive React + Vite + Tailwind CSS landing page, now with a simple Node.js + Express mock backend for contact form submissions.
+This project recreates the provided Edvieye Lovable preview as a responsive React + Vite + Tailwind CSS landing page, now with a Node.js + Express backend that stores demo requests, exposes an admin dashboard, and can optionally email demo requests to the Edvieye team.
 
 ## Stack
 
@@ -61,7 +61,19 @@ This project recreates the provided Edvieye Lovable preview as a responsive Reac
 npm install
 ```
 
-2. Run frontend and backend together in development:
+2. Create a local `.env` file from `.env.example` and add SMTP details:
+
+```bash
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-sender-email@gmail.com
+SMTP_PASS=your-app-password
+SMTP_FROM_EMAIL=your-sender-email@gmail.com
+DEMO_RECIPIENT_EMAIL=info@edvieye.com
+ADMIN_PASSWORD=change-this-admin-password
+```
+
+3. Run frontend and backend together in development:
 
 ```bash
 npm run dev
@@ -71,20 +83,21 @@ This starts:
 
 - Vite frontend on `http://localhost:5173`
 - Express mock API on `http://localhost:3001`
+- Admin dashboard on `http://localhost:5173/admin`
 
-3. Build the frontend:
+4. Build the frontend:
 
 ```bash
 npm run build
 ```
 
-4. Preview the built frontend only:
+5. Preview the built frontend only:
 
 ```bash
 npm run preview
 ```
 
-5. Run the Express server directly:
+6. Run the Express server directly:
 
 ```bash
 npm run start
@@ -93,8 +106,9 @@ npm run start
 ## API Endpoints
 
 - `GET /api/health` - health/status check
-- `GET /api/leads` - view saved demo requests
-- `POST /api/contact` - submit the contact/demo form
+- `POST /api/admin/login` - login to the admin dashboard
+- `GET /api/admin/leads` - view saved demo requests after admin login
+- `POST /api/contact` - save the contact/demo form and optionally email the Edvieye team
 
 Example request:
 
@@ -108,7 +122,9 @@ Example request:
 
 ## Notes
 
-- Contact form submissions are stored in `server/data/leads.json`.
+- Contact form submissions are saved in `server/data/leads.json`.
+- If SMTP settings are present, submissions are also emailed to `DEMO_RECIPIENT_EMAIL`, which defaults to `info@edvieye.com` in `.env.example`.
+- Set `ADMIN_PASSWORD` in `.env`; if it is missing, local development falls back to `admin123`.
 - Vite proxies `/api/*` requests to the Express server in development.
 - After a production build, the Express server can also serve the built frontend from `dist/`.
 "# edvieye-website" 

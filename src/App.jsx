@@ -5,8 +5,13 @@ import DemoSection from './sections/DemoSection';
 import FeaturesSection from './sections/FeaturesSection';
 import Footer from './sections/Footer';
 import HeroSection from './sections/HeroSection';
+import AdminDashboard from './admin/AdminDashboard';
 
 function App() {
+  if (window.location.pathname === '/admin') {
+    return <AdminDashboard />;
+  }
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <a
