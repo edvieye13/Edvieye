@@ -71,6 +71,8 @@ SMTP_PASS=your-app-password
 SMTP_FROM_EMAIL=your-sender-email@gmail.com
 DEMO_RECIPIENT_EMAIL=info@edvieye.com
 ADMIN_PASSWORD=change-this-admin-password
+KV_REST_API_URL=
+KV_REST_API_TOKEN=
 ```
 
 3. Run frontend and backend together in development:
@@ -123,6 +125,7 @@ Example request:
 ## Notes
 
 - Contact form submissions are saved in `server/data/leads.json`.
+- On Vercel, connect Vercel KV or Upstash Redis and set `KV_REST_API_URL` and `KV_REST_API_TOKEN` so admin responses persist across serverless function restarts.
 - If SMTP settings are present, submissions are also emailed to `DEMO_RECIPIENT_EMAIL`, which defaults to `info@edvieye.com` in `.env.example`.
 - Set `ADMIN_PASSWORD` in `.env`; if it is missing, local development falls back to `admin123`.
 - Vite proxies `/api/*` requests to the Express server in development.
