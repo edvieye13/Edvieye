@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import logoReference from '../assets/edvieye-logo-reference.png';
 import HeroBackdrop from '../components/hero/HeroBackdrop';
 import { heroStats } from '../data/site';
 
@@ -25,8 +26,22 @@ function HeroSection() {
         >
           <Sparkles className="h-3.5 w-3.5 text-neon-cyan" />
           <span className="text-xs font-medium text-foreground/80">
-            Introducing Edvieye AI · v2.0
+            Introducing Edvieye AI v2.0
           </span>
+        </motion.div>
+
+        <motion.div
+          className="relative mx-auto mb-7 flex w-fit justify-center"
+          initial={{ opacity: 0, y: 24, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ ...transition, delay: 0.08 }}
+        >
+          <div className="absolute inset-2 rounded-[1.75rem] bg-[radial-gradient(circle,rgba(59,130,246,0.38),rgba(34,211,238,0.14)_55%,transparent_78%)] blur-2xl" />
+          <img
+            src={logoReference}
+            alt="EDVIEYE Logo"
+            className="relative w-24 rounded-[1.5rem] object-contain drop-shadow-[0_0_20px_rgba(59,130,246,0.5)] sm:w-28 md:w-36 lg:w-40 xl:w-44"
+          />
         </motion.div>
 
         <motion.h1
@@ -36,9 +51,9 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...transition, delay: 0.1 }}
         >
-          <span className="text-gradient">AI Powered ERP</span>
+          <span className="text-foreground">AI FLOW,</span>
           <br />
-          <span className="text-foreground">for Smart Education</span>
+          <span className="text-gradient">EDUCATION GLOW.</span>
         </motion.h1>
 
         <motion.p
@@ -94,4 +109,3 @@ function HeroSection() {
 }
 
 export default HeroSection;
-
