@@ -10,7 +10,7 @@ function HeroSection() {
   return (
     <section
       className="relative flex min-h-screen items-center overflow-hidden grid-bg"
-      aria-labelledby="hero-heading"
+      aria-label="Edvieye hero"
     >
       <div className="absolute inset-0 -z-0">
         <HeroBackdrop />
@@ -30,23 +30,11 @@ function HeroSection() {
           </span>
         </motion.div>
 
-        <motion.h1
-          id="hero-heading"
-          className="mt-8 font-display text-5xl font-bold sm:text-6xl md:text-7xl lg:text-8xl"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...transition, delay: 0.15 }}
-        >
-          <span className="text-foreground">AI FLOW,</span>
-          <br />
-          <span className="text-gradient">EDUCATION GLOW.</span>
-        </motion.h1>
-
         <motion.p
-          className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl"
+          className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ...transition, delay: 0.3 }}
+          transition={{ ...transition, delay: 0.2 }}
         >
           The operating system for modern schools. Automate operations, unlock predictive
           insights, and elevate every classroom with Edvieye.
