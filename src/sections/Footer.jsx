@@ -14,7 +14,11 @@ function Footer() {
       <div className="container py-16">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <LogoMark label="Edvieye Private Limited" glow={false} className="mb-4" />
+            <LogoMark
+              label="Edvieye Private Limited"
+              glow={false}
+              className="mb-4 origin-left scale-[0.92]"
+            />
             <p className="max-w-sm text-sm text-muted-foreground">
               The AI-powered ERP that empowers educational institutions to lead the future of
               learning.
@@ -87,4 +91,3 @@ function Footer() {
 }
 
 export default Footer;
-

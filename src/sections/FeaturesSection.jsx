@@ -70,10 +70,10 @@ function FeaturesSection() {
       <div className="container">
         <SectionHeading
           id="features-heading"
-          eyebrow="Platform"
+          eyebrow="Edvieye"
           title={
             <>
-              One platform. <span className="text-gradient">Every workflow.</span>
+              AI FLOW, <span className="text-gradient">EDUCATION GLOW.</span>
             </>
           }
           description="Edvieye unifies your entire institution under a single intelligent ERP — designed for the AI-first era of education."
@@ -91,4 +91,3 @@ function FeaturesSection() {
 }
 
 export default FeaturesSection;
-
