@@ -46,7 +46,7 @@ function DemoSection() {
           <div className="absolute -inset-4 -z-10 bg-gradient-to-r from-neon-cyan/30 via-neon-blue/30 to-neon-purple/30 opacity-50 blur-3xl" />
 
           {/* Mock dashboard mirrors the static preview block from the reference site. */}
-          <div className="glass-card animate-float p-6 md:p-10">
+          <div className="glass-card animate-[float_3.2s_ease-in-out_infinite] p-6 md:p-10">
             <div className="mb-8 flex items-center justify-between gap-6">
               <div>
                 <h3 className="text-xl font-semibold">Principal Dashboard</h3>
@@ -126,4 +126,3 @@ function DemoSection() {
 }
 
 export default DemoSection;
-
