@@ -1,5 +1,4 @@
 import { Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react';
-import LogoMark from '../components/ui/LogoMark';
 import { contactDetails, footerProductLinks, socialLinks } from '../data/site';
 
 const socialIconMap = {
@@ -14,11 +13,14 @@ function Footer() {
       <div className="container py-16">
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
-            <LogoMark
-              label="Edvieye Private Limited"
-              glow={false}
-              className="mb-4 origin-left w-[11.5rem] sm:w-[12.75rem]"
-            />
+            <div className="mb-4">
+              <div className="font-display text-lg font-bold uppercase tracking-[0.28em] text-foreground">
+                EDVIEYE
+              </div>
+              <div className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-neon-cyan/75">
+                Private Limited
+              </div>
+            </div>
             <p className="max-w-sm text-sm text-muted-foreground">
               The AI-powered ERP that empowers educational institutions to lead the future of
               learning.

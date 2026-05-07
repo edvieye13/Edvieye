@@ -123,9 +123,9 @@ function LogoMark({
             <stop offset="100%" stopColor="#1697ff" />
           </linearGradient>
           <linearGradient id={tagLineId} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#eefcff" />
-            <stop offset="35%" stopColor="#9aefff" />
-            <stop offset="100%" stopColor="#0c226e" />
+            <stop offset="0%" stopColor="#102762" />
+            <stop offset="45%" stopColor="#173f94" />
+            <stop offset="100%" stopColor="#17a0ff" />
           </linearGradient>
         </defs>
 
@@ -276,8 +276,8 @@ function LogoMark({
           <g transform="translate(156 198)">
             <circle cx="4" cy="22" r="4.8" fill="#f4ffff" stroke="#47e7ff" strokeWidth="3" />
             <circle cx="480" cy="22" r="4.8" fill="#f4ffff" stroke="#47e7ff" strokeWidth="3" />
-            <path d="M12 22H90" fill="none" stroke="#102c82" strokeWidth="4" strokeLinecap="round" />
-            <path d="M392 22h80" fill="none" stroke="#102c82" strokeWidth="4" strokeLinecap="round" />
+            <path d="M12 22H90" fill="none" stroke="#183a8f" strokeWidth="4" strokeLinecap="round" />
+            <path d="M392 22h80" fill="none" stroke="#183a8f" strokeWidth="4" strokeLinecap="round" />
             <text
               x="240"
               y="29"
