@@ -30,16 +30,6 @@ function HeroSection() {
           </span>
         </motion.div>
 
-        <motion.p
-          className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...transition, delay: 0.2 }}
-        >
-          The operating system for modern schools. Automate operations, unlock predictive
-          insights, and elevate every classroom with Edvieye.
-        </motion.p>
-
         <motion.div
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           initial={{ opacity: 0, y: 24 }}
