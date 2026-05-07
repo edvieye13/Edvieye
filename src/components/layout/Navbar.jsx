@@ -36,13 +36,13 @@ function Navbar() {
 
         <a
           href="#"
-          className="group relative z-10 flex items-center rounded-[1.25rem] border border-sky-200/90 bg-[linear-gradient(135deg,rgba(248,252,255,0.98),rgba(225,241,255,0.98))] px-3 py-2 shadow-[0_14px_30px_-22px_rgba(8,31,98,0.45)]"
+          className="group relative z-10 flex items-center rounded-[1rem] border border-sky-200/90 bg-[linear-gradient(135deg,rgba(248,252,255,0.98),rgba(225,241,255,0.98))] px-2.5 py-1.5 shadow-[0_14px_30px_-22px_rgba(8,31,98,0.45)]"
           aria-label="Edvieye home"
         >
           <img
             src={logoReference}
             alt="Edvieye"
-            className="w-[12.4rem] transition-transform duration-300 group-hover:scale-[1.01] sm:w-[13.6rem] xl:w-[14.8rem]"
+            className="w-[11.6rem] transition-transform duration-300 group-hover:scale-[1.01] sm:w-[12.8rem] xl:w-[13.9rem]"
           />
         </a>
 
