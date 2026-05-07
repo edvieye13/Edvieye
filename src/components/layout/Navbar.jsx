@@ -20,11 +20,11 @@ function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'py-3' : 'py-4'
+        isScrolled ? 'py-2.5' : 'py-3'
       }`}
     >
       <nav
-        className={`container relative flex items-center justify-between overflow-hidden rounded-[1.75rem] border border-cyan-100/10 px-4 py-3 shadow-[0_18px_55px_-28px_rgba(23,119,238,0.9)] backdrop-blur-2xl transition-all duration-300 sm:px-6 ${
+        className={`container relative flex items-center justify-between overflow-hidden rounded-[1.75rem] border border-cyan-100/10 px-4 py-2.5 shadow-[0_18px_55px_-28px_rgba(23,119,238,0.9)] backdrop-blur-2xl transition-all duration-300 sm:px-6 ${
           isScrolled
             ? 'bg-[linear-gradient(135deg,rgba(2,10,30,0.94),rgba(5,26,71,0.86),rgba(7,66,119,0.48))]'
             : 'bg-[linear-gradient(135deg,rgba(2,10,30,0.82),rgba(5,26,71,0.74),rgba(7,66,119,0.34))]'
@@ -37,11 +37,11 @@ function Navbar() {
         <a href="#" className="group relative z-10 flex items-center" aria-label="Edvieye home">
           <LogoMark
             showTagline
-            className="transition-transform duration-300 group-hover:scale-[1.01]"
+            className="w-[9.4rem] transition-transform duration-300 group-hover:scale-[1.01] sm:w-[10.4rem] xl:w-[11.3rem]"
           />
         </a>
 
-        <ul className="relative z-10 hidden items-center gap-8 md:flex">
+        <ul className="relative z-10 hidden items-center gap-6 lg:flex xl:gap-8">
           {navigation.map((item) => (
             <li key={item.href}>
               <a
@@ -56,7 +56,7 @@ function Navbar() {
 
         <a
           href="#contact"
-          className="relative z-10 hidden items-center rounded-full border border-cyan-100/30 bg-[linear-gradient(135deg,rgba(88,239,255,0.96),rgba(36,140,255,0.94))] px-5 py-2 text-sm font-medium text-slate-950 transition hover:scale-[1.02] hover:opacity-95 sm:inline-flex"
+          className="relative z-10 hidden items-center rounded-full border border-cyan-100/30 bg-[linear-gradient(135deg,rgba(88,239,255,0.96),rgba(36,140,255,0.94))] px-5 py-2 text-sm font-medium text-slate-950 transition hover:scale-[1.02] hover:opacity-95 md:inline-flex"
         >
           Book Demo
         </a>

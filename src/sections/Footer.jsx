@@ -17,7 +17,7 @@ function Footer() {
             <LogoMark
               label="Edvieye Private Limited"
               glow={false}
-              className="mb-4 origin-left scale-[0.92]"
+              className="mb-4 origin-left w-[11.5rem] sm:w-[12.75rem]"
             />
             <p className="max-w-sm text-sm text-muted-foreground">
               The AI-powered ERP that empowers educational institutions to lead the future of

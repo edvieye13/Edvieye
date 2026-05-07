@@ -2,16 +2,16 @@ import { useId } from 'react';
 
 const DEFAULT_LABEL = 'EDVIEYE';
 const DEFAULT_SUBTITLE = 'AI FLOW, EDUCATION GLOW';
-const CENTER_POINT = [108, 92];
+const NETWORK_CENTER = [156, 100];
 const NETWORK_POINTS = [
-  [108, 58],
-  [80, 69],
-  [66, 92],
-  [80, 115],
-  [108, 126],
-  [136, 115],
-  [150, 92],
-  [136, 69],
+  [156, 63],
+  [122, 76],
+  [104, 100],
+  [122, 124],
+  [156, 137],
+  [190, 124],
+  [208, 100],
+  [190, 76],
 ];
 const NETWORK_LINKS = [
   [0, 1],
@@ -38,119 +38,140 @@ function LogoMark({
   const idBase = useId().replace(/:/g, '');
   const frameFillId = `${idBase}-frameFill`;
   const frameStrokeId = `${idBase}-frameStroke`;
-  const eyeShellId = `${idBase}-eyeShell`;
-  const eyeCoreId = `${idBase}-eyeCore`;
+  const eyeFillId = `${idBase}-eyeFill`;
   const eyeHighlightId = `${idBase}-eyeHighlight`;
+  const innerEyeId = `${idBase}-innerEye`;
   const irisFillId = `${idBase}-irisFill`;
   const irisGlowId = `${idBase}-irisGlow`;
   const irisStrokeId = `${idBase}-irisStroke`;
-  const centerFillId = `${idBase}-centerFill`;
-  const wordmarkFillId = `${idBase}-wordmarkFill`;
+  const coreFillId = `${idBase}-coreFill`;
+  const wordFillId = `${idBase}-wordFill`;
+  const accentFillId = `${idBase}-accentFill`;
+  const tagLineId = `${idBase}-tagLine`;
   const isPrimaryWordmark = label.trim().toUpperCase() === DEFAULT_LABEL;
-  const secondaryLabel = isPrimaryWordmark ? null : label;
+  const legalSuffix = isPrimaryWordmark
+    ? ''
+    : label.replace(/^edvieye/i, '').replace(/\s+/g, ' ').trim();
+  const viewBox = showTagline ? '0 0 640 258' : '0 0 640 214';
 
   return (
-    <div className={['inline-flex items-center gap-3.5', className].filter(Boolean).join(' ')}>
-      <div className="relative shrink-0">
-        {glow ? (
-          <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(73,223,255,0.48),rgba(16,61,171,0.22)_44%,transparent_76%)] blur-xl" />
-        ) : null}
+    <div className={['relative w-[10rem] sm:w-[11rem] xl:w-[12rem]', className].filter(Boolean).join(' ')}>
+      {glow ? (
+        <div className="pointer-events-none absolute left-[22%] top-[36%] h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(74,232,255,0.4),rgba(15,59,170,0.14)_52%,transparent_76%)] blur-2xl" />
+      ) : null}
 
-        <svg
-          viewBox="0 0 216 184"
-          className={`relative h-[3rem] w-[3.65rem] sm:h-[3.2rem] sm:w-[3.9rem] ${
-            glow
-              ? 'drop-shadow-[0_12px_28px_rgba(4,16,64,0.82)]'
-              : 'drop-shadow-[0_8px_18px_rgba(4,16,64,0.42)]'
-          }`}
-          aria-hidden="true"
-        >
-          <defs>
-            <linearGradient id={frameFillId} x1="78" y1="18" x2="188" y2="154">
-              <stop offset="0%" stopColor="#07134f" />
-              <stop offset="40%" stopColor="#0d2f94" />
-              <stop offset="72%" stopColor="#1355df" />
-              <stop offset="100%" stopColor="#46e5ff" />
-            </linearGradient>
-            <linearGradient id={frameStrokeId} x1="85" y1="14" x2="190" y2="164">
-              <stop offset="0%" stopColor="#0f2d8b" />
-              <stop offset="100%" stopColor="#9af9ff" />
-            </linearGradient>
-            <linearGradient id={eyeShellId} x1="24" y1="92" x2="192" y2="92">
-              <stop offset="0%" stopColor="#06165a" />
-              <stop offset="49%" stopColor="#0c3cae" />
-              <stop offset="100%" stopColor="#2ce9ff" />
-            </linearGradient>
-            <linearGradient id={eyeCoreId} x1="58" y1="58" x2="160" y2="121">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="100%" stopColor="#dff6ff" />
-            </linearGradient>
-            <linearGradient id={eyeHighlightId} x1="51" y1="56" x2="147" y2="98">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.72" />
-              <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-            </linearGradient>
-            <radialGradient id={irisFillId} cx="50%" cy="50%" r="60%">
-              <stop offset="0%" stopColor="#5229ff" />
-              <stop offset="45%" stopColor="#1349d8" />
-              <stop offset="78%" stopColor="#07256e" />
-              <stop offset="100%" stopColor="#020d2e" />
-            </radialGradient>
-            <radialGradient id={irisGlowId} cx="50%" cy="50%" r="60%">
-              <stop offset="0%" stopColor="#5ff4ff" stopOpacity="0.46" />
-              <stop offset="52%" stopColor="#214de7" stopOpacity="0.18" />
-              <stop offset="100%" stopColor="#214de7" stopOpacity="0" />
-            </radialGradient>
-            <linearGradient id={irisStrokeId} x1="72" y1="59" x2="142" y2="124">
-              <stop offset="0%" stopColor="#8ff8ff" />
-              <stop offset="100%" stopColor="#225ee6" />
-            </linearGradient>
-            <linearGradient id={centerFillId} x1="90" y1="72" x2="124" y2="108">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="100%" stopColor="#e8f6ff" />
-            </linearGradient>
-          </defs>
+      <svg
+        viewBox={viewBox}
+        className={`relative block h-auto w-full ${
+          glow
+            ? 'drop-shadow-[0_14px_32px_rgba(4,16,64,0.58)]'
+            : 'drop-shadow-[0_10px_24px_rgba(4,16,64,0.22)]'
+        }`}
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id={frameFillId} x1="132" y1="20" x2="310" y2="200">
+            <stop offset="0%" stopColor="#06134e" />
+            <stop offset="42%" stopColor="#0b2f92" />
+            <stop offset="75%" stopColor="#1458e4" />
+            <stop offset="100%" stopColor="#46e7ff" />
+          </linearGradient>
+          <linearGradient id={frameStrokeId} x1="154" y1="14" x2="316" y2="198">
+            <stop offset="0%" stopColor="#193b95" />
+            <stop offset="100%" stopColor="#89f8ff" />
+          </linearGradient>
+          <linearGradient id={eyeFillId} x1="20" y1="102" x2="296" y2="102">
+            <stop offset="0%" stopColor="#071858" />
+            <stop offset="52%" stopColor="#0c40b0" />
+            <stop offset="100%" stopColor="#29e6ff" />
+          </linearGradient>
+          <linearGradient id={eyeHighlightId} x1="56" y1="70" x2="212" y2="108">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.7" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id={innerEyeId} x1="72" y1="70" x2="232" y2="135">
+            <stop offset="0%" stopColor="#ffffff" />
+            <stop offset="100%" stopColor="#def5ff" />
+          </linearGradient>
+          <radialGradient id={irisFillId} cx="50%" cy="50%" r="62%">
+            <stop offset="0%" stopColor="#4d23ff" />
+            <stop offset="45%" stopColor="#0e4bdb" />
+            <stop offset="76%" stopColor="#071f66" />
+            <stop offset="100%" stopColor="#020e2e" />
+          </radialGradient>
+          <radialGradient id={irisGlowId} cx="50%" cy="45%" r="62%">
+            <stop offset="0%" stopColor="#78f7ff" stopOpacity="0.42" />
+            <stop offset="58%" stopColor="#274fea" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#274fea" stopOpacity="0" />
+          </radialGradient>
+          <linearGradient id={irisStrokeId} x1="112" y1="58" x2="200" y2="136">
+            <stop offset="0%" stopColor="#8cf8ff" />
+            <stop offset="100%" stopColor="#1856dd" />
+          </linearGradient>
+          <linearGradient id={coreFillId} x1="140" y1="82" x2="176" y2="118">
+            <stop offset="0%" stopColor="#ffffff" />
+            <stop offset="100%" stopColor="#e7f6ff" />
+          </linearGradient>
+          <linearGradient id={wordFillId} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#f8feff" />
+            <stop offset="20%" stopColor="#90edff" />
+            <stop offset="44%" stopColor="#20d0ff" />
+            <stop offset="100%" stopColor="#081f62" />
+          </linearGradient>
+          <linearGradient id={accentFillId} x1="0%" y1="50%" x2="100%" y2="50%">
+            <stop offset="0%" stopColor="#47e7ff" />
+            <stop offset="100%" stopColor="#1697ff" />
+          </linearGradient>
+          <linearGradient id={tagLineId} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#eefcff" />
+            <stop offset="35%" stopColor="#9aefff" />
+            <stop offset="100%" stopColor="#0c226e" />
+          </linearGradient>
+        </defs>
 
+        <g transform="translate(8 6)">
           <path
-            d="M103 16h77c-3 21-19 34-39 34h-26c-8 0-14 6-14 14v16H80V39c0-13 10-23 23-23Z"
+            d="M196 12h118c-6 31-29 49-59 49h-39c-12 0-22 10-22 22v16h-37V48c0-20 17-36 39-36Z"
             fill={`url(#${frameFillId})`}
             stroke={`url(#${frameStrokeId})`}
             strokeWidth="3"
           />
           <path
-            d="M80 103h21v16c0 8 6 14 14 14h65c-3 21-19 34-39 34h-38c-13 0-23-10-23-23v-41Z"
+            d="M157 116h37v16c0 12 10 22 22 22h98c-6 31-29 49-59 49H194c-20 0-37-17-37-37Z"
             fill={`url(#${frameFillId})`}
             stroke={`url(#${frameStrokeId})`}
             strokeWidth="3"
           />
 
           <path
-            d="M24 92c23-30 52-45 84-45 33 0 61 15 84 45-23 30-51 45-84 45-32 0-61-15-84-45Z"
-            fill={`url(#${eyeShellId})`}
-            stroke="#173486"
+            d="M20 100c37-46 83-69 136-69s99 23 136 69c-37 46-83 69-136 69S57 146 20 100Z"
+            fill={`url(#${eyeFillId})`}
+            stroke="#153583"
             strokeWidth="4"
           />
           <path
-            d="M55 92c15-19 33-29 53-29s38 10 53 29c-15 19-33 29-53 29S70 111 55 92Z"
-            fill={`url(#${eyeCoreId})`}
+            d="M70 100c23-28 52-43 86-43s63 15 86 43c-23 28-52 42-86 42s-63-14-86-42Z"
+            fill={`url(#${innerEyeId})`}
           />
           <path
-            d="M50 74c17-17 37-27 59-29 13-1 26 2 37 8"
+            d="M56 74c27-25 58-38 94-39 18 0 35 4 50 11"
             fill="none"
             stroke={`url(#${eyeHighlightId})`}
             strokeLinecap="round"
             strokeWidth="6"
           />
-          <circle cx={CENTER_POINT[0]} cy={CENTER_POINT[1]} r="37" fill={`url(#${irisGlowId})`} />
+
+          <circle cx={NETWORK_CENTER[0]} cy={NETWORK_CENTER[1]} r="54" fill={`url(#${irisGlowId})`} />
           <circle
-            cx={CENTER_POINT[0]}
-            cy={CENTER_POINT[1]}
-            r="35"
+            cx={NETWORK_CENTER[0]}
+            cy={NETWORK_CENTER[1]}
+            r="51"
             fill={`url(#${irisFillId})`}
             stroke={`url(#${irisStrokeId})`}
             strokeWidth="3"
           />
           <path
-            d="M76 76c6-11 18-18 32-18 14 0 26 7 33 18"
+            d="M104 79c9-13 24-21 41-21s32 8 42 21"
             fill="none"
             stroke="rgba(255,255,255,0.24)"
             strokeLinecap="round"
@@ -159,7 +180,7 @@ function LogoMark({
 
           {NETWORK_LINKS.map(([from, to]) => {
             const start = NETWORK_POINTS[from];
-            const end = to === 'center' ? CENTER_POINT : NETWORK_POINTS[to];
+            const end = to === 'center' ? NETWORK_CENTER : NETWORK_POINTS[to];
 
             return (
               <line
@@ -170,106 +191,114 @@ function LogoMark({
                 y2={end[1]}
                 stroke="#effcff"
                 strokeLinecap="round"
-                strokeWidth={to === 'center' ? 4.2 : 3.8}
+                strokeWidth={to === 'center' ? 4.4 : 4}
               />
             );
           })}
 
           {NETWORK_POINTS.map(([x, y]) => (
-            <circle key={`${x}-${y}`} cx={x} cy={y} r="5.8" fill="#ffffff" stroke="#51e7ff" strokeWidth="3" />
+            <circle
+              key={`${x}-${y}`}
+              cx={x}
+              cy={y}
+              r="6.4"
+              fill="#ffffff"
+              stroke="#4fe8ff"
+              strokeWidth="3"
+            />
           ))}
 
           <circle
-            cx={CENTER_POINT[0]}
-            cy={CENTER_POINT[1]}
-            r="19"
-            fill={`url(#${centerFillId})`}
+            cx={NETWORK_CENTER[0]}
+            cy={NETWORK_CENTER[1]}
+            r="23"
+            fill={`url(#${coreFillId})`}
             stroke="#effcff"
             strokeWidth="4"
           />
           <text
-            x={CENTER_POINT[0]}
-            y="101"
+            x={NETWORK_CENTER[0]}
+            y="111"
             textAnchor="middle"
-            fontFamily="'Space Grotesk', sans-serif"
+            fontFamily="'Orbitron', 'Space Grotesk', sans-serif"
             fontSize="28"
-            fontWeight="700"
+            fontWeight="800"
             fill="#1b4fc9"
           >
             Ai
           </text>
-        </svg>
-      </div>
+        </g>
 
-      <div className="flex min-w-0 flex-col justify-center">
-        <div className="flex items-center gap-2.5">
-          {isPrimaryWordmark ? (
-            <span className="hidden h-[0.44rem] w-7 bg-[linear-gradient(90deg,#4de9ff,#1b9bff)] shadow-[0_0_14px_rgba(77,233,255,0.24)] lg:block [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]" />
-          ) : null}
-
-          <svg
-            viewBox="0 0 260 34"
-            className={`block overflow-visible ${
-              isPrimaryWordmark ? 'h-5 w-[10.6rem] sm:h-[1.35rem] sm:w-[11.7rem]' : 'h-5 w-[10.6rem] sm:h-[1.25rem] sm:w-[11rem]'
-            } ${glow ? 'drop-shadow-[0_0_10px_rgba(57,210,255,0.18)]' : ''}`}
-            aria-hidden="true"
+        <g transform="translate(154 108)">
+          <path
+            d="M0 40h54l-10 13H0Z"
+            fill={`url(#${accentFillId})`}
+            stroke="rgba(5,29,100,0.55)"
+            strokeWidth="2"
+          />
+          <ellipse cx="186" cy="48" rx="24" ry="20" fill="rgba(74,231,255,0.34)" />
+          <text
+            x="66"
+            y="60"
+            fill="rgba(4,18,70,0.78)"
+            fontFamily="'Orbitron', 'Space Grotesk', sans-serif"
+            fontSize="78"
+            fontWeight="800"
+            letterSpacing="8"
+            textLength="360"
           >
-            <defs>
-              <linearGradient id={wordmarkFillId} x1="0" y1="0" x2="260" y2="34">
-                <stop offset="0%" stopColor="#f9feff" />
-                <stop offset="20%" stopColor="#89eeff" />
-                <stop offset="45%" stopColor="#1fc8ff" />
-                <stop offset="100%" stopColor="#092168" />
-              </linearGradient>
-            </defs>
-            <text
-              x="4"
-              y="27"
-              fill="rgba(4,20,74,0.72)"
-              fontFamily="'Space Grotesk', sans-serif"
-              fontSize="26"
-              fontWeight="700"
-              letterSpacing="5.8"
-            >
-              EDVIEYE
-            </text>
-            <text
-              x="2"
-              y="25"
-              fill={`url(#${wordmarkFillId})`}
-              stroke="rgba(6,29,101,0.86)"
-              strokeWidth="1.15"
-              paintOrder="stroke fill"
-              fontFamily="'Space Grotesk', sans-serif"
-              fontSize="26"
-              fontWeight="700"
-              letterSpacing="5.8"
-            >
-              EDVIEYE
-            </text>
-          </svg>
+            EDVIEYE
+          </text>
+          <text
+            x="62"
+            y="56"
+            fill={`url(#${wordFillId})`}
+            stroke="rgba(6,29,101,0.86)"
+            strokeWidth="1.8"
+            paintOrder="stroke fill"
+            fontFamily="'Orbitron', 'Space Grotesk', sans-serif"
+            fontSize="78"
+            fontWeight="800"
+            letterSpacing="8"
+            textLength="360"
+          >
+            EDVIEYE
+          </text>
+          <path
+            d="M438 40h54l-10 13h-44Z"
+            fill={`url(#${accentFillId})`}
+            stroke="rgba(5,29,100,0.55)"
+            strokeWidth="2"
+          />
+        </g>
 
-          {isPrimaryWordmark ? (
-            <span className="hidden h-[0.44rem] w-7 bg-[linear-gradient(90deg,#1b9bff,#4de9ff)] shadow-[0_0_14px_rgba(77,233,255,0.24)] lg:block [clip-path:polygon(16%_0,100%_0,100%_100%,0_100%)]" />
-          ) : null}
-        </div>
-
-        {showTagline && isPrimaryWordmark ? (
-          <div className="mt-1 hidden items-center gap-2 xl:flex">
-            <span className="h-px w-8 bg-gradient-to-r from-transparent via-neon-cyan/85 to-neon-blue/35" />
-            <span className="text-[0.52rem] font-semibold uppercase tracking-[0.34em] text-cyan-100/76">
+        {showTagline ? (
+          <g transform="translate(156 198)">
+            <circle cx="4" cy="22" r="4.8" fill="#f4ffff" stroke="#47e7ff" strokeWidth="3" />
+            <circle cx="480" cy="22" r="4.8" fill="#f4ffff" stroke="#47e7ff" strokeWidth="3" />
+            <path d="M12 22H90" fill="none" stroke="#102c82" strokeWidth="4" strokeLinecap="round" />
+            <path d="M392 22h80" fill="none" stroke="#102c82" strokeWidth="4" strokeLinecap="round" />
+            <text
+              x="240"
+              y="29"
+              textAnchor="middle"
+              fill={`url(#${tagLineId})`}
+              fontFamily="'Orbitron', 'Space Grotesk', sans-serif"
+              fontSize="18"
+              fontWeight="700"
+              letterSpacing="5.6"
+            >
               {subtitle}
-            </span>
-            <span className="h-px w-8 bg-gradient-to-l from-transparent via-neon-cyan/85 to-neon-blue/35" />
-          </div>
-        ) : secondaryLabel ? (
-          <span className="mt-1 text-[0.58rem] font-medium uppercase tracking-[0.28em] text-cyan-50/60 sm:text-[0.62rem]">
-            {secondaryLabel}
-          </span>
-        ) : (
-          <span className="mt-1 h-px w-20 bg-gradient-to-r from-neon-cyan/90 via-neon-blue/60 to-transparent" />
-        )}
-      </div>
+            </text>
+          </g>
+        ) : null}
+      </svg>
+
+      {legalSuffix ? (
+        <span className="mt-2 block text-[0.58rem] font-semibold uppercase tracking-[0.28em] text-cyan-50/62">
+          {legalSuffix}
+        </span>
+      ) : null}
     </div>
   );
 }
