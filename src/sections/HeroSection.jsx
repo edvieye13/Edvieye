@@ -17,16 +17,16 @@ function HeroStat({ stat, index, reducedMotion }) {
 
   return (
     <motion.div
-      className="relative flex min-w-0 flex-col items-center justify-center px-2 py-4 text-center sm:px-5 sm:py-5"
+      className="relative flex min-w-0 flex-col items-center justify-center px-1 py-3 text-center sm:px-4 sm:py-4"
       initial={{ opacity: 0, y: 22 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ ...transition, delay: 0.78 + index * 0.08 }}
     >
-      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:h-11 sm:w-11">
-        <Icon className="h-4 w-4 text-sky-300/90 sm:h-[1.05rem] sm:w-[1.05rem]" />
+      <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:h-9 sm:w-9">
+        <Icon className="h-3.5 w-3.5 text-sky-300/90 sm:h-4 sm:w-4" />
       </div>
-      <div className="mt-3 min-w-0">
-        <div className="hero-number-glow font-display tabular-nums text-[clamp(1.55rem,5vw,3.45rem)] font-semibold leading-none tracking-[-0.055em] text-white">
+      <div className="mt-2.5 min-w-0">
+        <div className="hero-number-glow font-display tabular-nums text-[clamp(1.2rem,3.7vw,2.85rem)] font-semibold leading-none tracking-[-0.05em] text-white">
           <CountUp
             end={stat.end}
             duration={reducedMotion ? 0 : stat.duration}
@@ -36,7 +36,7 @@ function HeroStat({ stat, index, reducedMotion }) {
             decimal="."
           />
         </div>
-        <div className="mt-2 text-[10px] font-medium uppercase tracking-[0.22em] text-white/50 sm:text-[11px]">
+        <div className="mt-1.5 text-[9px] font-medium uppercase tracking-[0.18em] text-white/45 sm:text-[10px]">
           {stat.label}
         </div>
       </div>
@@ -93,26 +93,26 @@ function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="relative mx-auto mt-12 w-full max-w-5xl"
+          className="relative mx-auto mt-12 w-full max-w-4xl"
           initial={{ opacity: 0, y: 24, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ ...transition, delay: 0.58 }}
         >
-          <div className="relative flex min-h-[29rem] flex-col items-center justify-end px-1 pb-2 sm:min-h-[36rem] sm:px-5 lg:min-h-[40rem]">
+          <div className="relative flex min-h-[24rem] flex-col items-center justify-end px-1 pb-2 sm:min-h-[30rem] sm:px-4 lg:min-h-[33rem]">
             <div
-              className="pointer-events-none absolute left-1/2 top-[42%] h-[18rem] w-[18rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.07] bg-[radial-gradient(circle,rgba(96,165,250,0.15),rgba(15,23,42,0.02)_66%,transparent_74%)] sm:h-[23rem] sm:w-[23rem] lg:h-[28rem] lg:w-[28rem]"
+              className="pointer-events-none absolute left-1/2 top-[42%] h-[15rem] w-[15rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.07] bg-[radial-gradient(circle,rgba(96,165,250,0.15),rgba(15,23,42,0.02)_66%,transparent_74%)] sm:h-[20rem] sm:w-[20rem] lg:h-[24rem] lg:w-[24rem]"
               aria-hidden="true"
             />
             <div
-              className="pointer-events-none absolute left-1/2 top-[42%] h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.06] sm:h-[30rem] sm:w-[30rem] lg:h-[35rem] lg:w-[35rem]"
+              className="pointer-events-none absolute left-1/2 top-[42%] h-[19rem] w-[19rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.06] sm:h-[25rem] sm:w-[25rem] lg:h-[30rem] lg:w-[30rem]"
               aria-hidden="true"
             />
             <div
-              className="pointer-events-none absolute left-1/2 top-[42%] h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.05] opacity-60 sm:h-[37rem] sm:w-[37rem] lg:h-[43rem] lg:w-[43rem]"
+              className="pointer-events-none absolute left-1/2 top-[42%] h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.05] opacity-60 sm:h-[31rem] sm:w-[31rem] lg:h-[36rem] lg:w-[36rem]"
               aria-hidden="true"
             />
             <div
-              className="pointer-events-none absolute left-1/2 top-[54%] h-20 w-[78%] max-w-2xl -translate-x-1/2 rounded-full bg-neon-blue/[0.12] blur-3xl"
+              className="pointer-events-none absolute left-1/2 top-[52%] h-16 w-[72%] max-w-xl -translate-x-1/2 rounded-full bg-neon-blue/[0.12] blur-3xl"
               aria-hidden="true"
             />
 
@@ -122,27 +122,27 @@ function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...transition, delay: 0.7 }}
             >
-              <div className="relative flex w-full items-center justify-center translate-y-5 sm:translate-y-6">
+              <div className="relative flex w-full items-center justify-center translate-y-3 sm:translate-y-4">
                 <div
-                  className="pointer-events-none absolute inset-x-12 bottom-8 h-14 rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.26),rgba(56,189,248,0.14)_42%,transparent_78%)] blur-3xl"
+                  className="pointer-events-none absolute inset-x-16 bottom-7 h-12 rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.22),rgba(56,189,248,0.12)_42%,transparent_78%)] blur-3xl"
                   aria-hidden="true"
                 />
                 <img
                   src={logoReference}
                   alt="EDVIEYE Logo"
-                  className="relative mx-auto w-[16.25rem] animate-float object-contain drop-shadow-[0_0_26px_rgba(96,165,250,0.28)] sm:w-[24rem] lg:w-[28rem]"
+                  className="relative mx-auto w-[12.75rem] animate-float object-contain drop-shadow-[0_0_22px_rgba(96,165,250,0.24)] sm:w-[18.5rem] lg:w-[21.5rem]"
                 />
               </div>
 
               <motion.div
-                className="relative mt-7 w-full max-w-4xl sm:mt-9"
+                className="relative mt-5 w-full max-w-3xl sm:mt-6"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ ...transition, delay: 0.82 }}
               >
-                <div className="relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-slate-950/[0.28] px-2 py-2 shadow-[0_20px_60px_rgba(2,8,23,0.38),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl sm:px-4 sm:py-3">
+                <div className="relative overflow-hidden rounded-[1.45rem] border border-white/10 bg-slate-950/[0.28] px-1.5 py-1.5 shadow-[0_16px_46px_rgba(2,8,23,0.34),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl sm:px-3 sm:py-2">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.09),transparent_52%)]" />
-                  <div className="absolute inset-x-14 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+                  <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
                   <div className="relative grid grid-cols-3 divide-x divide-white/[0.08]">
                     {heroStats.map((stat, index) => (
                       <HeroStat
