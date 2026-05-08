@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import logoReference from '../../assets/edvieye-logo-reference.png';
 import { navigation } from '../../data/site';
 
 function Navbar() {
@@ -23,11 +24,16 @@ function Navbar() {
       }`}
     >
       <nav className="container flex items-center justify-between" aria-label="Primary">
-        <a href="#" className="flex shrink-0 items-center gap-3" aria-label="Edvieye home">
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-[linear-gradient(135deg,#22d3ee,#3b82f6)] text-sm font-semibold text-slate-950 shadow-[0_0_24px_rgba(34,211,238,0.35)]">
-            E
-          </span>
-          <span className="text-lg font-medium tracking-[-0.02em] text-white/92">Edvieye</span>
+        <a
+          href="#"
+          className="group flex shrink-0 items-center rounded-[1rem] border border-sky-100/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(237,246,255,0.94))] px-2 py-1 shadow-[0_14px_30px_-22px_rgba(8,31,98,0.45)]"
+          aria-label="Edvieye home"
+        >
+          <img
+            src={logoReference}
+            alt="Edvieye"
+            className="h-[38px] w-auto max-w-[122px] object-contain transition-transform duration-300 group-hover:scale-[1.01] sm:h-[42px] sm:max-w-[136px]"
+          />
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
