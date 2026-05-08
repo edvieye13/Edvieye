@@ -20,20 +20,28 @@ function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'py-3' : 'py-5'
+        isScrolled ? 'py-2.5' : 'py-4'
       }`}
     >
-      <nav className="container relative flex items-center justify-between" aria-label="Primary">
+      <nav
+        className={`container relative flex min-h-[76px] items-center justify-between overflow-hidden rounded-[1.35rem] border px-4 py-2 shadow-[0_20px_55px_-30px_rgba(15,59,170,0.34)] backdrop-blur-2xl transition-all duration-300 sm:px-5 ${
+          isScrolled
+            ? 'border-sky-200/85 bg-[linear-gradient(135deg,rgba(252,254,255,0.98),rgba(238,246,255,0.97),rgba(223,241,255,0.94))]'
+            : 'border-sky-100/85 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(243,249,255,0.96),rgba(228,244,255,0.94))]'
+        }`}
+        aria-label="Primary"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(99,234,255,0.18),transparent_30%),radial-gradient(circle_at_right,rgba(43,126,255,0.14),transparent_34%)]" />
         <div
-          className={`pointer-events-none absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent transition-all duration-300 ${
-            isScrolled ? 'bottom-0 opacity-90' : 'bottom-1 opacity-75'
+          className={`pointer-events-none absolute left-4 right-4 top-0 h-px bg-gradient-to-r from-transparent via-white/95 to-transparent transition-all duration-300 ${
+            isScrolled ? 'opacity-90' : 'opacity-75'
           }`}
           aria-hidden="true"
         />
 
         <a
           href="#"
-          className="group relative z-10 flex shrink-0 items-center rounded-[1rem] border border-white/85 bg-[linear-gradient(135deg,rgba(255,255,255,0.99),rgba(241,248,255,0.97))] px-2 py-1 shadow-[0_16px_34px_-24px_rgba(8,31,98,0.55)]"
+          className="group relative z-10 flex shrink-0 items-center rounded-[1rem] border border-sky-200/90 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(239,247,255,0.98))] px-2 py-1 shadow-[0_14px_30px_-22px_rgba(8,31,98,0.45)]"
           aria-label="Edvieye home"
         >
           <img
@@ -48,7 +56,7 @@ function Navbar() {
             <li key={item.href}>
               <a
                 href={item.href}
-                className="inline-flex items-center py-2 text-sm font-medium text-white/62 transition-colors hover:text-white"
+                className="inline-flex items-center py-2 text-sm font-medium text-slate-700 transition-colors hover:text-blue-700"
               >
                 {item.label}
               </a>
