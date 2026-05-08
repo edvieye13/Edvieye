@@ -117,9 +117,8 @@
 
 .hero-number-glow {
   text-shadow:
-    0 0 14px rgba(56, 189, 248, 0.9),
-    0 0 32px rgba(59, 130, 246, 0.72),
-    0 0 64px rgba(34, 211, 238, 0.42);
+    0 0 10px rgba(148, 197, 255, 0.42),
+    0 0 22px rgba(59, 130, 246, 0.24);
 }
 
 ::-webkit-scrollbar {

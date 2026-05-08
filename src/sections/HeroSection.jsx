@@ -17,17 +17,16 @@ function HeroStat({ stat, index, reducedMotion }) {
 
   return (
     <motion.div
-      className="relative flex min-w-0 flex-col items-center rounded-[1.35rem] border border-white/8 bg-white/[0.03] px-2 py-4 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:px-4 sm:py-5"
+      className="relative flex min-w-0 flex-col items-center justify-center px-2 py-4 text-center sm:px-5 sm:py-5"
       initial={{ opacity: 0, y: 22 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ ...transition, delay: 0.78 + index * 0.08 }}
     >
-      <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-neon-cyan/70 to-transparent" />
-      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-neon-cyan/20 bg-neon-blue/10 shadow-[0_0_26px_rgba(59,130,246,0.28)] sm:h-11 sm:w-11">
-        <Icon className="h-4 w-4 text-neon-cyan sm:h-5 sm:w-5" />
+      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:h-11 sm:w-11">
+        <Icon className="h-4 w-4 text-sky-300/90 sm:h-[1.05rem] sm:w-[1.05rem]" />
       </div>
       <div className="mt-3 min-w-0">
-        <div className="hero-number-glow text-[clamp(1.75rem,6vw,4rem)] font-semibold leading-none tracking-[-0.06em] text-sky-300">
+        <div className="hero-number-glow font-display tabular-nums text-[clamp(1.55rem,5vw,3.45rem)] font-semibold leading-none tracking-[-0.055em] text-white">
           <CountUp
             end={stat.end}
             duration={reducedMotion ? 0 : stat.duration}
@@ -37,7 +36,7 @@ function HeroStat({ stat, index, reducedMotion }) {
             decimal="."
           />
         </div>
-        <div className="mt-2 text-[10px] font-medium uppercase tracking-[0.34em] text-white/60 sm:text-xs">
+        <div className="mt-2 text-[10px] font-medium uppercase tracking-[0.22em] text-white/50 sm:text-[11px]">
           {stat.label}
         </div>
       </div>
@@ -60,7 +59,7 @@ function HeroSection() {
 
       <div className="container relative z-10 flex flex-col items-center pb-16 pt-28 text-center sm:pb-20 sm:pt-32">
         <motion.div
-          className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5"
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={transition}
@@ -79,7 +78,7 @@ function HeroSection() {
         >
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-neon-cyan to-neon-blue px-7 py-3.5 text-sm font-semibold text-background transition-transform hover:scale-105 neon-glow"
+            className="group inline-flex items-center gap-2 rounded-full bg-[linear-gradient(135deg,rgba(111,213,255,0.98),rgba(66,133,244,0.92))] px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-[0_16px_38px_rgba(37,99,235,0.2),inset_0_1px_0_rgba(255,255,255,0.38)] transition-all hover:-translate-y-0.5 hover:shadow-[0_22px_50px_rgba(37,99,235,0.28)]"
           >
             Get Started
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -87,7 +86,7 @@ function HeroSection() {
 
           <a
             href="#demo"
-            className="inline-flex items-center gap-2 rounded-full glass px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-neon-cyan/50"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/20 px-8 py-3.5 text-sm font-semibold text-foreground shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-xl transition-colors hover:border-white/20 hover:bg-white/[0.04]"
           >
             Watch Demo
           </a>
@@ -101,19 +100,19 @@ function HeroSection() {
         >
           <div className="relative flex min-h-[29rem] flex-col items-center justify-end px-1 pb-2 sm:min-h-[36rem] sm:px-5 lg:min-h-[40rem]">
             <div
-              className="pointer-events-none absolute left-1/2 top-[42%] h-[18rem] w-[18rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/8 bg-[radial-gradient(circle,rgba(56,189,248,0.2),rgba(15,23,42,0.03)_66%,transparent_72%)] sm:h-[23rem] sm:w-[23rem] lg:h-[28rem] lg:w-[28rem]"
+              className="pointer-events-none absolute left-1/2 top-[42%] h-[18rem] w-[18rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.07] bg-[radial-gradient(circle,rgba(96,165,250,0.15),rgba(15,23,42,0.02)_66%,transparent_74%)] sm:h-[23rem] sm:w-[23rem] lg:h-[28rem] lg:w-[28rem]"
               aria-hidden="true"
             />
             <div
-              className="pointer-events-none absolute left-1/2 top-[42%] h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-neon-cyan/10 sm:h-[30rem] sm:w-[30rem] lg:h-[35rem] lg:w-[35rem]"
+              className="pointer-events-none absolute left-1/2 top-[42%] h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.06] sm:h-[30rem] sm:w-[30rem] lg:h-[35rem] lg:w-[35rem]"
               aria-hidden="true"
             />
             <div
-              className="pointer-events-none absolute left-1/2 top-[42%] h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-neon-blue/10 opacity-70 sm:h-[37rem] sm:w-[37rem] lg:h-[43rem] lg:w-[43rem]"
+              className="pointer-events-none absolute left-1/2 top-[42%] h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.05] opacity-60 sm:h-[37rem] sm:w-[37rem] lg:h-[43rem] lg:w-[43rem]"
               aria-hidden="true"
             />
             <div
-              className="pointer-events-none absolute left-1/2 top-[54%] h-24 w-[78%] max-w-2xl -translate-x-1/2 rounded-full bg-neon-blue/20 blur-3xl"
+              className="pointer-events-none absolute left-1/2 top-[54%] h-20 w-[78%] max-w-2xl -translate-x-1/2 rounded-full bg-neon-blue/[0.12] blur-3xl"
               aria-hidden="true"
             />
 
@@ -123,28 +122,28 @@ function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...transition, delay: 0.7 }}
             >
-              <div className="relative flex w-full items-center justify-center translate-y-5 sm:translate-y-7">
+              <div className="relative flex w-full items-center justify-center translate-y-5 sm:translate-y-6">
                 <div
-                  className="pointer-events-none absolute inset-x-10 bottom-8 h-16 rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.36),rgba(56,189,248,0.18)_44%,transparent_78%)] blur-3xl"
+                  className="pointer-events-none absolute inset-x-12 bottom-8 h-14 rounded-full bg-[radial-gradient(circle,rgba(59,130,246,0.26),rgba(56,189,248,0.14)_42%,transparent_78%)] blur-3xl"
                   aria-hidden="true"
                 />
                 <img
                   src={logoReference}
                   alt="EDVIEYE Logo"
-                  className="relative mx-auto w-[16.5rem] animate-float object-contain drop-shadow-[0_0_36px_rgba(56,189,248,0.45)] sm:w-[25rem] lg:w-[30rem]"
+                  className="relative mx-auto w-[16.25rem] animate-float object-contain drop-shadow-[0_0_26px_rgba(96,165,250,0.28)] sm:w-[24rem] lg:w-[28rem]"
                 />
               </div>
 
               <motion.div
-                className="relative mt-8 w-full max-w-4xl sm:mt-10"
+                className="relative mt-7 w-full max-w-4xl sm:mt-9"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ ...transition, delay: 0.82 }}
               >
-                <div className="glass-card relative overflow-hidden rounded-[1.8rem] border border-white/10 bg-white/[0.04] px-2 py-2 shadow-[0_24px_80px_rgba(2,8,23,0.55)] sm:px-4 sm:py-4">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.16),transparent_54%)]" />
-                  <div className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-neon-cyan/80 to-transparent" />
-                  <div className="relative grid grid-cols-3 gap-2 sm:gap-4">
+                <div className="relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-slate-950/[0.28] px-2 py-2 shadow-[0_20px_60px_rgba(2,8,23,0.38),inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-2xl sm:px-4 sm:py-3">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.09),transparent_52%)]" />
+                  <div className="absolute inset-x-14 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
+                  <div className="relative grid grid-cols-3 divide-x divide-white/[0.08]">
                     {heroStats.map((stat, index) => (
                       <HeroStat
                         key={stat.key}

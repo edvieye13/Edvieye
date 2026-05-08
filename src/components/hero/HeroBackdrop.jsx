@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 const ORBS = [
   {
     className: 'left-[41%] top-[28%] h-4 w-4 sm:h-5 sm:w-5',
-    colorClass: 'bg-neon-cyan',
+    colorClass: 'bg-sky-300/70',
     duration: 4.6,
     delay: 0,
     x: 10,
@@ -12,7 +12,7 @@ const ORBS = [
   },
   {
     className: 'left-[65%] top-[57%] h-7 w-7 sm:h-9 sm:w-9',
-    colorClass: 'bg-neon-cyan',
+    colorClass: 'bg-sky-300/65',
     duration: 6,
     delay: 0.45,
     x: -14,
@@ -20,7 +20,7 @@ const ORBS = [
   },
   {
     className: 'left-[40%] top-[76%] h-10 w-10 sm:h-12 sm:w-12',
-    colorClass: 'bg-teal-400/70',
+    colorClass: 'bg-sky-400/45',
     duration: 7.2,
     delay: 0.9,
     x: 8,
@@ -31,7 +31,7 @@ const ORBS = [
 const GLOW_PARTICLES = [
   {
     className: 'left-[12%] top-[18%] h-16 w-16 sm:h-24 sm:w-24',
-    colorClass: 'bg-neon-cyan/20',
+    colorClass: 'bg-sky-300/[0.12]',
     duration: 12,
     delay: 0.4,
     x: 24,
@@ -39,7 +39,7 @@ const GLOW_PARTICLES = [
   },
   {
     className: 'left-[18%] top-[64%] h-12 w-12 sm:h-16 sm:w-16',
-    colorClass: 'bg-neon-blue/20',
+    colorClass: 'bg-blue-400/[0.12]',
     duration: 11.5,
     delay: 1.1,
     x: -20,
@@ -47,7 +47,7 @@ const GLOW_PARTICLES = [
   },
   {
     className: 'left-[32%] top-[82%] h-14 w-14 sm:h-20 sm:w-20',
-    colorClass: 'bg-neon-cyan/15',
+    colorClass: 'bg-sky-300/[0.10]',
     duration: 13,
     delay: 0.8,
     x: 18,
@@ -55,7 +55,7 @@ const GLOW_PARTICLES = [
   },
   {
     className: 'left-[74%] top-[20%] h-14 w-14 sm:h-20 sm:w-20',
-    colorClass: 'bg-neon-blue/20',
+    colorClass: 'bg-blue-400/[0.12]',
     duration: 10.5,
     delay: 0.3,
     x: -18,
@@ -63,7 +63,7 @@ const GLOW_PARTICLES = [
   },
   {
     className: 'left-[86%] top-[56%] h-10 w-10 sm:h-14 sm:w-14',
-    colorClass: 'bg-neon-cyan/15',
+    colorClass: 'bg-sky-300/[0.10]',
     duration: 12.4,
     delay: 1.4,
     x: 16,
@@ -71,7 +71,7 @@ const GLOW_PARTICLES = [
   },
   {
     className: 'left-[68%] top-[84%] h-16 w-16 sm:h-24 sm:w-24',
-    colorClass: 'bg-neon-blue/15',
+    colorClass: 'bg-blue-400/[0.10]',
     duration: 13.6,
     delay: 1.8,
     x: -24,
@@ -122,8 +122,8 @@ function HeroBackdrop() {
           animate={{
             x: [0, particle.x, 0],
             y: [0, particle.y, 0],
-            scale: [1, 1.14, 1],
-            opacity: [0.45, 0.75, 0.45],
+            scale: [1, 1.1, 1],
+            opacity: [0.28, 0.52, 0.28],
           }}
           transition={{
             duration: particle.duration,
@@ -134,21 +134,21 @@ function HeroBackdrop() {
         />
       ))}
 
-      <div className="absolute left-1/2 top-[54%] h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-blue/15 blur-[120px]" />
-      <div className="absolute left-1/2 top-[54%] h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-cyan/20 blur-[90px]" />
+      <div className="absolute left-1/2 top-[54%] h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-blue/10 blur-[120px]" />
+      <div className="absolute left-1/2 top-[54%] h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-cyan/[0.12] blur-[90px]" />
 
       <div
-        className="absolute left-1/2 top-[54%] h-[22rem] w-[22rem] -translate-x-1/2 -translate-y-1/2 animate-blob rounded-[47%_53%_61%_39%/52%_37%_63%_48%] opacity-80 sm:h-[28rem] sm:w-[28rem] lg:h-[30rem] lg:w-[30rem]"
+        className="absolute left-1/2 top-[54%] h-[22rem] w-[22rem] -translate-x-1/2 -translate-y-1/2 animate-blob rounded-[47%_53%_61%_39%/52%_37%_63%_48%] opacity-55 sm:h-[28rem] sm:w-[28rem] lg:h-[30rem] lg:w-[30rem]"
         style={{
           background:
-            'radial-gradient(circle at 32% 30%, rgba(125, 240, 255, 0.95), rgba(34, 211, 238, 0.72) 38%, rgba(8, 145, 178, 0.42) 70%, transparent 100%)',
+            'radial-gradient(circle at 32% 30%, rgba(147, 197, 253, 0.75), rgba(56, 189, 248, 0.46) 38%, rgba(8, 145, 178, 0.24) 70%, transparent 100%)',
         }}
       />
 
       {ORBS.map((orb) => (
         <motion.div
           key={orb.className}
-          className={`absolute rounded-full ${orb.className} ${orb.colorClass} shadow-[0_0_28px_rgba(34,211,238,0.65)]`}
+          className={`absolute rounded-full ${orb.className} ${orb.colorClass} shadow-[0_0_18px_rgba(96,165,250,0.28)]`}
           animate={{
             x: [0, orb.x, 0],
             y: [0, orb.y, 0],
