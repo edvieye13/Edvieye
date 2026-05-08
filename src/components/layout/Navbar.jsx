@@ -23,20 +23,27 @@ function Navbar() {
         isScrolled ? 'py-3' : 'py-5'
       }`}
     >
-      <nav className="container flex items-center justify-between" aria-label="Primary">
+      <nav className="container relative flex items-center justify-between" aria-label="Primary">
+        <div
+          className={`pointer-events-none absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent transition-all duration-300 ${
+            isScrolled ? 'bottom-0 opacity-90' : 'bottom-1 opacity-75'
+          }`}
+          aria-hidden="true"
+        />
+
         <a
           href="#"
-          className="group flex shrink-0 items-center rounded-[1rem] border border-sky-100/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.96),rgba(237,246,255,0.94))] px-2 py-1 shadow-[0_14px_30px_-22px_rgba(8,31,98,0.45)]"
+          className="group relative z-10 flex shrink-0 items-center rounded-[1rem] border border-white/85 bg-[linear-gradient(135deg,rgba(255,255,255,0.99),rgba(241,248,255,0.97))] px-2 py-1 shadow-[0_16px_34px_-24px_rgba(8,31,98,0.55)]"
           aria-label="Edvieye home"
         >
           <img
             src={logoReference}
             alt="Edvieye"
-            className="h-[38px] w-auto max-w-[122px] object-contain transition-transform duration-300 group-hover:scale-[1.01] sm:h-[42px] sm:max-w-[136px]"
+            className="h-[38px] w-auto max-w-[122px] object-contain brightness-[1.02] contrast-[1.04] transition-transform duration-300 group-hover:scale-[1.01] sm:h-[42px] sm:max-w-[136px]"
           />
         </a>
 
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="relative z-10 hidden items-center gap-8 lg:flex">
           {navigation.map((item) => (
             <li key={item.href}>
               <a
@@ -51,7 +58,7 @@ function Navbar() {
 
         <a
           href="#contact"
-          className={`hidden h-10 items-center rounded-full px-5 text-sm font-medium text-slate-950 transition-all hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(34,211,238,0.28)] md:inline-flex ${
+          className={`relative z-10 hidden h-10 items-center rounded-full px-5 text-sm font-medium text-slate-950 transition-all hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(34,211,238,0.28)] md:inline-flex ${
             isScrolled
               ? 'border border-white/10 bg-[linear-gradient(135deg,#34d3ff,#4f8cff)] shadow-[0_10px_28px_rgba(34,211,238,0.2)]'
               : 'bg-[linear-gradient(135deg,#34d3ff,#4f8cff)] shadow-[0_10px_28px_rgba(34,211,238,0.16)]'
