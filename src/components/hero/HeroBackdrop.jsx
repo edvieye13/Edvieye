@@ -19,7 +19,7 @@ const ORBS = [
     y: 18,
   },
   {
-    className: 'left-[40%] top-[76%] h-10 w-10 sm:h-12 sm:w-12',
+    className: 'left-[42%] top-[77%] h-10 w-10 sm:h-12 sm:w-12',
     colorClass: 'bg-sky-400/45',
     duration: 7.2,
     delay: 0.9,
@@ -134,14 +134,14 @@ function HeroBackdrop() {
         />
       ))}
 
-      <div className="absolute left-1/2 top-[54%] h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-blue/10 blur-[120px]" />
-      <div className="absolute left-1/2 top-[54%] h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-cyan/[0.12] blur-[90px]" />
+      <div className="absolute left-1/2 top-[51%] h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-blue/10 blur-[120px]" />
+      <div className="absolute left-1/2 top-[51%] h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-cyan/[0.13] blur-[94px]" />
 
       <div
-        className="absolute left-1/2 top-[54%] h-[22rem] w-[22rem] -translate-x-1/2 -translate-y-1/2 animate-blob rounded-[47%_53%_61%_39%/52%_37%_63%_48%] opacity-55 sm:h-[28rem] sm:w-[28rem] lg:h-[30rem] lg:w-[30rem]"
+        className="absolute left-1/2 top-[51%] h-[23rem] w-[23rem] -translate-x-1/2 -translate-y-1/2 animate-blob rounded-[47%_53%_61%_39%/52%_37%_63%_48%] opacity-70 sm:h-[30rem] sm:w-[30rem] lg:h-[34rem] lg:w-[34rem]"
         style={{
           background:
-            'radial-gradient(circle at 32% 30%, rgba(147, 197, 253, 0.75), rgba(56, 189, 248, 0.46) 38%, rgba(8, 145, 178, 0.24) 70%, transparent 100%)',
+            'radial-gradient(circle at 40% 34%, rgba(125,240,255,0.96), rgba(53,214,240,0.74) 34%, rgba(16,151,173,0.48) 64%, transparent 84%)',
         }}
       />
 
