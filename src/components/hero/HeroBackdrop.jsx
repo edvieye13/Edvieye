@@ -28,6 +28,57 @@ const ORBS = [
   },
 ];
 
+const GLOW_PARTICLES = [
+  {
+    className: 'left-[12%] top-[18%] h-16 w-16 sm:h-24 sm:w-24',
+    colorClass: 'bg-neon-cyan/20',
+    duration: 12,
+    delay: 0.4,
+    x: 24,
+    y: -16,
+  },
+  {
+    className: 'left-[18%] top-[64%] h-12 w-12 sm:h-16 sm:w-16',
+    colorClass: 'bg-neon-blue/20',
+    duration: 11.5,
+    delay: 1.1,
+    x: -20,
+    y: 24,
+  },
+  {
+    className: 'left-[32%] top-[82%] h-14 w-14 sm:h-20 sm:w-20',
+    colorClass: 'bg-neon-cyan/15',
+    duration: 13,
+    delay: 0.8,
+    x: 18,
+    y: -20,
+  },
+  {
+    className: 'left-[74%] top-[20%] h-14 w-14 sm:h-20 sm:w-20',
+    colorClass: 'bg-neon-blue/20',
+    duration: 10.5,
+    delay: 0.3,
+    x: -18,
+    y: 18,
+  },
+  {
+    className: 'left-[86%] top-[56%] h-10 w-10 sm:h-14 sm:w-14',
+    colorClass: 'bg-neon-cyan/15',
+    duration: 12.4,
+    delay: 1.4,
+    x: 16,
+    y: -22,
+  },
+  {
+    className: 'left-[68%] top-[84%] h-16 w-16 sm:h-24 sm:w-24',
+    colorClass: 'bg-neon-blue/15',
+    duration: 13.6,
+    delay: 1.8,
+    x: -24,
+    y: 14,
+  },
+];
+
 function HeroBackdrop() {
   const stars = useMemo(
     () =>
@@ -64,6 +115,25 @@ function HeroBackdrop() {
         ))}
       </div>
 
+      {GLOW_PARTICLES.map((particle) => (
+        <motion.div
+          key={particle.className}
+          className={`absolute rounded-full ${particle.className} ${particle.colorClass} blur-3xl`}
+          animate={{
+            x: [0, particle.x, 0],
+            y: [0, particle.y, 0],
+            scale: [1, 1.14, 1],
+            opacity: [0.45, 0.75, 0.45],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: particle.delay,
+          }}
+        />
+      ))}
+
       <div className="absolute left-1/2 top-[54%] h-[44rem] w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-blue/15 blur-[120px]" />
       <div className="absolute left-1/2 top-[54%] h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon-cyan/20 blur-[90px]" />
 
@@ -97,4 +167,3 @@ function HeroBackdrop() {
 }
 
 export default HeroBackdrop;
-

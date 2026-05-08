@@ -115,6 +115,13 @@
   box-shadow: 0 0 12px rgba(186, 230, 253, 0.3);
 }
 
+.hero-number-glow {
+  text-shadow:
+    0 0 14px rgba(56, 189, 248, 0.9),
+    0 0 32px rgba(59, 130, 246, 0.72),
+    0 0 64px rgba(34, 211, 238, 0.42);
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -141,4 +148,3 @@
     transition-duration: 0.01ms !important;
   }
 }
-

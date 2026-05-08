@@ -6,9 +6,9 @@ export const navigation = [
 ];
 
 export const heroStats = [
-  { value: '500+', label: 'Schools' },
-  { value: '1.2M', label: 'Students' },
-  { value: '99.9%', label: 'Uptime' },
+  { key: 'schools', label: 'Schools', end: 500, suffix: '+', duration: 1.05 },
+  { key: 'students', label: 'Students', end: 1.2, decimals: 1, suffix: 'M', duration: 1.2 },
+  { key: 'uptime', label: 'Uptime', end: 99.9, decimals: 1, suffix: '%', duration: 1.35 },
 ];
 
 export const features = [
