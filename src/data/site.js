@@ -109,7 +109,7 @@ export const socialLinks = [
 ];
 
 export const contactDetails = {
-  email: 'ravirajmeer13@gmail.com',
+  email: 'info@edvieye.com',
   phone: '7623818201',
   location: '2917 VATAMAN CHOKADI, DHOLKA, Vataman, Ahmedabad, Dholka, Gujarat, India, 382265',
 };

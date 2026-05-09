@@ -73,8 +73,8 @@ function LandingPage() {
 
         <section id="contact" className="section contact">
           <h2>Ready to Transform Your School?</h2>
-          <p>Email: ravirajmeer13@gmail.com</p>
-          <a href="mailto:ravirajmeer13@gmail.com" className="btn primary">
+          <p>Email: info@edvieye.com</p>
+          <a href="mailto:info@edvieye.com" className="btn primary">
             Start Free Trial
           </a>
         </section>

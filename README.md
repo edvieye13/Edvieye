@@ -120,7 +120,7 @@ Example request:
 
 - Contact form submissions are saved in `server/data/leads.json`.
 - On Vercel, connect Vercel KV or Upstash Redis and set `KV_REST_API_URL` and `KV_REST_API_TOKEN` so admin responses persist across serverless function restarts.
-- Public demo form submissions are sent directly from the frontend to FormSubmit for `ravirajmeer13@gmail.com`.
+- Public demo form submissions are sent directly from the frontend to FormSubmit for `info@edvieye.com`.
 - FormSubmit requires a one-time inbox activation/confirmation on the first submission before it starts forwarding emails.
 - Set `ADMIN_PASSWORD` in `.env`; if it is missing, local development falls back to `admin123`.
 - Vite proxies `/api/*` requests to the Express server in development.

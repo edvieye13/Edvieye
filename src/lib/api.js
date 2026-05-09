@@ -1,4 +1,4 @@
-const formSubmitEndpoint = 'https://formsubmit.co/ajax/ravirajmeer13@gmail.com';
+const formSubmitEndpoint = 'https://formsubmit.co/ajax/info@edvieye.com';
 const formSubmitUrl = 'https://edvieye.com/#contact';
 
 function buildFormSubmitPayload(payload) {
