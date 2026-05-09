@@ -4,7 +4,6 @@ import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { addLead, getLeadStats, getLeads } from './storage.js';
-import { submitDemoRequestToFormSubmit } from './formsubmit.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -96,7 +95,6 @@ app.post('/api/contact', async (request, response) => {
 
   try {
     const savedLead = await addLead(lead);
-    await submitDemoRequestToFormSubmit(savedLead);
 
     return response.status(201).json({
       ok: true,
@@ -106,9 +104,9 @@ app.post('/api/contact', async (request, response) => {
   } catch (error) {
     console.error('Unable to submit demo request:', error);
 
-    return response.status(502).json({
+    return response.status(500).json({
       ok: false,
-      message: 'We saved your request, but could not forward it to the inbox right now.',
+      message: 'Unable to submit your request right now.',
     });
   }
 });

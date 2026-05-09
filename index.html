@@ -1001,6 +1001,8 @@ function cr(card){card.style.transform='';}
 // === DEMO FORM ===
 const demoForm=document.getElementById('demoForm');
 const formStatus=document.getElementById('formStatus');
+const formSubmitEndpoint='https://formsubmit.co/ajax/ravirajmeer13@gmail.com';
+const formSubmitUrl='https://edvieye.com/#contact';
 if(demoForm&&formStatus){
   demoForm.addEventListener('submit',async event=>{
     event.preventDefault();
@@ -1026,13 +1028,28 @@ if(demoForm&&formStatus){
     submitButton.textContent='SUBMITTING...';
 
     try{
-      const response=await fetch('/api/contact',{
+      const response=await fetch(formSubmitEndpoint,{
+        method:'POST',
+        headers:{
+          Accept:'application/json',
+          'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        body:new URLSearchParams({
+          ...payload,
+          _subject:`New demo request from ${payload.name}`,
+          _template:'table',
+          _url:formSubmitUrl
+        }).toString()
+      });
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok||data.success===false){
+        throw new Error(data.message||'Unable to send your demo request right now.');
+      }
+      await fetch('/api/contact',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify(payload)
-      });
-      const data=await response.json().catch(()=>({}));
-      if(!response.ok) throw new Error(data.message||'Unable to submit your demo request right now.');
+      }).catch(()=>null);
       formStatus.dataset.state='success';
       formStatus.textContent=data.message||'Thanks. Your demo request has been received.';
       demoForm.reset();

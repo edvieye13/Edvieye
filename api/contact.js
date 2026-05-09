@@ -1,5 +1,4 @@
 import { addLead } from '../server/storage.js';
-import { submitDemoRequestToFormSubmit } from '../server/formsubmit.js';
 
 export default async function handler(request, response) {
   if (request.method !== 'POST') {
@@ -23,17 +22,6 @@ export default async function handler(request, response) {
 
   try {
     const savedLead = await addLead(lead);
-
-    try {
-      await submitDemoRequestToFormSubmit(savedLead);
-    } catch (formSubmitError) {
-      console.error('Unable to forward demo request to FormSubmit:', formSubmitError);
-
-      return response.status(502).json({
-        ok: false,
-        message: 'We saved your request, but could not forward it to the inbox right now.',
-      });
-    }
 
     return response.status(201).json({
       ok: true,

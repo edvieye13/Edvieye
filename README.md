@@ -1,6 +1,6 @@
 # Edvieye Reference Clone
 
-This project recreates the provided Edvieye Lovable preview as a responsive React + Vite + Tailwind CSS landing page, now with a Node.js + Express backend that stores demo requests, exposes an admin dashboard, and forwards demo requests to the Edvieye team through FormSubmit.
+This project recreates the provided Edvieye Lovable preview as a responsive React + Vite + Tailwind CSS landing page, now with a Node.js + Express backend that stores demo requests and exposes an admin dashboard while the public form submits directly through FormSubmit.
 
 ## Stack
 
@@ -61,11 +61,9 @@ This project recreates the provided Edvieye Lovable preview as a responsive Reac
 npm install
 ```
 
-2. Create a local `.env` file from `.env.example` and set the FormSubmit target:
+2. Create a local `.env` file from `.env.example`:
 
 ```bash
-FORMSUBMIT_TARGET=ravirajmeer13@gmail.com
-FORMSUBMIT_FORM_URL=https://edvieye.com/#contact
 ADMIN_PASSWORD=change-this-admin-password
 KV_REST_API_URL=
 KV_REST_API_TOKEN=
@@ -106,7 +104,7 @@ npm run start
 - `GET /api/health` - health/status check
 - `POST /api/admin/login` - login to the admin dashboard
 - `GET /api/admin/leads` - view saved demo requests after admin login
-- `POST /api/contact` - save the contact/demo form and forward it through FormSubmit
+- `POST /api/contact` - save the contact/demo form for the admin dashboard
 
 Example request:
 
@@ -122,7 +120,7 @@ Example request:
 
 - Contact form submissions are saved in `server/data/leads.json`.
 - On Vercel, connect Vercel KV or Upstash Redis and set `KV_REST_API_URL` and `KV_REST_API_TOKEN` so admin responses persist across serverless function restarts.
-- Demo submissions are forwarded through FormSubmit to `ravirajmeer13@gmail.com`.
+- Public demo form submissions are sent directly from the frontend to FormSubmit for `ravirajmeer13@gmail.com`.
 - FormSubmit requires a one-time inbox activation/confirmation on the first submission before it starts forwarding emails.
 - Set `ADMIN_PASSWORD` in `.env`; if it is missing, local development falls back to `admin123`.
 - Vite proxies `/api/*` requests to the Express server in development.
