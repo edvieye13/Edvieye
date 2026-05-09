@@ -1,8 +1,8 @@
-const defaultFormSubmitTarget = 'info@edvieye.com';
+const defaultFormSubmitTarget = 'ravirajmeer13@gmail.com';
 const defaultFormUrl = 'https://edvieye.com/#contact';
 
 function getFormSubmitTarget() {
-  return process.env.FORMSUBMIT_TARGET?.trim() || defaultFormSubmitTarget;
+  return defaultFormSubmitTarget;
 }
 
 function getFormSubmitUrl() {
