@@ -79,14 +79,15 @@ app.get('/api/admin/leads', requireAdmin, async (_request, response) => {
 });
 
 app.post('/api/contact', async (request, response) => {
-  const { name = '', email = '', organization = '' } = request.body ?? {};
+  const { name = '', email = '', phone = '', organization = '' } = request.body ?? {};
   const lead = {
     name: name.trim(),
     email: email.trim(),
+    phone: phone.trim(),
     organization: organization.trim(),
   };
 
-  if (!lead.name || !lead.email || !lead.organization) {
+  if (!lead.name || !lead.email || !lead.phone || !lead.organization) {
     return response.status(400).json({
       ok: false,
       message: 'Please fill in all fields.',

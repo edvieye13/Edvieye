@@ -1,5 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowLeft, Building2, CalendarClock, LogOut, Mail, RefreshCw, ShieldCheck } from 'lucide-react';
+import {
+  ArrowLeft,
+  Building2,
+  CalendarClock,
+  LogOut,
+  Mail,
+  Phone,
+  RefreshCw,
+  ShieldCheck,
+} from 'lucide-react';
 import { fetchAdminLeads, loginAdmin } from '../lib/api';
 
 const tokenKey = 'edvieye-admin-token';
@@ -209,11 +218,12 @@ function AdminDashboard() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[760px] text-left text-sm">
+              <table className="w-full min-w-[920px] text-left text-sm">
                 <thead className="bg-secondary/70 text-muted-foreground">
                   <tr>
                     <th className="px-5 py-3 font-medium">Name</th>
                     <th className="px-5 py-3 font-medium">Email</th>
+                    <th className="px-5 py-3 font-medium">Phone</th>
                     <th className="px-5 py-3 font-medium">School</th>
                     <th className="px-5 py-3 font-medium">Submitted</th>
                   </tr>
@@ -227,6 +237,19 @@ function AdminDashboard() {
                           <Mail className="h-4 w-4" />
                           {lead.email}
                         </a>
+                      </td>
+                      <td className="px-5 py-4">
+                        {lead.phone ? (
+                          <a
+                            href={`tel:${String(lead.phone).replace(/\s/g, '')}`}
+                            className="inline-flex items-center gap-2 text-neon-cyan hover:underline"
+                          >
+                            <Phone className="h-4 w-4" />
+                            {lead.phone}
+                          </a>
+                        ) : (
+                          <span className="text-muted-foreground">—</span>
+                        )}
                       </td>
                       <td className="px-5 py-4">
                         <span className="inline-flex items-center gap-2">

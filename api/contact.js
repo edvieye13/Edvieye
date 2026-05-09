@@ -6,14 +6,15 @@ export default async function handler(request, response) {
     return response.status(405).json({ ok: false, message: 'Method not allowed.' });
   }
 
-  const { name = '', email = '', organization = '' } = request.body ?? {};
+  const { name = '', email = '', phone = '', organization = '' } = request.body ?? {};
   const lead = {
     name: name.trim(),
     email: email.trim(),
+    phone: phone.trim(),
     organization: organization.trim(),
   };
 
-  if (!lead.name || !lead.email || !lead.organization) {
+  if (!lead.name || !lead.email || !lead.phone || !lead.organization) {
     return response.status(400).json({
       ok: false,
       message: 'Please fill in all fields.',

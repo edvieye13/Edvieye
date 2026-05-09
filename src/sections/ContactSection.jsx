@@ -6,6 +6,7 @@ import { submitContactLead } from '../lib/api';
 const initialForm = {
   name: '',
   email: '',
+  phone: '',
   organization: '',
 };
 
@@ -43,7 +44,7 @@ function ContactSection() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!form.name || !form.email || !form.organization) {
+    if (!form.name || !form.email || !form.phone || !form.organization) {
       setError('Please fill in all fields');
       return;
     }
@@ -139,6 +140,14 @@ function ContactSection() {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="Work email"
+                  />
+                  <InputField
+                    id="phone"
+                    label="Mobile number"
+                    type="tel"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="Mobile number"
                   />
                   <InputField
                     id="organization"

@@ -5,6 +5,7 @@ function buildFormSubmitPayload(payload) {
   return new URLSearchParams({
     name: payload.name,
     email: payload.email,
+    phone: payload.phone,
     organization: payload.organization,
     _subject: `New demo request from ${payload.name}`,
     _template: 'table',

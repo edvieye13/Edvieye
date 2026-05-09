@@ -722,6 +722,10 @@ footer{
           <input type="email" name="email" placeholder="Enter your email" required>
         </label>
         <label class="form-field" style="grid-column:1 / -1;">
+          <span>Mobile number</span>
+          <input type="tel" name="phone" placeholder="Enter your mobile number" inputmode="tel" autocomplete="tel" required>
+        </label>
+        <label class="form-field" style="grid-column:1 / -1;">
           <span>School or Organization</span>
           <input type="text" name="organization" placeholder="Enter school or organization name" required>
         </label>
@@ -1031,13 +1035,14 @@ if(demoForm&&formStatus){
     const payload={
       name:String(formData.get('name')||'').trim(),
       email:String(formData.get('email')||'').trim(),
+      phone:String(formData.get('phone')||'').trim(),
       organization:String(formData.get('organization')||'').trim()
     };
 
     formStatus.textContent='';
     formStatus.dataset.state='';
 
-    if(!payload.name||!payload.email||!payload.organization){
+    if(!payload.name||!payload.email||!payload.phone||!payload.organization){
       formStatus.dataset.state='error';
       formStatus.textContent='Please fill in all fields before submitting.';
       return;
