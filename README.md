@@ -1,6 +1,6 @@
 # Edvieye Reference Clone
 
-This project recreates the provided Edvieye Lovable preview as a responsive React + Vite + Tailwind CSS landing page, now with a Node.js + Express backend that stores demo requests, exposes an admin dashboard, and can optionally email demo requests to the Edvieye team.
+This project recreates the provided Edvieye Lovable preview as a responsive React + Vite + Tailwind CSS landing page, now with a Node.js + Express backend that stores demo requests, exposes an admin dashboard, and forwards demo requests to the Edvieye team through FormSubmit.
 
 ## Stack
 
@@ -61,15 +61,11 @@ This project recreates the provided Edvieye Lovable preview as a responsive Reac
 npm install
 ```
 
-2. Create a local `.env` file from `.env.example` and add SMTP details:
+2. Create a local `.env` file from `.env.example` and set the FormSubmit target:
 
 ```bash
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=info@edvieye.com
-SMTP_PASS=your-app-password
-SMTP_FROM_EMAIL=info@edvieye.com
-DEMO_RECIPIENT_EMAIL=info@edvieye.com
+FORMSUBMIT_TARGET=info@edvieye.com
+FORMSUBMIT_FORM_URL=https://edvieye.com/#contact
 ADMIN_PASSWORD=change-this-admin-password
 KV_REST_API_URL=
 KV_REST_API_TOKEN=
@@ -110,7 +106,7 @@ npm run start
 - `GET /api/health` - health/status check
 - `POST /api/admin/login` - login to the admin dashboard
 - `GET /api/admin/leads` - view saved demo requests after admin login
-- `POST /api/contact` - save the contact/demo form and optionally email the Edvieye team
+- `POST /api/contact` - save the contact/demo form and forward it through FormSubmit
 
 Example request:
 
@@ -126,7 +122,8 @@ Example request:
 
 - Contact form submissions are saved in `server/data/leads.json`.
 - On Vercel, connect Vercel KV or Upstash Redis and set `KV_REST_API_URL` and `KV_REST_API_TOKEN` so admin responses persist across serverless function restarts.
-- If SMTP settings are present, submissions are also emailed to `DEMO_RECIPIENT_EMAIL`, which defaults to `info@edvieye.com` in `.env.example`.
+- Demo submissions are forwarded through FormSubmit to `FORMSUBMIT_TARGET`, which defaults to `info@edvieye.com`.
+- FormSubmit requires a one-time inbox activation/confirmation on the first submission before it starts forwarding emails.
 - Set `ADMIN_PASSWORD` in `.env`; if it is missing, local development falls back to `admin123`.
 - Vite proxies `/api/*` requests to the Express server in development.
 - After a production build, the Express server can also serve the built frontend from `dist/`.

@@ -4,7 +4,7 @@ import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { addLead, getLeadStats, getLeads } from './storage.js';
-import { isMailerConfigured, sendDemoRequestEmail } from './mailer.js';
+import { submitDemoRequestToFormSubmit } from './formsubmit.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -94,21 +94,23 @@ app.post('/api/contact', async (request, response) => {
     });
   }
 
-  const savedLead = await addLead(lead);
+  try {
+    const savedLead = await addLead(lead);
+    await submitDemoRequestToFormSubmit(savedLead);
 
-  if (isMailerConfigured()) {
-    try {
-      await sendDemoRequestEmail(savedLead);
-    } catch (error) {
-      console.error('Unable to send demo request email:', error);
-    }
+    return response.status(201).json({
+      ok: true,
+      message: 'Thanks! Your demo request has been received.',
+      lead: savedLead,
+    });
+  } catch (error) {
+    console.error('Unable to submit demo request:', error);
+
+    return response.status(502).json({
+      ok: false,
+      message: 'We saved your request, but could not forward it to the inbox right now.',
+    });
   }
-
-  return response.status(201).json({
-    ok: true,
-    message: 'Thanks! Your demo request has been received.',
-    lead: savedLead,
-  });
 });
 
 app.use(express.static(distDir));
