@@ -1,6 +1,10 @@
 import nodemailer from 'nodemailer';
 
-const recipientEmail = process.env.DEMO_RECIPIENT_EMAIL || 'info@edvieye.com';
+const defaultDemoRecipientEmail = 'info@edvieye.com';
+
+function getDemoRecipientEmail() {
+  return process.env.DEMO_RECIPIENT_EMAIL?.trim() || defaultDemoRecipientEmail;
+}
 
 function requireEnv(name) {
   const value = process.env[name];
@@ -48,7 +52,7 @@ export async function sendDemoRequestEmail({ name, email, organization }) {
 
   return transporter.sendMail({
     from: `"Edvieye Website" <${fromEmail}>`,
-    to: recipientEmail,
+    to: getDemoRecipientEmail(),
     replyTo: email,
     subject: `New demo request from ${name}`,
     text: [
