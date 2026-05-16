@@ -18,7 +18,7 @@ function LandingPage() {
   return (
     <div className="site">
       <header className="nav">
-        <div className="brand">EDVIEYE</div>
+        <img className="brand-logo" src="/edvieye-logo-transparent.png" alt="Edvieye" />
         <nav className="links">
           <a href="#features">Features</a>
           <a href="#pricing">Pricing</a>

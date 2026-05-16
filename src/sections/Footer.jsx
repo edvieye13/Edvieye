@@ -14,10 +14,12 @@ function Footer() {
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="mb-4">
-              <div className="font-display text-lg font-bold uppercase tracking-[0.28em] text-foreground">
-                EDVIEYE
-              </div>
-              <div className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-neon-cyan/75">
+              <img
+                src="/edvieye-logo-transparent.png"
+                alt="Edvieye"
+                className="h-16 w-auto object-contain drop-shadow-[0_0_22px_rgba(34,211,238,0.28)]"
+              />
+              <div className="mt-2 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-neon-cyan/75">
                 Private Limited
               </div>
             </div>

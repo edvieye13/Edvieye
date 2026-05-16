@@ -1,7 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import CountUp from 'react-countup';
-import logoReference from '../assets/edvieye-logo-reference.png';
 import HeroBackdrop from '../components/hero/HeroBackdrop';
 import { heroStats } from '../data/site';
 
@@ -86,13 +85,11 @@ function HeroSection() {
             className="pointer-events-none absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(56,189,248,0.24),rgba(59,130,246,0.08)_55%,transparent_76%)] blur-3xl sm:h-44 sm:w-44"
             aria-hidden="true"
           />
-          <div className="relative rounded-[1.15rem] border border-white/12 bg-white/[0.96] p-2 shadow-[0_18px_40px_rgba(2,8,23,0.28)] sm:p-2.5">
-            <img
-              src={logoReference}
-              alt="EDVIEYE Logo"
-              className="w-[8.75rem] object-contain sm:w-[10.5rem] md:w-[11.5rem]"
-            />
-          </div>
+          <img
+            src="/edvieye-logo-transparent.png"
+            alt="EDVIEYE Logo"
+            className="relative z-10 w-[8.75rem] object-contain drop-shadow-[0_0_32px_rgba(34,211,238,0.4)] sm:w-[10.5rem] md:w-[11.5rem]"
+          />
         </motion.div>
 
         <motion.h1

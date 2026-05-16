@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import logoReference from '../../assets/edvieye-logo-reference.png';
 import { navigation } from '../../data/site';
 
 function Navbar() {
@@ -41,13 +40,13 @@ function Navbar() {
 
         <a
           href="#"
-          className="group relative z-10 flex shrink-0 items-center rounded-[1rem] border border-sky-200/90 bg-[linear-gradient(135deg,rgba(255,255,255,0.98),rgba(239,247,255,0.98))] px-2 py-1 shadow-[0_14px_30px_-22px_rgba(8,31,98,0.45)]"
+          className="group relative z-10 flex shrink-0 items-center px-1 py-1"
           aria-label="Edvieye home"
         >
           <img
-            src={logoReference}
+            src="/edvieye-logo-transparent.png"
             alt="Edvieye"
-            className="h-[38px] w-auto max-w-[122px] object-contain brightness-[1.02] contrast-[1.04] transition-transform duration-300 group-hover:scale-[1.01] sm:h-[42px] sm:max-w-[136px]"
+            className="h-[38px] w-auto max-w-[122px] object-contain drop-shadow-[0_0_18px_rgba(34,211,238,0.35)] transition-transform duration-300 group-hover:scale-[1.01] sm:h-[42px] sm:max-w-[136px]"
           />
         </a>
 
