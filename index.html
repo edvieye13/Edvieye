@@ -28,6 +28,16 @@
 html{scroll-behavior:smooth;}
 body{background:var(--deep);color:var(--white);font-family:'Exo 2',sans-serif;overflow-x:hidden;cursor:none;}
 
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  #cur,#cur2,.sl{display:none !important;}
+}
+
+@media (pointer: coarse){
+  body{cursor:auto;}
+  #cur,#cur2{display:none !important;}
+}
+
 /* CURSOR */
 #cur{width:18px;height:18px;border:1.5px solid var(--cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:width .2s,height .2s,border-color .2s;mix-blend-mode:screen;}
 #cur2{width:5px;height:5px;background:var(--cyan);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;}
@@ -728,26 +738,70 @@ footer{
 const src='/edvieye-logo-transparent.png';
 ['navLogo','heroLogo','ctaLogo','footLogo'].forEach(id=>{const e=document.getElementById(id);if(e)e.src=src;});
 
+const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isCoarsePointer=window.matchMedia('(pointer: coarse)').matches;
+const motionLite=prefersReducedMotion||isCoarsePointer;
+
 // === CURSOR ===
 const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
-document.addEventListener('mousemove',e=>{
-  cur.style.left=e.clientX-9+'px';cur.style.top=e.clientY-9+'px';
-  cur2.style.left=e.clientX-2.5+'px';cur2.style.top=e.clientY-2.5+'px';
-});
+let mx=window.innerWidth/2,my=window.innerHeight/2;
+if(motionLite){
+  document.body.style.cursor='auto';
+  if(cur)cur.style.display='none';
+  if(cur2)cur2.style.display='none';
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
+}else{
+  let cursorFramePending=false;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    if(cursorFramePending)return;
+    cursorFramePending=true;
+    requestAnimationFrame(()=>{
+      cur.style.left=mx-9+'px';cur.style.top=my-9+'px';
+      cur2.style.left=mx-2.5+'px';cur2.style.top=my-2.5+'px';
+      cursorFramePending=false;
+    });
+  },{passive:true});
+}
 
 // === BG CANVAS ===
 const bgc=document.getElementById('bgc'),bx=bgc.getContext('2d');
-let W=bgc.width=window.innerWidth,H=bgc.height=window.innerHeight;
-window.addEventListener('resize',()=>{W=bgc.width=window.innerWidth;H=bgc.height=window.innerHeight;});
-let mx=W/2,my=H/2;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+function canvasScale(){
+  return Math.min(window.devicePixelRatio||1,motionLite?1:1.25);
+}
+function resizeCanvas(canvas,ctx,width,height){
+  const scale=canvasScale();
+  canvas.width=Math.max(Math.floor(width*scale),1);
+  canvas.height=Math.max(Math.floor(height*scale),1);
+  canvas.style.width=width+'px';
+  canvas.style.height=height+'px';
+  ctx.setTransform(scale,0,0,scale,0,0);
+}
+function buildRequestError(message,status){
+  const error=new Error(message);
+  error.status=status;
+  return error;
+}
+let W=window.innerWidth,H=window.innerHeight;
+function resizeBG(){
+  W=window.innerWidth;
+  H=window.innerHeight;
+  resizeCanvas(bgc,bx,W,H);
+}
+resizeBG();
+window.addEventListener('resize',resizeBG,{passive:true});
 
 // Stars
-const stars=Array.from({length:160},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,a:Math.random()*.5+.1,col:Math.random()>.5?'rgba(100,180,255,':'rgba(200,160,255,'}));
+const stars=Array.from({length:motionLite?70:(W<768?100:160)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,a:Math.random()*.5+.1,col:Math.random()>.5?'rgba(100,180,255,':'rgba(200,160,255,'}));
 // Nodes
-const nodes=Array.from({length:60},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}));
+const nodes=Array.from({length:motionLite?24:(W<768?36:60)},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}));
+const bgFrameInterval=1000/(motionLite?18:30);
+let lastBGFrame=0;
 
 function drawBG(t){
+  requestAnimationFrame(drawBG);
+  if(document.hidden||t-lastBGFrame<bgFrameInterval)return;
+  lastBGFrame=t;
   bx.fillStyle='rgba(2,8,16,0.14)';bx.fillRect(0,0,W,H);
   // Stars
   stars.forEach(s=>{
@@ -761,13 +815,14 @@ function drawBG(t){
     if(n.x<0)n.x=W;if(n.x>W)n.x=0;if(n.y<0)n.y=H;if(n.y>H)n.y=0;
   });
   nodes.forEach((n,i)=>{
-    nodes.slice(i+1).forEach(m=>{
+    for(let j=i+1;j<nodes.length;j++){
+      const m=nodes[j];
       const d=Math.hypot(n.x-m.x,n.y-m.y);
       if(d<140){
         bx.beginPath();bx.moveTo(n.x,n.y);bx.lineTo(m.x,m.y);
         bx.strokeStyle=`rgba(20,80,255,${.14*(1-d/140)})`;bx.lineWidth=.6;bx.stroke();
       }
-    });
+    }
     bx.beginPath();bx.arc(n.x,n.y,1.5,0,Math.PI*2);
     bx.fillStyle='rgba(0,180,255,0.3)';bx.fill();
   });
@@ -782,18 +837,24 @@ function drawBG(t){
     bx.beginPath();bx.moveTo(W/2-W/2*p,gy2);bx.lineTo(W/2+W/2*p,gy2);bx.stroke();
   }
   bx.restore();
-  requestAnimationFrame(drawBG);
 }
 requestAnimationFrame(drawBG);
 
 // === AI CANVAS (4D hologram) ===
 const ac=document.getElementById('aiCanvas'),ax=ac.getContext('2d');
 const acBox=ac.parentElement;
-function resizeAC(){ac.width=acBox.offsetWidth;ac.height=acBox.offsetHeight;}
-resizeAC();window.addEventListener('resize',resizeAC);
+function resizeAC(){resizeCanvas(ac,ax,acBox.offsetWidth,acBox.offsetHeight);}
+resizeAC();window.addEventListener('resize',resizeAC,{passive:true});
+const aiFrameInterval=1000/(motionLite?16:24);
+let lastAIFrame=0;
+let statusTime=new Date().toLocaleTimeString();
+window.setInterval(()=>{statusTime=new Date().toLocaleTimeString();},1000);
 
 function drawAI(t){
-  const W2=ac.width,H2=ac.height;
+  requestAnimationFrame(drawAI);
+  if(document.hidden||t-lastAIFrame<aiFrameInterval)return;
+  lastAIFrame=t;
+  const W2=acBox.offsetWidth,H2=acBox.offsetHeight;
   ax.fillStyle='rgba(2,8,20,0.22)';ax.fillRect(0,0,W2,H2);
   const ts=t*.001,cx=W2/2,cy=H2*.42;
 
@@ -877,12 +938,11 @@ function drawAI(t){
   }
   // Connections
   nnodes.forEach((n,i)=>{
-    nnodes.slice(i+1).forEach((m,j)=>{
-      if(j<3){
-        ax.beginPath();ax.moveTo(n.x,n.y);ax.lineTo(m.x,m.y);
-        ax.strokeStyle=`rgba(26,79,255,${0.18-j*.04})`;ax.lineWidth=.7;ax.stroke();
-      }
-    });
+    for(let j=i+1;j<Math.min(i+4,nnodes.length);j++){
+      const m=nnodes[j];
+      ax.beginPath();ax.moveTo(n.x,n.y);ax.lineTo(m.x,m.y);
+      ax.strokeStyle=`rgba(26,79,255,${0.18-(j-i-1)*.04})`;ax.lineWidth=.7;ax.stroke();
+    }
   });
   // Dots
   nnodes.forEach((n,i)=>{
@@ -906,16 +966,14 @@ function drawAI(t){
   // Top status line
   ax.font='8px Orbitron,monospace';ax.fillStyle='rgba(0,180,255,0.4)';
   ax.fillText('EDVIEYE AI · 4D NEURAL ENGINE · ACTIVE',10,14);
-  const now=new Date();
   ax.fillStyle='rgba(0,180,255,0.3)';
-  ax.fillText(now.toLocaleTimeString(),W2-90,14);
-
-  requestAnimationFrame(drawAI);
+  ax.fillText(statusTime,Math.max(W2-92,10),14);
 }
 requestAnimationFrame(drawAI);
 
 // === CARD 3D TILT ===
 function ct(e,card){
+  if(motionLite)return;
   const r=card.getBoundingClientRect();
   const x=e.clientX-r.left,y=e.clientY-r.top;
   card.style.setProperty('--mx',(x/r.width*100)+'%');
@@ -928,8 +986,92 @@ function cr(card){card.style.transform='';}
 // === DEMO FORM ===
 const demoForm=document.getElementById('demoForm');
 const formStatus=document.getElementById('formStatus');
+const contactEndpoint='/api/contact';
 const formSubmitEndpoint='https://formsubmit.co/ajax/info@edvieye.com';
 const formSubmitUrl='https://edvieye.com/#contact';
+
+function buildFormSubmitPayload(payload){
+  return new URLSearchParams({
+    ...payload,
+    _subject:`New demo request from ${payload.name}`,
+    _template:'table',
+    _url:formSubmitUrl
+  });
+}
+
+async function submitLeadToApi(payload){
+  const controller=new AbortController();
+  const timeoutId=window.setTimeout(()=>controller.abort(),5000);
+
+  try{
+    const response=await fetch(contactEndpoint,{
+      method:'POST',
+      headers:{
+        Accept:'application/json',
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(payload),
+      signal:controller.signal
+    });
+    const data=await response.json().catch(()=>({}));
+    if(!response.ok||data.ok===false){
+      throw buildRequestError(data.message||'Unable to submit your demo request right now.',response.status);
+    }
+    return data;
+  }catch(error){
+    if(error.name==='AbortError'){
+      throw buildRequestError('The server took too long to respond. Please try again.',408);
+    }
+    throw error;
+  }finally{
+    window.clearTimeout(timeoutId);
+  }
+}
+
+async function submitLeadToFormSubmit(payload){
+  const response=await fetch(formSubmitEndpoint,{
+    method:'POST',
+    headers:{
+      Accept:'application/json',
+      'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'
+    },
+    body:buildFormSubmitPayload(payload).toString()
+  });
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok||data.success===false){
+    throw buildRequestError(data.message||'Unable to send your demo request right now.',response.status);
+  }
+  return {
+    ok:true,
+    message:data.message||'Thanks. Your demo request has been received.'
+  };
+}
+
+function mirrorLeadToFormSubmit(payload){
+  if(!navigator.onLine)return;
+  const send=()=>{void submitLeadToFormSubmit(payload).catch(()=>null);};
+  if('requestIdleCallback' in window){
+    window.requestIdleCallback(send,{timeout:1200});
+  }else{
+    window.setTimeout(send,0);
+  }
+}
+
+async function submitDemoLead(payload){
+  try{
+    const data=await submitLeadToApi(payload);
+    mirrorLeadToFormSubmit(payload);
+    return data;
+  }catch(error){
+    if(!navigator.onLine){
+      throw buildRequestError('You appear to be offline. Please check your connection and try again.',0);
+    }
+    if(error.status&&error.status<500&&error.status!==404&&error.status!==408){
+      throw error;
+    }
+    return submitLeadToFormSubmit(payload);
+  }
+}
 if(demoForm&&formStatus){
   demoForm.addEventListener('submit',async event=>{
     event.preventDefault();
@@ -956,28 +1098,7 @@ if(demoForm&&formStatus){
     submitButton.textContent='SUBMITTING...';
 
     try{
-      const response=await fetch(formSubmitEndpoint,{
-        method:'POST',
-        headers:{
-          Accept:'application/json',
-          'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'
-        },
-        body:new URLSearchParams({
-          ...payload,
-          _subject:`New demo request from ${payload.name}`,
-          _template:'table',
-          _url:formSubmitUrl
-        }).toString()
-      });
-      const data=await response.json().catch(()=>({}));
-      if(!response.ok||data.success===false){
-        throw new Error(data.message||'Unable to send your demo request right now.');
-      }
-      await fetch('/api/contact',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(payload)
-      }).catch(()=>null);
+      const data=await submitDemoLead(payload);
       formStatus.dataset.state='success';
       formStatus.textContent=data.message||'Thanks. Your demo request has been received.';
       demoForm.reset();
@@ -994,5 +1115,3 @@ if(demoForm&&formStatus){
 </script>
 </body>
 </html>
-
-

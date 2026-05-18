@@ -1,5 +1,12 @@
 const formSubmitEndpoint = 'https://formsubmit.co/ajax/info@edvieye.com';
 const formSubmitUrl = 'https://edvieye.com/#contact';
+const contactEndpoint = '/api/contact';
+
+function buildRequestError(message, status) {
+  const error = new Error(message);
+  error.status = status;
+  return error;
+}
 
 function buildFormSubmitPayload(payload) {
   return new URLSearchParams({
@@ -14,16 +21,41 @@ function buildFormSubmitPayload(payload) {
 }
 
 async function saveContactLead(payload) {
-  return fetch('/api/contact', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  });
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), 5000);
+
+  try {
+    const response = await fetch(contactEndpoint, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok || data.ok === false) {
+      throw buildRequestError(
+        data.message || 'Unable to submit your demo request right now.',
+        response.status,
+      );
+    }
+
+    return data;
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      throw buildRequestError('The server took too long to respond. Please try again.', 408);
+    }
+
+    throw error;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
 }
 
-export async function submitContactLead(payload) {
+async function submitToFormSubmit(payload) {
   const response = await fetch(formSubmitEndpoint, {
     method: 'POST',
     headers: {
@@ -36,19 +68,51 @@ export async function submitContactLead(payload) {
   const data = await response.json().catch(() => ({}));
 
   if (!response.ok || data.success === false) {
-    throw new Error(data.message || 'Unable to send your request right now.');
-  }
-
-  try {
-    await saveContactLead(payload);
-  } catch {
-    // Keep the user flow successful if local lead storage is temporarily unavailable.
+    throw buildRequestError(data.message || 'Unable to send your request right now.', response.status);
   }
 
   return {
     ok: true,
     message: data.message || 'Thanks! Your demo request has been received.',
   };
+}
+
+function mirrorToFormSubmit(payload) {
+  if (!navigator.onLine) {
+    return;
+  }
+
+  const send = () => {
+    void submitToFormSubmit(payload).catch(() => null);
+  };
+
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(send, { timeout: 1200 });
+    return;
+  }
+
+  window.setTimeout(send, 0);
+}
+
+export async function submitContactLead(payload) {
+  try {
+    const data = await saveContactLead(payload);
+    mirrorToFormSubmit(payload);
+    return {
+      ok: true,
+      message: data.message || 'Thanks! Your demo request has been received.',
+    };
+  } catch (error) {
+    if (!navigator.onLine) {
+      throw new Error('You appear to be offline. Please check your connection and try again.');
+    }
+
+    if (error.status && error.status < 500 && error.status !== 404 && error.status !== 408) {
+      throw error;
+    }
+
+    return submitToFormSubmit(payload);
+  }
 }
 
 export async function loginAdmin(password) {
