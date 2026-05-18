@@ -68,10 +68,10 @@ ADMIN_PASSWORD=change-this-admin-password
 KV_REST_API_URL=
 KV_REST_API_TOKEN=
 SMTP_SERVICE=
-SMTP_HOST=
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=
+SMTP_HOST=smtp.hostinger.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=info@edvieye.com
 SMTP_PASS=
 SMTP_FROM=
 MAIL_FROM=
@@ -133,8 +133,9 @@ Example request:
 - Contact form submissions are saved in `server/data/leads.json`.
 - On Vercel, connect Vercel KV or Upstash Redis and set `KV_REST_API_URL` and `KV_REST_API_TOKEN` so admin responses persist across serverless function restarts.
 - Public demo form submissions are saved through `/api/contact` and notification email is sent from the backend.
-- If SMTP is not configured, the backend falls back to FormSubmit for `info@edvieye.com`.
-- For reliable inbox delivery, set `SMTP_SERVICE` or `SMTP_HOST` plus `SMTP_USER` and `SMTP_PASS` in your deployment environment.
+- The app is pre-configured for Hostinger Mail on `info@edvieye.com` using `smtp.hostinger.com:465`.
+- Add the real `SMTP_PASS` for `info@edvieye.com` in your deployment environment for reliable inbox delivery.
+- If SMTP still is not configured, the backend falls back to FormSubmit for `info@edvieye.com`.
 - Set `ADMIN_PASSWORD` in `.env`; if it is missing, local development falls back to `admin123`.
 - Vite proxies `/api/*` requests to the Express server in development.
 - After a production build, the Express server can also serve the built frontend from `dist/`.

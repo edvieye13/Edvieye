@@ -2,6 +2,9 @@ import nodemailer from 'nodemailer';
 
 const defaultMailTo = 'info@edvieye.com';
 const defaultPublicUrl = 'https://edvieye.com/#contact';
+const defaultSmtpHost = 'smtp.hostinger.com';
+const defaultSmtpPort = 465;
+const defaultSmtpSecure = true;
 
 let transporter;
 
@@ -23,17 +26,18 @@ function escapeHtml(value) {
 }
 
 function buildTransportConfig() {
+  const mailTo = getMailTo();
   const service = process.env.SMTP_SERVICE?.trim();
-  const host = process.env.SMTP_HOST?.trim();
-  const port = Number(process.env.SMTP_PORT || 587);
-  const secure = asBoolean(process.env.SMTP_SECURE, port === 465);
-  const user = process.env.SMTP_USER?.trim();
+  const host = process.env.SMTP_HOST?.trim() || defaultSmtpHost;
+  const port = Number(process.env.SMTP_PORT || defaultSmtpPort);
+  const secure = asBoolean(process.env.SMTP_SECURE, defaultSmtpSecure);
+  const user = process.env.SMTP_USER?.trim() || mailTo;
   const pass = process.env.SMTP_PASS?.trim();
   const connectionTimeout = Number(process.env.SMTP_CONNECTION_TIMEOUT || 5000);
   const greetingTimeout = Number(process.env.SMTP_GREETING_TIMEOUT || 5000);
   const socketTimeout = Number(process.env.SMTP_SOCKET_TIMEOUT || 10000);
 
-  if (!(service || host) || !user || !pass) {
+  if (!user || !pass) {
     return null;
   }
 

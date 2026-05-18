@@ -113,7 +113,7 @@ app.post('/api/contact', async (request, response) => {
 if (isEmailConfigured()) {
   console.log('Demo email notifications are enabled.');
 } else {
-  console.warn('SMTP is not configured. Demo emails will fall back to FormSubmit until SMTP_* and MAIL_* env vars are set.');
+  console.warn('SMTP password is not configured. Demo emails will fall back to FormSubmit until SMTP_PASS is set for info@edvieye.com.');
 }
 
 app.use(express.static(distDir));
