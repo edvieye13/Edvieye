@@ -1,6 +1,6 @@
 # Edvieye Reference Clone
 
-This project recreates the provided Edvieye Lovable preview as a responsive React + Vite + Tailwind CSS landing page, now with a Node.js + Express backend that stores demo requests and exposes an admin dashboard while the public form submits directly through FormSubmit.
+This project recreates the provided Edvieye Lovable preview as a responsive React + Vite + Tailwind CSS landing page, now with a Node.js + Express backend that stores demo requests, sends demo notification emails, and exposes an admin dashboard.
 
 ## Stack
 
@@ -67,6 +67,18 @@ npm install
 ADMIN_PASSWORD=change-this-admin-password
 KV_REST_API_URL=
 KV_REST_API_TOKEN=
+SMTP_SERVICE=
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=
+SMTP_PASS=
+SMTP_FROM=
+MAIL_FROM=
+MAIL_TO=info@edvieye.com
+MAIL_REPLY_TO=
+MAIL_BCC=
+PUBLIC_SITE_URL=https://edvieye.com/#contact
 ```
 
 3. Run frontend and backend together in development:
@@ -120,8 +132,9 @@ Example request:
 
 - Contact form submissions are saved in `server/data/leads.json`.
 - On Vercel, connect Vercel KV or Upstash Redis and set `KV_REST_API_URL` and `KV_REST_API_TOKEN` so admin responses persist across serverless function restarts.
-- Public demo form submissions are saved through `/api/contact` first for a faster response, then mirrored to FormSubmit for `info@edvieye.com` when available.
-- FormSubmit requires a one-time inbox activation/confirmation on the first submission before it starts forwarding emails.
+- Public demo form submissions are saved through `/api/contact` and notification email is sent from the backend.
+- If SMTP is not configured, the backend falls back to FormSubmit for `info@edvieye.com`.
+- For reliable inbox delivery, set `SMTP_SERVICE` or `SMTP_HOST` plus `SMTP_USER` and `SMTP_PASS` in your deployment environment.
 - Set `ADMIN_PASSWORD` in `.env`; if it is missing, local development falls back to `admin123`.
 - Vite proxies `/api/*` requests to the Express server in development.
 - After a production build, the Express server can also serve the built frontend from `dist/`.

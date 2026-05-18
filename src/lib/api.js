@@ -77,31 +77,9 @@ async function submitToFormSubmit(payload) {
   };
 }
 
-function mirrorToFormSubmit(payload) {
-  if (!navigator.onLine) {
-    return;
-  }
-
-  const send = () => {
-    void submitToFormSubmit(payload).catch(() => null);
-  };
-
-  if ('requestIdleCallback' in window) {
-    window.requestIdleCallback(send, { timeout: 1200 });
-    return;
-  }
-
-  window.setTimeout(send, 0);
-}
-
 export async function submitContactLead(payload) {
   try {
-    const data = await saveContactLead(payload);
-    mirrorToFormSubmit(payload);
-    return {
-      ok: true,
-      message: data.message || 'Thanks! Your demo request has been received.',
-    };
+    return await saveContactLead(payload);
   } catch (error) {
     if (!navigator.onLine) {
       throw new Error('You appear to be offline. Please check your connection and try again.');

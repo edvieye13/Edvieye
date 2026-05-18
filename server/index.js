@@ -3,7 +3,9 @@ import 'dotenv/config';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { addLead, getLeadStats, getLeads } from './storage.js';
+import { createContactLead } from './contact.js';
+import { getEmailMode, isEmailConfigured } from './mailer.js';
+import { getLeadStats, getLeads } from './storage.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,6 +25,9 @@ app.get('/api/health', async (_request, response) => {
   response.json({
     ok: true,
     service: 'edvieye-mock-api',
+    emailEnabled: true,
+    emailMode: getEmailMode(),
+    smtpEnabled: isEmailConfigured(),
     totalLeads: stats.totalLeads,
     lastSubmissionAt: stats.lastSubmissionAt,
   });
@@ -79,30 +84,23 @@ app.get('/api/admin/leads', requireAdmin, async (_request, response) => {
 });
 
 app.post('/api/contact', async (request, response) => {
-  const { name = '', email = '', phone = '', organization = '' } = request.body ?? {};
-  const lead = {
-    name: name.trim(),
-    email: email.trim(),
-    phone: phone.trim(),
-    organization: organization.trim(),
-  };
-
-  if (!lead.name || !lead.email || !lead.phone || !lead.organization) {
-    return response.status(400).json({
-      ok: false,
-      message: 'Please fill in all fields.',
-    });
-  }
-
   try {
-    const savedLead = await addLead(lead);
+    const { lead, notification } = await createContactLead(request.body);
 
     return response.status(201).json({
       ok: true,
       message: 'Thanks! Your demo request has been received.',
-      lead: savedLead,
+      lead,
+      notification,
     });
   } catch (error) {
+    if (error.status === 400) {
+      return response.status(400).json({
+        ok: false,
+        message: error.message,
+      });
+    }
+
     console.error('Unable to submit demo request:', error);
 
     return response.status(500).json({
@@ -111,6 +109,12 @@ app.post('/api/contact', async (request, response) => {
     });
   }
 });
+
+if (isEmailConfigured()) {
+  console.log('Demo email notifications are enabled.');
+} else {
+  console.warn('SMTP is not configured. Demo emails will fall back to FormSubmit until SMTP_* and MAIL_* env vars are set.');
+}
 
 app.use(express.static(distDir));
 
