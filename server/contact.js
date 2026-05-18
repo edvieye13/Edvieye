@@ -20,9 +20,10 @@ export function validateLeadPayload(lead) {
   return '';
 }
 
-export async function createContactLead(payload) {
+export async function createContactLead(payload, options = {}) {
   const lead = normalizeLeadPayload(payload);
   const validationError = validateLeadPayload(lead);
+  const shouldSendNotification = options.sendNotification !== false;
 
   if (validationError) {
     const error = new Error(validationError);
@@ -34,18 +35,20 @@ export async function createContactLead(payload) {
   let notification = {
     enabled: false,
     sent: false,
-    skippedReason: 'not_attempted',
+    skippedReason: shouldSendNotification ? 'not_attempted' : 'skipped_by_request',
   };
 
-  try {
-    notification = await sendDemoNotificationEmail(savedLead);
-  } catch (error) {
-    notification = {
-      enabled: true,
-      sent: false,
-      skippedReason: 'send_failed',
-    };
-    console.error('Unable to send demo notification email:', error);
+  if (shouldSendNotification) {
+    try {
+      notification = await sendDemoNotificationEmail(savedLead);
+    } catch (error) {
+      notification = {
+        enabled: true,
+        sent: false,
+        skippedReason: 'send_failed',
+      };
+      console.error('Unable to send demo notification email:', error);
+    }
   }
 
   return {

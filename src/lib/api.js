@@ -30,6 +30,7 @@ async function saveContactLead(payload) {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        'x-skip-email-notification': 'true',
       },
       body: JSON.stringify(payload),
       signal: controller.signal,
@@ -79,17 +80,14 @@ async function submitToFormSubmit(payload) {
 
 export async function submitContactLead(payload) {
   try {
-    return await saveContactLead(payload);
+    const data = await submitToFormSubmit(payload);
+    await saveContactLead(payload).catch(() => null);
+    return data;
   } catch (error) {
     if (!navigator.onLine) {
       throw new Error('You appear to be offline. Please check your connection and try again.');
     }
-
-    if (error.status && error.status < 500 && error.status !== 404 && error.status !== 408) {
-      throw error;
-    }
-
-    return submitToFormSubmit(payload);
+    throw error;
   }
 }
 

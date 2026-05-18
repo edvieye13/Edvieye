@@ -85,7 +85,10 @@ app.get('/api/admin/leads', requireAdmin, async (_request, response) => {
 
 app.post('/api/contact', async (request, response) => {
   try {
-    const { lead, notification } = await createContactLead(request.body);
+    const skipNotificationHeader = request.get('x-skip-email-notification');
+    const { lead, notification } = await createContactLead(request.body, {
+      sendNotification: skipNotificationHeader !== 'true',
+    });
 
     return response.status(201).json({
       ok: true,

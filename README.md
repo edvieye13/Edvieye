@@ -132,10 +132,9 @@ Example request:
 
 - Contact form submissions are saved in `server/data/leads.json`.
 - On Vercel, connect Vercel KV or Upstash Redis and set `KV_REST_API_URL` and `KV_REST_API_TOKEN` so admin responses persist across serverless function restarts.
-- Public demo form submissions are saved through `/api/contact` and notification email is sent from the backend.
-- The app is pre-configured for Hostinger Mail on `info@edvieye.com` using `smtp.hostinger.com:465`.
-- Add the real `SMTP_PASS` for `info@edvieye.com` in your deployment environment for reliable inbox delivery.
-- If SMTP still is not configured, the backend falls back to FormSubmit for `info@edvieye.com`.
+- Public demo form submissions are sent through FormSubmit first and then saved through `/api/contact` for the admin dashboard.
+- The live website keeps FormSubmit as the primary email path for `info@edvieye.com`, because that flow was already working.
+- Backend SMTP support remains available for server-side `/api/contact` use if you later want to switch email delivery to the backend.
 - Set `ADMIN_PASSWORD` in `.env`; if it is missing, local development falls back to `admin123`.
 - Vite proxies `/api/*` requests to the Express server in development.
 - After a production build, the Express server can also serve the built frontend from `dist/`.

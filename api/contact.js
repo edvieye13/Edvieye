@@ -7,7 +7,10 @@ export default async function handler(request, response) {
   }
 
   try {
-    const { lead, notification } = await createContactLead(request.body);
+    const skipNotificationHeader = request.headers['x-skip-email-notification'];
+    const { lead, notification } = await createContactLead(request.body, {
+      sendNotification: skipNotificationHeader === 'true' ? false : true,
+    });
 
     return response.status(201).json({
       ok: true,
