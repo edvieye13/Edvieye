@@ -737,6 +737,13 @@ footer{
 // === LOGO ===
 const src='/edvieye-logo-transparent.png';
 ['navLogo','heroLogo','ctaLogo','footLogo'].forEach(id=>{const e=document.getElementById(id);if(e)e.src=src;});
+document.querySelectorAll('.feat-card').forEach(card=>{
+  const heading=card.querySelector('h3');
+  const icon=card.querySelector('.feat-icon-wrap span');
+  if(heading&&icon&&heading.textContent.trim()==='Fee Automation'){
+    icon.textContent='₹';
+  }
+});
 
 const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isCoarsePointer=window.matchMedia('(pointer: coarse)').matches;

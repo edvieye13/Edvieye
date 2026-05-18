@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import {
   BookOpenCheck,
   BrainCircuit,
+  IndianRupee,
   LayoutDashboard,
   ScanFace,
   UsersRound,
-  WalletCards,
 } from 'lucide-react';
 import SectionHeading from '../components/ui/SectionHeading';
 import { features } from '../data/site';
@@ -13,7 +13,7 @@ import { features } from '../data/site';
 const iconMap = {
   students: UsersRound,
   analytics: BrainCircuit,
-  fees: WalletCards,
+  fees: IndianRupee,
   attendance: ScanFace,
   curriculum: BookOpenCheck,
   dashboards: LayoutDashboard,
