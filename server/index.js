@@ -6,8 +6,6 @@ import { fileURLToPath } from 'node:url';
 import { createContactLead } from './contact.js';
 import { getEmailMode, isEmailConfigured } from './mailer.js';
 import { getLeadStats, getLeads } from './storage.js';
-import { handleAiRun, handleAiStatus, handleAiToolsList } from './ai/handler.js';
-import { AI_TOOL_IDS } from './ai/tools.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -85,12 +83,6 @@ app.get('/api/admin/leads', requireAdmin, async (_request, response) => {
   });
 });
 
-app.get('/api/ai/status', handleAiStatus);
-app.get('/api/ai/tools', handleAiToolsList);
-AI_TOOL_IDS.forEach((toolId) => {
-  app.post(`/api/ai/${toolId}`, (request, response) => handleAiRun(request, response, toolId));
-});
-
 app.post('/api/contact', async (request, response) => {
   try {
     const skipNotificationHeader = request.get('x-skip-email-notification');
@@ -127,8 +119,6 @@ if (isEmailConfigured()) {
   console.warn('SMTP password is not configured. Demo emails will fall back to FormSubmit until SMTP_PASS is set for info@edvieye.com.');
 }
 
-app.use(express.static(path.join(rootDir, 'public')));
-app.use(express.static(rootDir));
 app.use(express.static(distDir));
 
 app.get('*', (request, response, next) => {
@@ -136,15 +126,9 @@ app.get('*', (request, response, next) => {
     return next();
   }
 
-  const rootIndex = path.join(rootDir, 'index.html');
-  const distIndex = path.join(distDir, 'index.html');
-  const target = request.path === '/' || request.path === '/index.html' ? rootIndex : distIndex;
-
-  return response.sendFile(target, (error) => {
+  return response.sendFile(path.join(distDir, 'index.html'), (error) => {
     if (error) {
-      response.sendFile(distIndex, (distError) => {
-        if (distError) next();
-      });
+      next();
     }
   });
 });

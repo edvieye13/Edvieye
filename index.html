@@ -315,117 +315,6 @@ nav{
 @keyframes ldot{0%,100%{opacity:1;}50%{opacity:0;}}
 #aiCanvas{width:100%;height:100%;display:block;}
 
-/* AI MODULE */
-.ai-module-sec{
-  position:relative;z-index:2;
-  max-width:1280px;margin:0 auto;padding:0 6% 90px;
-  display:none;
-}
-.ai-module-sec.is-open{display:block;}
-.ai-module-panel{
-  border:1px solid rgba(0,100,255,0.22);
-  background:linear-gradient(145deg,rgba(4,13,30,0.97),rgba(7,18,46,0.94));
-  padding:36px 32px 40px;
-  box-shadow:0 24px 80px rgba(0,36,120,0.2);
-}
-.ai-module-top{
-  display:flex;align-items:flex-start;justify-content:space-between;
-  gap:20px;flex-wrap:wrap;margin-bottom:28px;
-}
-.ai-module-badges{display:flex;flex-wrap:wrap;gap:10px;}
-.ai-status-pill,.ai-etna-pill{
-  padding:6px 14px;border:1px solid rgba(0,180,255,0.25);
-  font-family:'Orbitron',sans-serif;font-size:0.52rem;letter-spacing:2px;
-  color:rgba(0,212,255,0.85);background:rgba(0,180,255,0.06);
-}
-.ai-status-pill[data-mode="live"]{border-color:rgba(0,255,136,0.35);color:#7dffc0;}
-.ai-etna-pill[data-state="on"]{border-color:rgba(240,165,0,0.4);color:var(--gold);}
-.ai-tools-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;
-}
-.ai-tool-card{
-  text-align:left;padding:24px 22px;
-  background:linear-gradient(145deg,rgba(4,13,30,0.95),rgba(8,18,45,0.9));
-  border:1px solid rgba(0,80,200,0.18);
-  color:inherit;cursor:none;transition:all .3s;
-  font-family:'Exo 2',sans-serif;
-}
-.ai-tool-card:hover{
-  border-color:rgba(0,212,255,0.45);
-  transform:translateY(-6px);
-  box-shadow:0 16px 40px rgba(0,80,200,0.2);
-}
-.ai-tool-icon{
-  width:42px;height:42px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Orbitron',sans-serif;font-size:0.62rem;
-  background:rgba(0,180,255,0.1);border:1px solid rgba(0,212,255,0.25);
-  color:var(--cyan);margin-bottom:14px;
-}
-.ai-tool-card h3{
-  font-family:'Orbitron',sans-serif;font-size:0.78rem;
-  letter-spacing:1px;color:#d8ecff;margin-bottom:8px;
-}
-.ai-tool-card p{color:var(--muted);font-size:0.86rem;line-height:1.6;margin-bottom:14px;}
-.ai-tool-go{
-  font-family:'Orbitron',sans-serif;font-size:0.58rem;letter-spacing:2px;color:var(--cyan);
-}
-.ai-workspace{margin-top:8px;}
-.ai-workspace-head{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:16px;flex-wrap:wrap;margin-bottom:22px;
-}
-.ai-back-btn{
-  padding:8px 18px;background:transparent;
-  border:1px solid rgba(0,200,255,0.3);color:rgba(0,212,255,0.85);
-  font-family:'Orbitron',sans-serif;font-size:0.58rem;letter-spacing:2px;cursor:none;
-}
-.ai-back-btn:hover{border-color:var(--cyan);color:var(--cyan);}
-.ai-workspace-layout{
-  display:grid;grid-template-columns:1fr 1fr;gap:22px;
-}
-.ai-tool-form{display:flex;flex-direction:column;gap:14px;}
-.ai-field{display:flex;flex-direction:column;gap:8px;}
-.ai-field span{
-  font-family:'Orbitron',sans-serif;font-size:0.58rem;
-  letter-spacing:2px;text-transform:uppercase;color:rgba(194,230,255,0.74);
-}
-.ai-field input,.ai-field textarea{
-  width:100%;padding:14px 15px;
-  border:1px solid rgba(0,140,255,0.18);background:rgba(2,8,20,0.82);
-  color:var(--white);font-size:0.92rem;outline:none;
-  font-family:'Exo 2',sans-serif;resize:vertical;
-}
-.ai-field input:focus,.ai-field textarea:focus{
-  border-color:rgba(0,212,255,0.55);
-  box-shadow:0 0 0 1px rgba(0,212,255,0.16),0 0 24px rgba(0,212,255,0.12);
-}
-.ai-result-box{
-  min-height:320px;padding:22px;
-  border:1px solid rgba(0,100,255,0.18);
-  background:rgba(2,8,20,0.75);
-  overflow:auto;
-}
-.ai-result-box[data-state="loading"]{opacity:0.85;}
-.ai-result-box h4{
-  font-family:'Orbitron',sans-serif;font-size:0.72rem;
-  letter-spacing:1px;color:var(--cyan);margin:16px 0 8px;
-}
-.ai-result-box h4:first-child{margin-top:0;}
-.ai-result-box p,.ai-result-box li{
-  color:rgba(180,220,255,0.82);font-size:0.9rem;line-height:1.7;
-}
-.ai-result-box li{margin-left:18px;margin-bottom:6px;}
-.ai-meta{
-  font-family:'Orbitron',sans-serif;font-size:0.52rem;
-  letter-spacing:2px;color:rgba(0,212,255,0.55);margin-bottom:14px;
-}
-.ai-loading{color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:0.7rem;letter-spacing:2px;}
-.ai-error{color:#ff8f8f;}
-@media(max-width:900px){
-  .ai-workspace-layout{grid-template-columns:1fr;}
-}
-
 /* CTA */
 .cta{
   position:relative;z-index:2;text-align:center;
@@ -590,7 +479,6 @@ footer{
     <li><a href="#features">Features</a></li>
     <li><a href="#how">Process</a></li>
     <li><a href="#ai">AI Engine</a></li>
-    <li><a href="#ai-module" id="navAiModule">AI Module</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a class="nav-cta" href="#contact">FREE DEMO</a>
@@ -724,49 +612,13 @@ footer{
       <span class="chip">Auto-Reports</span>
       <span class="chip">WhatsApp AI Bot</span>
     </div>
-    <button type="button" class="btn-glow" id="openAiModule">EXPLORE AI FEATURES</button>
+    <button class="btn-glow">EXPLORE AI FEATURES</button>
   </div>
   <div class="ai-canvas-box">
     <div class="ai-badge"><span class="live-dot"></span>LIVE AI ENGINE</div>
     <canvas id="aiCanvas"></canvas>
   </div>
 </div>
-
-<!-- AI MODULE (integrated tools) -->
-<section class="ai-module-sec" id="ai-module" aria-label="Edvieye AI Module">
-  <div class="ai-module-panel">
-    <div class="ai-module-top">
-      <div>
-        <div class="sec-eyebrow">Edvieye Intelligence</div>
-        <h2 class="sec-title">AI <em>Module</em> — All Tools</h2>
-        <p class="sec-sub" style="margin-bottom:0;">Click any tool below. Task prioritization, schedule reminders, performance insights, workload analysis, class analytics, lesson plans, and teaching suggestions — ETNA-ready sync.</p>
-      </div>
-      <div class="ai-module-badges">
-        <span class="ai-status-pill" id="aiEngineStatus" data-mode="demo">AI LOADING…</span>
-        <span class="ai-etna-pill" id="aiEtnaStatus" data-state="off">ETNA · READY</span>
-      </div>
-    </div>
-
-    <div id="aiHub" class="ai-tools-grid"></div>
-
-    <div id="aiWorkspace" class="ai-workspace" hidden>
-      <div class="ai-workspace-head">
-        <div>
-          <h3 class="sec-title" id="aiToolTitle" style="font-size:1.4rem;margin-bottom:6px;">Tool</h3>
-          <p id="aiToolDesc" style="color:var(--muted);font-size:0.9rem;"></p>
-        </div>
-        <button type="button" class="ai-back-btn" id="aiBackBtn">← ALL AI TOOLS</button>
-      </div>
-      <div class="ai-workspace-layout">
-        <form class="ai-tool-form" id="aiToolForm" onsubmit="return false;"></form>
-        <div>
-          <button type="button" class="btn-glow" id="aiRunBtn" style="margin-bottom:14px;">GENERATE WITH AI</button>
-          <div class="ai-result-box" id="aiResult" aria-live="polite"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- CTA -->
 <div class="cta" id="contact">
@@ -843,8 +695,7 @@ footer{
       <h4>Product</h4>
       <ul>
         <li><a href="#">Features</a></li>
-        <li><a href="#ai-module" data-open-ai>AI Module</a></li>
-        <li><a href="#ai">AI Engine</a></li>
+        <li><a href="#">AI Engine</a></li>
         <li><a href="#">Live Demo</a></li>
         <li><a href="#">Integrations</a></li>
         <li><a href="#">Changelog</a></li>
@@ -1257,6 +1108,5 @@ if(demoForm&&formStatus){
 }
 
 </script>
-<script src="/ai-module.js" defer></script>
 </body>
 </html>

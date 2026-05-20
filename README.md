@@ -111,25 +111,8 @@ npm run preview
 npm run start
 ```
 
-## AI Module
-
-Integrated in the main site (`index.html`). Click **AI Module** in the nav or **EXPLORE AI FEATURES** to open:
-
-- Task Prioritization
-- Schedule Reminders
-- Performance Insights
-- Workload Analysis
-- Class Performance
-- Lesson Plan Generator
-- Teaching Suggestions
-
-**Demo mode** works without an API key. For live AI, set `OPENAI_API_KEY` in `.env`. Optional ETNA webhook: `ETNA_API_URL`.
-
 ## API Endpoints
 
-- `GET /api/ai/status` - AI engine status (live vs demo)
-- `GET /api/ai/tools` - list of AI tool IDs
-- `POST /api/ai/:tool` - run a tool (`task-prioritize`, `lesson-plan`, etc.)
 - `GET /api/health` - health/status check
 - `POST /api/admin/login` - login to the admin dashboard
 - `GET /api/admin/leads` - view saved demo requests after admin login
