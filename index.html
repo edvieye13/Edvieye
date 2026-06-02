@@ -111,8 +111,11 @@ nav{
 @keyframes ringPulse{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.05);}}
 
 .hero-eyeline{
-  display:flex;align-items:center;gap:14px;margin-bottom:22px;
-  font-size:0.62rem;letter-spacing:5px;text-transform:uppercase;color:var(--cyan);
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px;
+  max-width:820px;margin-bottom:22px;
+  font-size:clamp(0.72rem,1.35vw,0.92rem);font-weight:700;letter-spacing:4px;
+  text-transform:uppercase;color:var(--cyan);
+  text-shadow:0 8px 24px rgba(10,132,216,0.16);
 }
 .hero-eyeline::before,.hero-eyeline::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,255,0.4));}
 .hero-eyeline::after{background:linear-gradient(90deg,rgba(0,212,255,0.4),transparent);}
@@ -133,16 +136,16 @@ nav{
   display:block;filter:drop-shadow(0 0 20px rgba(0,200,255,0.4));
 }
 .tagline{
-  font-family:'Orbitron',sans-serif;font-size:0.8rem;letter-spacing:5px;
+  font-family:'Orbitron',sans-serif;font-size:clamp(0.95rem,1.8vw,1.15rem);font-weight:700;letter-spacing:4px;
   color:var(--gold);margin-bottom:24px;text-transform:uppercase;
-  text-shadow:0 0 20px rgba(240,165,0,0.5);animation:goldPulse 3s ease-in-out infinite;
+  text-shadow:0 0 18px rgba(240,165,0,0.38);animation:goldPulse 3s ease-in-out infinite;
 }
 @keyframes goldPulse{0%,100%{opacity:.8;}50%{opacity:1;text-shadow:0 0 30px rgba(240,165,0,0.8);}}
 .hero-desc{
-  max-width:660px;font-size:1.05rem;color:rgba(160,210,255,0.7);
-  line-height:1.85;margin-bottom:52px;
+  max-width:760px;font-size:clamp(1.05rem,2vw,1.22rem);font-weight:600;
+  color:rgba(15,27,53,0.84);line-height:1.82;margin-bottom:52px;
 }
-.hero-desc strong{color:var(--cyan);font-weight:600;}
+.hero-desc strong{color:var(--cyan);font-weight:800;}
 .hero-btns{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;}
 
 /* BUTTONS */
@@ -366,22 +369,35 @@ nav{
 .demo-actions{margin-bottom:0;}
 .btn-glow[disabled]{opacity:.7;pointer-events:none;}
 .btn-whatsapp{
-  border-color:rgba(37,211,102,0.35);
-  color:#7af2ab;background:rgba(37,211,102,0.08);
+  border-color:rgba(37,211,102,0.58);
+  background:linear-gradient(135deg,rgba(37,211,102,0.14),rgba(255,255,255,0.94));
+  color:#128c4a;font-size:0.82rem;font-weight:800;letter-spacing:2.4px;
+  box-shadow:0 14px 30px rgba(37,211,102,0.16);
 }
 .wa-icon{
-  width:1.1em;height:1.1em;flex:none;
+  width:1.25em;height:1.25em;flex:none;
   fill:currentColor;vertical-align:middle;
 }
 .btn-whatsapp:hover{
-  border-color:rgba(37,211,102,0.7);
-  color:#baffd0;box-shadow:0 0 30px rgba(37,211,102,0.24);
+  border-color:#25d366;
+  background:linear-gradient(135deg,rgba(37,211,102,0.18),rgba(255,255,255,1));
+  color:#0f7b43;
+  box-shadow:0 0 30px rgba(37,211,102,0.24),0 16px 32px rgba(37,211,102,0.18);
 }
 .form-note{max-width:880px;margin:0 auto 20px;color:rgba(0,180,255,0.48);font-size:0.78rem;letter-spacing:1px;}
 .cta-contact{
-  max-width:none;margin:0 auto;
-  white-space:nowrap;font-size:0.75rem;
+  max-width:980px;margin:0 auto;
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 12px;
+  white-space:normal;font-size:0.96rem;font-weight:700;letter-spacing:0.6px;line-height:1.8;
+  color:rgba(15,27,53,0.72);word-break:break-word;
 }
+.cta-contact a{color:rgba(10,132,216,0.9);}
+.contact-sep{color:rgba(15,27,53,0.28);font-weight:700;}
+.cta-address{
+  max-width:980px;margin:12px auto 0;
+  font-size:1rem;font-weight:700;line-height:1.8;color:rgba(15,27,53,0.82);
+}
+.cta-address strong{color:var(--blue1);}
 .wa-float{
   position:fixed;right:22px;bottom:22px;z-index:260;
   width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;
@@ -396,6 +412,10 @@ nav{
   .contact-shell{padding:24px 18px;}
   .demo-grid{grid-template-columns:1fr;}
   .cta-btns.demo-actions{flex-direction:column;}
+  .cta-btns.demo-actions .btn-glow,
+  .cta-btns.demo-actions .btn-whatsapp{width:100%;}
+  .cta-contact{font-size:0.9rem;gap:6px 10px;}
+  .cta-address{font-size:0.96rem;padding:0 6px;}
   .wa-float{right:16px;bottom:16px;width:58px;height:58px;}
 }
 
@@ -416,16 +436,19 @@ footer{
 .foot-col li{margin-bottom:10px;}
 .foot-col a{color:var(--muted);text-decoration:none;font-size:0.84rem;transition:color .3s,padding-left .3s;}
 .foot-col a:hover{color:var(--cyan);padding-left:6px;}
+.foot-grid > .foot-col:nth-child(3) li{margin-bottom:12px;}
+.foot-grid > .foot-col:nth-child(3) a{font-size:0.96rem;font-weight:700;color:rgba(15,27,53,0.84);}
 .foot-bot{
   padding-top:22px;border-top:1px solid rgba(0,80,200,0.08);
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
 }
 .foot-copy{color:rgba(40,80,110,0.8);font-size:0.78rem;}
-.socials{display:flex;gap:10px;}
+.socials{display:flex;gap:10px;flex-wrap:wrap;}
 .soc{
-  width:34px;height:34px;border:1px solid rgba(0,100,200,0.2);
+  min-width:44px;width:auto;height:38px;padding:0 16px;border:1px solid rgba(0,100,200,0.2);
   display:flex;align-items:center;justify-content:center;
-  color:var(--muted);font-size:0.75rem;font-weight:700;
+  color:var(--muted);font-size:0.74rem;font-weight:700;letter-spacing:1px;
+  border-radius:999px;
   text-decoration:none;transition:all .3s;font-family:'Orbitron',sans-serif;
 }
 .soc:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:var(--gc);background:rgba(0,212,255,0.05);}
@@ -458,6 +481,10 @@ footer{
   .how-grid{grid-template-columns:1fr;}
   .foot-grid{grid-template-columns:1fr;}
   .hero-logo{height:110px;}
+  .hero-eyeline{gap:8px;letter-spacing:2.8px;}
+  .hero-eyeline::before,.hero-eyeline::after{display:none;}
+  .tagline{letter-spacing:3px;}
+  .hero-desc{font-size:1rem;line-height:1.75;}
 }
 
 /* LIGHT THEME OVERRIDES */
@@ -563,6 +590,19 @@ nav{
 .form-field input::placeholder{color:rgba(100,116,139,0.72);}
 footer{background:rgba(255,255,255,0.64);}
 .soc{border-color:rgba(148,163,184,0.32);}
+.hero-desc{color:rgba(15,27,53,0.84);}
+.btn-ghost.btn-whatsapp{
+  border-color:rgba(37,211,102,0.58);
+  background:linear-gradient(135deg,rgba(37,211,102,0.14),rgba(255,255,255,0.94));
+  color:#128c4a;
+  box-shadow:0 14px 30px rgba(37,211,102,0.16);
+}
+.btn-ghost.btn-whatsapp:hover{
+  border-color:#25d366;
+  background:linear-gradient(135deg,rgba(37,211,102,0.18),rgba(255,255,255,1));
+  color:#0f7b43;
+  box-shadow:0 0 30px rgba(37,211,102,0.24),0 16px 32px rgba(37,211,102,0.18);
+}
 </style>
 </head>
 <body>
@@ -762,17 +802,20 @@ footer{background:rgba(255,255,255,0.64);}
             <path d="M19.11 17.21c-.27-.14-1.58-.78-1.82-.87-.24-.09-.41-.14-.58.14-.17.27-.68.86-.83 1.03-.15.18-.31.2-.58.07-.27-.14-1.12-.41-2.13-1.3-.79-.7-1.33-1.57-1.49-1.83-.15-.27-.02-.41.12-.55.12-.12.27-.31.41-.46.14-.15.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.58-1.39-.79-1.91-.21-.5-.42-.43-.58-.44h-.49c-.17 0-.45.07-.68.34-.23.27-.88.86-.88 2.1 0 1.24.9 2.43 1.03 2.59.14.18 1.76 2.69 4.26 3.77.59.26 1.06.42 1.42.53.6.19 1.15.17 1.59.1.49-.07 1.58-.65 1.81-1.28.22-.63.22-1.17.15-1.28-.05-.1-.22-.17-.48-.31Z"/>
             <path d="M16.03 3.2c-6.95 0-12.58 5.62-12.58 12.55 0 2.21.58 4.37 1.67 6.28L3.2 28.8l7-1.83a12.6 12.6 0 0 0 5.83 1.47h.01c6.94 0 12.57-5.62 12.57-12.56 0-3.36-1.31-6.52-3.68-8.89A12.5 12.5 0 0 0 16.03 3.2Zm0 23.11h-.01a10.5 10.5 0 0 1-5.36-1.47l-.38-.22-4.16 1.09 1.11-4.05-.25-.41a10.41 10.41 0 0 1-1.61-5.48c0-5.79 4.72-10.5 10.53-10.5 2.81 0 5.45 1.09 7.44 3.08a10.43 10.43 0 0 1 3.08 7.43c0 5.79-4.73 10.53-10.39 10.53Z"/>
           </svg>
-          WHATSAPP
+          WHATSAPP US
         </a>
       </div>
     </form>
   </div>
   <div class="form-note">Prefer chatting first? Use WhatsApp and we will reply directly there.</div>
   <p class="cta-contact">
-    <a href="mailto:info@edvieye.com">info@edvieye.com</a> &nbsp;.&nbsp;
-    <a href="https://edvieye.com" target="_blank" rel="noreferrer">www.edvieye.com</a> &nbsp;.&nbsp;
-    Edvieye Private Limited, India
+    <a href="mailto:info@edvieye.com">info@edvieye.com</a>
+    <span class="contact-sep">&middot;</span>
+    <a href="https://edvieye.com" target="_blank" rel="noreferrer">www.edvieye.com</a>
+    <span class="contact-sep">&middot;</span>
+    <span>Edvieye Private Limited</span>
   </p>
+  <p class="cta-address"><strong>Registered Office:</strong> 2917 Vataman Chokadi, Vataman, Dholka, Ahmedabad, Gujarat, India - 382265</p>
 </div>
 
 <a
@@ -810,7 +853,10 @@ footer{background:rgba(255,255,255,0.64);}
       <ul>
         <li><a href="#">Primary Schools</a></li>
         <li><a href="#">Secondary Schools</a></li>
-        <li><a href="#">CBSE / ICSE</a></li>
+        <li><a href="#">CBSE</a></li>
+        <li><a href="#">Gujarat Board</a></li>
+        <li><a href="#">Colleges</a></li>
+        <li><a href="#">Universities</a></li>
         <li><a href="#">Coaching Centres</a></li>
         <li><a href="#">Multi-Branch</a></li>
       </ul>
@@ -827,12 +873,10 @@ footer{background:rgba(255,255,255,0.64);}
     </div>
   </div>
   <div class="foot-bot">
-    <p class="foot-copy">© 2026 Edvieye Private Limited. All rights reserved. &nbsp;|&nbsp; AI Flow, Education Glow</p>
+    <p class="foot-copy">&copy; 2026 Edvieye Private Limited. All rights reserved. &nbsp;|&nbsp; AI Flow, Education Glow</p>
     <div class="socials">
-      <a class="soc" href="#">LI</a>
-      <a class="soc" href="#">TW</a>
-      <a class="soc" href="#">YT</a>
-      <a class="soc" href="#">IG</a>
+      <a class="soc" href="https://www.linkedin.com/in/edvieye-private-limited-4683b1409" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="soc" href="https://www.instagram.com/edvieye?igsh=MXFiMmQ2N2o4Ym8zZg==" target="_blank" rel="noreferrer">Instagram</a>
     </div>
   </div>
 </footer>
@@ -1210,6 +1254,90 @@ if(demoForm&&formStatus){
     }
   });
 }
+
+const linkedinUrl='https://www.linkedin.com/in/edvieye-private-limited-4683b1409';
+const instagramUrl='https://www.instagram.com/edvieye?igsh=MXFiMmQ2N2o4Ym8zZg==';
+
+function updateLandingContent(){
+  const heroEyeline=document.querySelector('.hero-eyeline');
+  if(heroEyeline){
+    heroEyeline.innerHTML='Edvieye Private Limited &nbsp;&middot;&nbsp; AI-Powered School ERP &nbsp;&middot;&nbsp; Made in India';
+  }
+
+  const tagline=document.querySelector('.tagline');
+  if(tagline){
+    tagline.textContent='AI Flow, Education Glow';
+  }
+
+  const heroDesc=document.querySelector('.hero-desc');
+  if(heroDesc){
+    heroDesc.innerHTML='Edvieye delivers a <strong>futuristic, all-in-one intelligence platform</strong> built for modern schools - smart attendance, fee automation, predictive analytics, parent communication, and real-time dashboards. All powered by AI.';
+  }
+
+  document.querySelectorAll('.btn-whatsapp').forEach(button=>{
+    const icon=button.querySelector('.wa-icon');
+    button.innerHTML='';
+    if(icon){
+      button.appendChild(icon.cloneNode(true));
+    }
+    button.appendChild(document.createTextNode(' WHATSAPP US'));
+  });
+
+  const ctaContact=document.querySelector('.cta-contact');
+  if(ctaContact){
+    ctaContact.innerHTML=[
+      '<a href="mailto:info@edvieye.com">info@edvieye.com</a>',
+      '<span class="contact-sep">&middot;</span>',
+      '<a href="https://edvieye.com" target="_blank" rel="noreferrer">www.edvieye.com</a>',
+      '<span class="contact-sep">&middot;</span>',
+      '<span>Edvieye Private Limited</span>'
+    ].join('');
+
+    let ctaAddress=ctaContact.nextElementSibling;
+    if(!ctaAddress||!ctaAddress.classList.contains('cta-address')){
+      ctaAddress=document.createElement('p');
+      ctaAddress.className='cta-address';
+      ctaContact.insertAdjacentElement('afterend',ctaAddress);
+    }
+    ctaAddress.innerHTML='<strong>Registered Office:</strong> 2917 Vataman Chokadi, Vataman, Dholka, Ahmedabad, Gujarat, India - 382265';
+  }
+
+  const footerColumns=Array.from(document.querySelectorAll('.foot-col'));
+  const solutionsColumn=footerColumns.find(column=>{
+    const heading=column.querySelector('h4');
+    return heading&&heading.textContent.trim().toLowerCase()==='solutions';
+  });
+  if(solutionsColumn){
+    const list=solutionsColumn.querySelector('ul');
+    if(list){
+      list.innerHTML=[
+        '<li><a href="#">Primary Schools</a></li>',
+        '<li><a href="#">Secondary Schools</a></li>',
+        '<li><a href="#">CBSE</a></li>',
+        '<li><a href="#">Gujarat Board</a></li>',
+        '<li><a href="#">Colleges</a></li>',
+        '<li><a href="#">Universities</a></li>',
+        '<li><a href="#">Coaching Centres</a></li>',
+        '<li><a href="#">Multi-Branch</a></li>'
+      ].join('');
+    }
+  }
+
+  const footerCopy=document.querySelector('.foot-copy');
+  if(footerCopy){
+    footerCopy.innerHTML='&copy; 2026 Edvieye Private Limited. All rights reserved. &nbsp;|&nbsp; AI Flow, Education Glow';
+  }
+
+  const socials=document.querySelector('.socials');
+  if(socials){
+    socials.innerHTML=[
+      `<a class="soc" href="${linkedinUrl}" target="_blank" rel="noreferrer">LinkedIn</a>`,
+      `<a class="soc" href="${instagramUrl}" target="_blank" rel="noreferrer">Instagram</a>`
+    ].join('');
+  }
+}
+
+updateLandingContent();
 
 </script>
 </body>
