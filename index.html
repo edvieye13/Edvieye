@@ -997,7 +997,8 @@ footer{background:rgba(255,255,255,0.64);}
         <li><a href="#">About Us</a></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">Careers</a></li>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms &amp; Conditions</a></li>
         <li><a href="#">Contact Us</a></li>
       </ul>
     </div>
@@ -1469,6 +1470,50 @@ function updateLandingContent(){
 
 updateLandingContent();
 
+</script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9990;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid rgba(26,79,255,0.14);box-shadow:0 -8px 40px rgba(15,23,42,0.10);
+  padding:18px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;">
+  <div style="flex:1;min-width:200px;">
+    <p style="font-size:0.83rem;color:#374151;line-height:1.65;margin:0;">
+      We use cookies to improve your experience and analyse website traffic.
+      By clicking <strong>Accept</strong>, you consent to our use of cookies as described in our
+      <a href="/privacy#cookies" style="color:#0a84d8;text-decoration:none;font-weight:600;">Cookie &amp; Privacy Policy</a>.
+    </p>
+  </div>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button id="cookieDecline" onclick="cookieConsent('declined')"
+      style="padding:9px 22px;border:1px solid rgba(26,79,255,0.22);background:transparent;
+        color:#5f6f85;font-family:'Exo 2',sans-serif;font-size:0.8rem;font-weight:600;
+        letter-spacing:0.5px;cursor:pointer;transition:all .25s;">
+      Decline
+    </button>
+    <button id="cookieAccept" onclick="cookieConsent('accepted')"
+      style="padding:9px 22px;border:none;
+        background:linear-gradient(135deg,#1a4fff,#0a84d8);
+        color:#fff;font-family:'Exo 2',sans-serif;font-size:0.8rem;font-weight:700;
+        letter-spacing:0.5px;cursor:pointer;transition:all .25s;">
+      Accept All
+    </button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var banner=document.getElementById('cookieBanner');
+  var consent=localStorage.getItem('edvieye_cookie_consent');
+  if(!consent){
+    banner.style.display='flex';
+  }
+})();
+function cookieConsent(choice){
+  localStorage.setItem('edvieye_cookie_consent',choice);
+  var banner=document.getElementById('cookieBanner');
+  if(banner){banner.style.display='none';}
+}
 </script>
 </body>
 </html>

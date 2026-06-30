@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms &amp; Conditions — Edvieye Private Limited</title>
+<meta name="description" content="Terms and Conditions governing use of the Edvieye website and services.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://edvieye.com/terms">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue1:#1a4fff;
+  --blue2:#0066ff;
+  --cyan:#0a84d8;
+  --cyan2:#1aa3e8;
+  --white:#0f1b35;
+  --muted:#5f6f85;
+  --border:rgba(29,78,216,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background: radial-gradient(circle at top, rgba(56,189,248,0.10), transparent 35%),
+              linear-gradient(180deg,#ffffff 0%,#f7fbff 55%,#eef5ff 100%);
+  color:var(--white);
+  font-family:'Exo 2',sans-serif;
+  min-height:100vh;
+}
+
+/* NAV */
+nav{
+  position:sticky;top:0;width:100%;z-index:200;
+  padding:14px 6%;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(148,163,184,0.24);
+  box-shadow:0 4px 20px rgba(15,23,42,0.06);
+}
+.nav-logo{height:44px;width:auto;filter:drop-shadow(0 0 10px rgba(0,132,216,0.4));}
+.nav-back{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--cyan);text-decoration:none;
+  font-size:0.8rem;letter-spacing:1.5px;font-weight:600;text-transform:uppercase;
+  transition:color .25s;
+}
+.nav-back:hover{color:var(--blue1);}
+.nav-back::before{content:'←';font-size:1rem;}
+
+/* HERO STRIP */
+.page-hero{
+  background:linear-gradient(135deg,rgba(26,79,255,0.06),rgba(10,132,216,0.04));
+  border-bottom:1px solid var(--border);
+  padding:52px 6% 44px;
+  text-align:center;
+}
+.page-hero .eyebrow{
+  display:inline-block;margin-bottom:12px;
+  padding:4px 16px;border:1px solid rgba(10,132,216,0.25);
+  font-family:'Orbitron',sans-serif;font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--cyan);background:rgba(10,132,216,0.06);
+}
+.page-hero h1{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(1.8rem,4vw,3rem);font-weight:700;
+  color:var(--white);margin-bottom:12px;
+}
+.page-hero p{color:var(--muted);font-size:0.95rem;max-width:540px;margin:0 auto;}
+.page-hero .updated{
+  margin-top:16px;font-size:0.78rem;color:rgba(95,111,133,0.7);
+}
+
+/* CONTENT */
+.content{max-width:820px;margin:0 auto;padding:56px 6% 80px;}
+
+.toc{
+  background:rgba(255,255,255,0.9);border:1px solid var(--border);
+  padding:24px 28px;margin-bottom:44px;
+  border-left:3px solid var(--cyan);
+}
+.toc h3{
+  font-family:'Orbitron',sans-serif;font-size:0.68rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:14px;
+}
+.toc ol{padding-left:18px;}
+.toc li{margin-bottom:6px;}
+.toc a{color:var(--muted);text-decoration:none;font-size:0.88rem;transition:color .2s;}
+.toc a:hover{color:var(--cyan);}
+
+section.policy{margin-bottom:44px;}
+section.policy h2{
+  font-family:'Orbitron',sans-serif;
+  font-size:1.05rem;font-weight:700;letter-spacing:0.5px;
+  color:var(--white);margin-bottom:14px;padding-bottom:10px;
+  border-bottom:1px solid var(--border);
+  scroll-margin-top:80px;
+}
+section.policy p{
+  color:var(--muted);font-size:0.93rem;line-height:1.85;margin-bottom:14px;
+}
+section.policy ul,section.policy ol{
+  color:var(--muted);font-size:0.93rem;line-height:1.85;
+  padding-left:22px;margin-bottom:14px;
+}
+section.policy li{margin-bottom:6px;}
+section.policy strong{color:var(--white);font-weight:600;}
+
+.highlight-box{
+  background:rgba(10,132,216,0.06);border:1px solid rgba(10,132,216,0.18);
+  padding:18px 22px;margin:18px 0;
+  font-size:0.88rem;color:var(--muted);line-height:1.75;
+}
+.highlight-box strong{color:var(--cyan);}
+
+.warning-box{
+  background:rgba(255,150,50,0.06);border:1px solid rgba(255,150,50,0.22);
+  padding:18px 22px;margin:18px 0;
+  font-size:0.88rem;color:var(--muted);line-height:1.75;
+}
+
+/* FOOTER */
+footer{
+  background:rgba(255,255,255,0.8);
+  border-top:1px solid var(--border);
+  padding:32px 6%;text-align:center;
+}
+footer p{color:rgba(95,111,133,0.7);font-size:0.82rem;}
+footer a{color:var(--cyan);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+footer .foot-links{display:flex;justify-content:center;gap:24px;margin-bottom:12px;font-size:0.85rem;}
+
+@media(max-width:640px){
+  .page-hero{padding:36px 5% 30px;}
+  .content{padding:36px 5% 60px;}
+  .foot-links{flex-direction:column;align-items:center;gap:12px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <img class="nav-logo" src="/edvieye-logo-transparent.png" alt="Edvieye">
+  <a class="nav-back" href="/">Back to Home</a>
+</nav>
+
+<div class="page-hero">
+  <div class="eyebrow">Legal</div>
+  <h1>Terms &amp; Conditions</h1>
+  <p>Please read these terms carefully before using the Edvieye website or services.</p>
+  <p class="updated">Last updated: June 30, 2026 &nbsp;|&nbsp; Effective date: June 30, 2026</p>
+</div>
+
+<div class="content">
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#acceptance">Acceptance of Terms</a></li>
+      <li><a href="#about-us">About Edvieye</a></li>
+      <li><a href="#services">Our Services</a></li>
+      <li><a href="#website-use">Website Use</a></li>
+      <li><a href="#demo-requests">Demo Requests &amp; Enquiries</a></li>
+      <li><a href="#ip">Intellectual Property</a></li>
+      <li><a href="#disclaimer">Disclaimers</a></li>
+      <li><a href="#liability">Limitation of Liability</a></li>
+      <li><a href="#third-party">Third-Party Links &amp; Services</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#governing-law">Governing Law &amp; Dispute Resolution</a></li>
+      <li><a href="#changes">Changes to Terms</a></li>
+      <li><a href="#contact-us">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <div class="highlight-box">
+    <strong>Plain-language summary:</strong> By using our website you agree to these terms. Our website is for informational purposes and demo requests. We own all content on this site. Our liability is limited. Indian law governs these terms.
+  </div>
+
+  <!-- 1 -->
+  <section class="policy" id="acceptance">
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing or using the Edvieye website at <a href="https://edvieye.com" style="color:var(--cyan);">edvieye.com</a> (the "<strong>Website</strong>"), you confirm that you have read, understood, and agree to be bound by these Terms &amp; Conditions ("<strong>Terms</strong>") and our <a href="/privacy" style="color:var(--cyan);">Privacy Policy</a>.</p>
+    <p>If you do not agree to these Terms, please do not use the Website. Use of the Website on behalf of an organisation constitutes acceptance by that organisation.</p>
+    <p>These Terms apply to all visitors, users, and others who access or use the Website.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="policy" id="about-us">
+    <h2>2. About Edvieye</h2>
+    <p><strong>Edvieye Private Limited</strong> is a company incorporated under the Companies Act, 2013 in India.</p>
+    <p><strong>Registered Office:</strong> 2917 Vataman Chokadi, Vataman, Dholka, Ahmedabad, Gujarat, India – 382265</p>
+    <p><strong>Email:</strong> <a href="mailto:info@edvieye.com" style="color:var(--cyan);">info@edvieye.com</a> &nbsp;|&nbsp; <strong>Phone:</strong> <a href="tel:+917623818201" style="color:var(--cyan);">+91 7623818201</a></p>
+  </section>
+
+  <!-- 3 -->
+  <section class="policy" id="services">
+    <h2>3. Our Services</h2>
+    <p>Edvieye provides an AI-powered School ERP platform for educational institutions, including modules for:</p>
+    <ul>
+      <li>Smart Attendance (AI facial recognition &amp; RFID)</li>
+      <li>Fee Automation and online payments</li>
+      <li>Predictive Analytics and AI reporting</li>
+      <li>Parent Super Portal</li>
+      <li>Academic Management and timetabling</li>
+      <li>Transport &amp; GPS tracking</li>
+      <li>Library Management</li>
+      <li>Staff &amp; HR Management</li>
+    </ul>
+    <p>The Website serves as an informational and lead-generation platform. Actual software services are subject to separate Software Service Agreements entered into between Edvieye and client institutions.</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="policy" id="website-use">
+    <h2>4. Website Use</h2>
+    <p>You agree to use the Website only for lawful purposes. You must not:</p>
+    <ul>
+      <li>Use the Website in any way that breaches any applicable law or regulation.</li>
+      <li>Use the Website to transmit unsolicited commercial communications (spam).</li>
+      <li>Attempt to gain unauthorised access to any part of the Website, its server, or any server, computer, or database connected to the Website.</li>
+      <li>Attack the Website via a denial-of-service attack or any other disruptive means.</li>
+      <li>Copy, reproduce, or republish any content from the Website without our prior written consent.</li>
+      <li>Use any automated tools (scrapers, bots, crawlers) to access the Website without our prior written consent.</li>
+      <li>Introduce viruses, trojans, worms, or other malicious code onto the Website.</li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section class="policy" id="demo-requests">
+    <h2>5. Demo Requests &amp; Enquiries</h2>
+    <p>When you submit a demo request or contact form on our Website, you agree to:</p>
+    <ul>
+      <li>Provide accurate and complete information about yourself and your organisation.</li>
+      <li>Be contacted by Edvieye representatives via email, phone, or WhatsApp regarding your enquiry.</li>
+      <li>Receive information about Edvieye products and services related to your request.</li>
+    </ul>
+    <p>Submitting a demo request does not create any binding agreement to purchase our services. A separate written agreement is required before any commercial relationship is established.</p>
+    <p>We reserve the right to decline demo requests at our sole discretion without providing a reason.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="policy" id="ip">
+    <h2>6. Intellectual Property</h2>
+    <p>All content on this Website — including but not limited to text, graphics, logos, images, icons, animations, data, software, and the overall design — is the property of <strong>Edvieye Private Limited</strong> or its content suppliers and is protected by Indian and international intellectual property laws.</p>
+    <p>The <strong>Edvieye</strong> name, logo, and tagline "AI Flow, Education Glow" are trademarks or service marks of Edvieye Private Limited.</p>
+    <p>You are granted a limited, non-exclusive, non-transferable licence to access and view the Website content for your personal, non-commercial evaluation purposes only. You may not:</p>
+    <ul>
+      <li>Reproduce, distribute, or publicly display any part of the Website.</li>
+      <li>Modify or create derivative works based on Website content.</li>
+      <li>Use any Edvieye trademark, logo, or branding without prior written permission.</li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section class="policy" id="disclaimer">
+    <h2>7. Disclaimers</h2>
+    <div class="warning-box">
+      The Website and its content are provided on an "<strong>as is</strong>" and "<strong>as available</strong>" basis without any warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.
+    </div>
+    <p>Edvieye does not warrant that:</p>
+    <ul>
+      <li>The Website will be uninterrupted, error-free, or free of viruses or other harmful components.</li>
+      <li>The information on the Website is complete, accurate, or up to date.</li>
+      <li>Any specific result or outcome will be achieved by using our products or services.</li>
+    </ul>
+    <p>Statistics and figures displayed on the Website (number of schools, students, uptime etc.) are indicative and subject to change. They do not constitute contractual commitments.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="policy" id="liability">
+    <h2>8. Limitation of Liability</h2>
+    <p>To the fullest extent permitted by applicable law, <strong>Edvieye Private Limited</strong>, its directors, officers, employees, agents, and partners shall not be liable for any:</p>
+    <ul>
+      <li>Indirect, incidental, special, consequential, or punitive damages.</li>
+      <li>Loss of profits, data, goodwill, or business opportunities.</li>
+      <li>Damages resulting from your use of or inability to use the Website.</li>
+      <li>Unauthorised access to or alteration of your transmissions or data.</li>
+    </ul>
+    <p>Where liability cannot be excluded by law, our total liability to you for any claim arising out of or in connection with the Website shall not exceed <strong>INR 5,000 (Five Thousand Rupees)</strong>.</p>
+    <p>Nothing in these Terms excludes or limits liability for fraud, death, or personal injury caused by our negligence, where such exclusion is not permitted by law.</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="policy" id="third-party">
+    <h2>9. Third-Party Links &amp; Services</h2>
+    <p>The Website may contain links to third-party websites or services (including WhatsApp, LinkedIn, Instagram, and email platforms). These links are provided for your convenience only.</p>
+    <p>Edvieye does not control these third-party sites and is not responsible for their content, privacy practices, or availability. Accessing third-party links is done at your own risk and is subject to their respective terms and privacy policies.</p>
+    <p>We use the following third-party services on this Website:</p>
+    <ul>
+      <li><strong>FormSubmit (formsubmit.co):</strong> For processing and delivering demo request form submissions via email.</li>
+      <li><strong>Google Fonts:</strong> For typography (Orbitron and Exo 2 fonts).</li>
+      <li><strong>WhatsApp (Meta):</strong> As an optional communication channel.</li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section class="policy" id="privacy">
+    <h2>10. Privacy</h2>
+    <p>Your use of the Website is also governed by our <a href="/privacy" style="color:var(--cyan);">Privacy Policy</a>, which is incorporated into these Terms by reference. Please review the Privacy Policy to understand our practices regarding the collection, use, and disclosure of your personal data.</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="policy" id="governing-law">
+    <h2>11. Governing Law &amp; Dispute Resolution</h2>
+    <p>These Terms and any dispute or claim arising out of or in connection with them (including non-contractual disputes or claims) shall be governed by and construed in accordance with the laws of <strong>India</strong>.</p>
+    <p>The courts of <strong>Ahmedabad, Gujarat, India</strong> shall have exclusive jurisdiction over any disputes arising in connection with these Terms or your use of the Website, subject to the following:</p>
+    <p><strong>Informal Resolution:</strong> Before initiating any formal proceedings, you agree to contact us at <a href="mailto:info@edvieye.com" style="color:var(--cyan);">info@edvieye.com</a> to attempt to resolve the dispute informally. We will try to resolve disputes within 30 days of receiving notice.</p>
+    <p><strong>Consumer Protection:</strong> Nothing in these Terms affects your statutory rights under the Consumer Protection Act, 2019 or any other applicable Indian consumer protection law.</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="policy" id="changes">
+    <h2>12. Changes to Terms</h2>
+    <p>We reserve the right to modify these Terms at any time. When we make material changes, we will update the "Last updated" date at the top of this page.</p>
+    <p>It is your responsibility to review these Terms periodically. Your continued use of the Website after any changes are posted constitutes your acceptance of the revised Terms.</p>
+    <p>If you disagree with the revised Terms, please discontinue use of the Website.</p>
+  </section>
+
+  <!-- 13 -->
+  <section class="policy" id="contact-us">
+    <h2>13. Contact Us</h2>
+    <p>If you have any questions about these Terms &amp; Conditions, please contact us:</p>
+    <div class="highlight-box">
+      <strong>Edvieye Private Limited</strong><br>
+      2917 Vataman Chokadi, Vataman, Dholka,<br>
+      Ahmedabad, Gujarat, India – 382265<br><br>
+      Email: <a href="mailto:info@edvieye.com" style="color:var(--cyan);">info@edvieye.com</a><br>
+      Phone: <a href="tel:+917623818201" style="color:var(--cyan);">+91 7623818201</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="foot-links">
+    <a href="/">Home</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms &amp; Conditions</a>
+    <a href="mailto:info@edvieye.com">Contact</a>
+  </div>
+  <p>&copy; 2026 Edvieye Private Limited. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
