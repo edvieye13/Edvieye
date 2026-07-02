@@ -180,10 +180,13 @@ body{
 .nav-inner{
   width:100%;max-width:1200px;margin:0 auto;
   padding:0 40px;
+  position:relative;
   display:flex;align-items:center;justify-content:space-between;gap:32px;
 }
 .nav-logo{
+  position:absolute;left:50%;top:50%;
   height:40px;width:auto;flex-shrink:0;
+  transform:translate(-50%,-50%);
 }
 .nav-links{
   display:flex;align-items:center;gap:32px;list-style:none;
