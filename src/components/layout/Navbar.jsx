@@ -40,7 +40,7 @@ function Navbar() {
 
         <a
           href="#"
-          className="group absolute left-1/2 top-1/2 z-10 flex shrink-0 -translate-x-1/2 -translate-y-1/2 items-center px-1 py-1"
+          className="group relative z-10 flex shrink-0 items-center px-1 py-1"
           aria-label="Edvieye home"
         >
           <img

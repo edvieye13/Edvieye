@@ -28,6 +28,7 @@ function LandingPage() {
 
       <main>
         <section className="hero">
+          <img className="hero-logo" src="/edvieye-logo-transparent.png" alt="Edvieye" />
           <p className="eyebrow">Edvieye Private Limited</p>
           <h1>AI-Powered ERP for Schools</h1>
           <p className="subtitle">
