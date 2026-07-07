@@ -212,31 +212,60 @@ a{text-decoration:none;}
 ═══════════════════════════════════════════════ */
 .hero{
   min-height:100vh;
-  background:linear-gradient(150deg,#060f1e 0%,#0b1f48 40%,#0e2a62 70%,#0b1f48 100%);
+  background:#060f1e; /* fallback while video loads */
   position:relative;overflow:hidden;
   display:flex;align-items:center;
   padding:110px 40px 80px;
 }
-/* decorative blobs */
+/* ── video background ── */
+.hero-video-wrap{
+  position:absolute;inset:0;z-index:0;overflow:hidden;
+  background:linear-gradient(150deg,#060f1e 0%,#0b1f48 40%,#0e2a62 70%,#0b1f48 100%);
+}
+#ytBg{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:100vw;height:56.25vw;          /* 16:9 */
+  min-height:100vh;min-width:177.78vh; /* fill vertically when narrow */
+  pointer-events:none;
+}
+#ytBg iframe{
+  width:100%;height:100%;border:0;
+}
+.hero-video-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(150deg,
+    rgba(4,8,18,.88) 0%,
+    rgba(8,18,46,.82) 45%,
+    rgba(10,24,58,.78) 100%);
+}
+/* decorative blobs — sit above video overlay */
 .hero::before{
-  content:'';position:absolute;inset:0;
+  content:'';position:absolute;inset:0;z-index:2;
   background:
-    radial-gradient(ellipse 70% 60% at 80% 30%,rgba(8,145,178,.22),transparent 65%),
-    radial-gradient(ellipse 50% 50% at 20% 70%,rgba(37,99,235,.18),transparent 60%),
-    radial-gradient(ellipse 40% 40% at 60% 90%,rgba(99,102,241,.12),transparent 55%);
+    radial-gradient(ellipse 70% 60% at 80% 30%,rgba(8,145,178,.20),transparent 65%),
+    radial-gradient(ellipse 50% 50% at 20% 70%,rgba(37,99,235,.16),transparent 60%),
+    radial-gradient(ellipse 40% 40% at 60% 90%,rgba(99,102,241,.10),transparent 55%);
   pointer-events:none;
 }
 /* dot grid */
 .hero::after{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);
+  content:'';position:absolute;inset:0;z-index:3;
+  background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);
   background-size:36px 36px;
   pointer-events:none;
 }
 .hero-inner{
-  position:relative;z-index:1;
+  position:relative;z-index:4;
   max-width:1180px;margin:0 auto;width:100%;
   display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+}
+/* mobile: hide YT video, show gradient only */
+@media(max-width:768px){
+  #ytBg{display:none;}
+  .hero-video-wrap{
+    background:linear-gradient(150deg,#060f1e 0%,#0b1f48 50%,#0e2a62 100%);
+  }
 }
 .hero-content{}
 .hero-badge{
@@ -734,6 +763,11 @@ a{text-decoration:none;}
 
 <!-- ═══ HERO ═══════════════════════════════════════ -->
 <section class="hero">
+  <!-- Video Background -->
+  <div class="hero-video-wrap">
+    <div id="ytBg"></div>
+    <div class="hero-video-overlay"></div>
+  </div>
   <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-badge">
@@ -1307,6 +1341,39 @@ if(demoForm&&formStatus){
       demoForm.reset();
     }catch(e){formStatus.dataset.state='error';formStatus.textContent=e.message||'Unable to submit right now.';}
     finally{btn.disabled=false;btn.textContent=label;}
+  });
+}
+
+// ── YOUTUBE VIDEO BACKGROUND ───────────────────────
+(function(){
+  // Only load on desktop; mobile uses CSS gradient fallback
+  if(window.innerWidth<=768)return;
+  var ytScript=document.createElement('script');
+  ytScript.src='https://www.youtube.com/iframe_api';
+  document.head.appendChild(ytScript);
+})();
+var ytBgPlayer;
+function onYouTubeIframeAPIReady(){
+  var isMobile=window.innerWidth<=768;
+  if(isMobile)return;
+  ytBgPlayer=new YT.Player('ytBg',{
+    videoId:'2ONkWbY7VE4',       // School Stock Footage - Free HD, No Copyright
+    playerVars:{
+      autoplay:1,mute:1,loop:1,
+      playlist:'2ONkWbY7VE4',
+      controls:0,showinfo:0,rel:0,
+      iv_load_policy:3,cc_load_policy:0,
+      disablekb:1,fs:0,
+      modestbranding:1,playsinline:1,
+      enablejsapi:1,
+      origin:window.location.origin
+    },
+    events:{
+      onReady:function(e){e.target.setVolume(0);e.target.playVideo();},
+      onStateChange:function(e){
+        if(e.data===YT.PlayerState.ENDED)e.target.playVideo();
+      }
+    }
   });
 }
 
