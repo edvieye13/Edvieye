@@ -50,6 +50,28 @@ a {
   padding: 64px 0 40px;
 }
 
+.hero-logo {
+  width: clamp(132px, 18vw, 220px);
+  height: auto;
+  margin: 0 auto 22px;
+  display: block;
+  filter: drop-shadow(0 0 28px rgba(34, 211, 238, 0.38));
+  animation: hero-logo-float 4.2s ease-in-out infinite;
+}
+
+@keyframes hero-logo-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 24px rgba(34, 211, 238, 0.34));
+  }
+
+  50% {
+    transform: translateY(-10px) scale(1.035);
+    filter: drop-shadow(0 0 42px rgba(34, 211, 238, 0.58));
+  }
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: #8fc2ff;
