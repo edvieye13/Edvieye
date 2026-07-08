@@ -222,15 +222,11 @@ a{text-decoration:none;}
   position:absolute;inset:0;z-index:0;overflow:hidden;
   background:linear-gradient(150deg,#060f1e 0%,#0b1f48 40%,#0e2a62 70%,#0b1f48 100%);
 }
-#ytBg{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:100vw;height:56.25vw;          /* 16:9 */
-  min-height:100vh;min-width:177.78vh; /* fill vertically when narrow */
+#heroBgVideo{
+  position:absolute;top:0;left:0;
+  width:100%;height:100%;
+  object-fit:cover;
   pointer-events:none;
-}
-#ytBg iframe{
-  width:100%;height:100%;border:0;
 }
 .hero-video-overlay{
   position:absolute;inset:0;z-index:1;
@@ -260,12 +256,9 @@ a{text-decoration:none;}
   max-width:1180px;margin:0 auto;width:100%;
   display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
 }
-/* mobile: hide YT video, show gradient only */
-@media(max-width:768px){
-  #ytBg{display:none;}
-  .hero-video-wrap{
-    background:linear-gradient(150deg,#060f1e 0%,#0b1f48 50%,#0e2a62 100%);
-  }
+/* on very slow connections, prefers-reduced-motion hides the video */
+@media(prefers-reduced-motion:reduce){
+  #heroBgVideo{display:none;}
 }
 .hero-content{}
 .hero-badge{
@@ -763,9 +756,11 @@ a{text-decoration:none;}
 
 <!-- ═══ HERO ═══════════════════════════════════════ -->
 <section class="hero">
-  <!-- Video Background -->
+  <!-- Video Background — muted+playsinline required for autoplay on iOS -->
   <div class="hero-video-wrap">
-    <div id="ytBg"></div>
+    <video id="heroBgVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="/hero-video.mp4" type="video/mp4">
+    </video>
     <div class="hero-video-overlay"></div>
   </div>
   <div class="hero-inner">
@@ -1341,39 +1336,6 @@ if(demoForm&&formStatus){
       demoForm.reset();
     }catch(e){formStatus.dataset.state='error';formStatus.textContent=e.message||'Unable to submit right now.';}
     finally{btn.disabled=false;btn.textContent=label;}
-  });
-}
-
-// ── YOUTUBE VIDEO BACKGROUND ───────────────────────
-(function(){
-  // Only load on desktop; mobile uses CSS gradient fallback
-  if(window.innerWidth<=768)return;
-  var ytScript=document.createElement('script');
-  ytScript.src='https://www.youtube.com/iframe_api';
-  document.head.appendChild(ytScript);
-})();
-var ytBgPlayer;
-function onYouTubeIframeAPIReady(){
-  var isMobile=window.innerWidth<=768;
-  if(isMobile)return;
-  ytBgPlayer=new YT.Player('ytBg',{
-    videoId:'2ONkWbY7VE4',       // School Stock Footage - Free HD, No Copyright
-    playerVars:{
-      autoplay:1,mute:1,loop:1,
-      playlist:'2ONkWbY7VE4',
-      controls:0,showinfo:0,rel:0,
-      iv_load_policy:3,cc_load_policy:0,
-      disablekb:1,fs:0,
-      modestbranding:1,playsinline:1,
-      enablejsapi:1,
-      origin:window.location.origin
-    },
-    events:{
-      onReady:function(e){e.target.setVolume(0);e.target.playVideo();},
-      onStateChange:function(e){
-        if(e.data===YT.PlayerState.ENDED)e.target.playVideo();
-      }
-    }
   });
 }
 
