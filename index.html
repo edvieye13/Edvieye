@@ -1004,7 +1004,7 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
     <div class="scholar-header reveal">
       <div class="scholar-eyebrow"><span class="scholar-eyebrow-dot"></span>Limited Seats Available</div>
       <h2 class="scholar-title">Edvieye Gujarat<br><span class="gold">Scholarship Program</span></h2>
-      <p class="scholar-sub">Empowering deserving students across Gujarat with cutting-edge AI education, mentorship, and real-world opportunities — absolutely free.</p>
+      <p class="scholar-sub">Empowering deserving school and college students across Gujarat with cutting-edge AI education, mentorship, and real-world opportunities — absolutely free.</p>
     </div>
 
     <!-- Benefits -->
@@ -1064,29 +1064,30 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
             <label class="sfield"><span>Date of Birth *</span><input type="date" name="dob" required></label>
           </div>
           <div class="sform-row">
-            <label class="sfield"><span>Class / Grade *</span>
-              <select name="class_grade" required>
-                <option value="" disabled selected>Select class</option>
-                <option>Class 6</option><option>Class 7</option><option>Class 8</option>
-                <option>Class 9</option><option>Class 10</option><option>Class 11</option>
-                <option>Class 12</option>
+            <label class="sfield"><span>Student Type *</span>
+              <select name="student_type" id="studentType" required>
+                <option value="" disabled selected>School or College?</option>
+                <option value="school">School Student</option>
+                <option value="college">College Student</option>
               </select>
             </label>
-            <label class="sfield"><span>Stream / Subject *</span>
-              <select name="stream" required>
-                <option value="" disabled selected>Select stream</option>
-                <option>Science (PCM)</option><option>Science (PCB)</option>
-                <option>Commerce</option><option>Arts / Humanities</option>
-                <option>General (Middle School)</option>
+            <label class="sfield"><span>Class / Year *</span>
+              <select name="class_grade" id="classGrade" required>
+                <option value="" disabled selected>Select class / year</option>
               </select>
             </label>
           </div>
-          <label class="sfield"><span>School Name *</span><input type="text" name="school_name" placeholder="Enter school name" required></label>
+          <label class="sfield"><span>Stream / Course *</span>
+            <select name="stream" id="streamSelect" required>
+              <option value="" disabled selected>Select stream / course</option>
+            </select>
+          </label>
+          <label class="sfield"><span>School / College Name *</span><input type="text" name="school_name" placeholder="Enter school or college name" required></label>
           <div class="sform-row">
             <label class="sfield"><span>City / District *</span><input type="text" name="city" placeholder="e.g. Ahmedabad, Surat" required></label>
             <label class="sfield"><span>State</span><input type="text" name="state" value="Gujarat" readonly></label>
           </div>
-          <label class="sfield"><span>Parent / Guardian Name *</span><input type="text" name="parent_name" placeholder="Enter parent name" required></label>
+          <label class="sfield"><span>Parent / Guardian Name *</span><input type="text" name="parent_name" placeholder="Enter parent or guardian name" required></label>
           <div class="sform-row">
             <label class="sfield"><span>Mobile Number *</span><input type="tel" name="mobile" placeholder="10-digit mobile" inputmode="tel" required></label>
             <label class="sfield"><span>Email Address *</span><input type="email" name="email" placeholder="Enter email" required></label>
@@ -1103,7 +1104,7 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
       <!-- Right Info -->
       <div class="scholar-info reveal-right">
         <h3 class="scholar-info-title">Why Join the<br><span>Scholarship Program?</span></h3>
-        <p>The Edvieye Gujarat Scholarship Program is designed to identify and nurture the brightest young minds in Gujarat — giving them access to world-class AI tools, mentorship, and opportunities that were previously out of reach.</p>
+        <p>The Edvieye Gujarat Scholarship Program is designed to identify and nurture the brightest young minds in Gujarat — whether you are in school or college — giving you access to world-class AI tools, mentorship, and opportunities that were previously out of reach.</p>
         <div class="scholar-perks">
           <div class="perk-row">
             <div class="perk-icon">🎯</div>
@@ -1125,11 +1126,12 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
         <div class="scholar-eligibility">
           <div class="eligibility-title">Eligibility Criteria</div>
           <ul class="eligibility-list">
-            <li>Currently enrolled in Class 6 to Class 12</li>
-            <li>Student of any recognized school in Gujarat</li>
+            <li>School: Class 6 to Class 12 (any board)</li>
+            <li>College: 1st year to final year (any stream)</li>
+            <li>Enrolled in any recognized institution in Gujarat</li>
             <li>Minimum 60% marks in previous academic year</li>
             <li>Genuine interest in technology and AI</li>
-            <li>Parent / guardian consent required</li>
+            <li>Parent / guardian consent required for school students</li>
           </ul>
         </div>
       </div>
@@ -1588,6 +1590,28 @@ if(demoForm&&formStatus){
   });
 }
 
+/* ── SCHOLARSHIP DROPDOWNS ───────────────────────── */
+(function(){
+  var typeEl=document.getElementById('studentType');
+  var classEl=document.getElementById('classGrade');
+  var streamEl=document.getElementById('streamSelect');
+  if(!typeEl)return;
+  var schoolClasses=['Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12'];
+  var collegeYears=['1st Year','2nd Year','3rd Year','4th Year'];
+  var schoolStreams=['Science (PCM)','Science (PCB)','Commerce','Arts / Humanities','General (Middle School)'];
+  var collegeStreams=['B.Tech / B.E.','B.Sc (Science)','B.Com (Commerce)','B.A (Arts / Humanities)',
+    'BCA (Computer Applications)','MBA / PGDM','M.Tech / M.E.','MCA','Diploma (Engineering)',
+    'Pharmacy (B.Pharm / M.Pharm)','Law (LLB)','Medical (MBBS / BDS)','Other'];
+  function populate(selectEl,opts){
+    selectEl.innerHTML='<option value="" disabled selected>Select</option>';
+    opts.forEach(function(o){var op=document.createElement('option');op.value=o;op.textContent=o;selectEl.appendChild(op);});
+  }
+  typeEl.addEventListener('change',function(){
+    if(this.value==='school'){populate(classEl,schoolClasses);populate(streamEl,schoolStreams);}
+    else{populate(classEl,collegeYears);populate(streamEl,collegeStreams);}
+  });
+})();
+
 /* ── SCHOLARSHIP FORM ────────────────────────────── */
 var scholarForm=document.getElementById('scholarForm');
 var scholarStatus=document.getElementById('scholarStatus');
@@ -1597,6 +1621,7 @@ if(scholarForm&&scholarStatus){
     var btn=scholarForm.querySelector('button[type=submit]'),lbl=btn.textContent;
     var fd=new FormData(scholarForm);
     var p={
+      student_type:String(fd.get('student_type')||'').trim(),
       student_name:String(fd.get('student_name')||'').trim(),
       dob:String(fd.get('dob')||'').trim(),
       class_grade:String(fd.get('class_grade')||'').trim(),
@@ -1610,13 +1635,13 @@ if(scholarForm&&scholarStatus){
       reason:String(fd.get('reason')||'').trim()
     };
     scholarStatus.textContent='';scholarStatus.dataset.state='';
-    if(!p.student_name||!p.dob||!p.class_grade||!p.stream||!p.school_name||!p.city||!p.parent_name||!p.mobile||!p.email){
+    if(!p.student_type||!p.student_name||!p.dob||!p.class_grade||!p.stream||!p.school_name||!p.city||!p.parent_name||!p.mobile||!p.email){
       scholarStatus.dataset.state='error';scholarStatus.textContent='Please fill in all required fields.';return;
     }
     btn.disabled=true;btn.textContent='Submitting…';
     try{
       var body=new URLSearchParams(Object.assign({},p,{
-        _subject:'Scholarship Application — '+p.student_name+' ('+p.class_grade+')',
+        _subject:'Scholarship Application ['+p.student_type+'] — '+p.student_name+' ('+p.class_grade+')',
         _template:'table',_url:'https://edvieye.com/#scholarship'
       }));
       var r=await fetch('https://formsubmit.co/ajax/info@edvieye.com',{
