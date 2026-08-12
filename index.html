@@ -1155,9 +1155,6 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
                 <option>Above ₹2,00,000</option>
               </select>
             </label>
-            <label class="sfield"><span>Why do you deserve this scholarship?</span>
-              <input type="text" name="reason" placeholder="Brief reason (optional)">
-            </label>
           </div>
           <div class="sform-status" id="scholarStatus" aria-live="polite"></div>
           <button class="sform-submit" type="submit">Apply for Scholarship →</button>
@@ -1698,8 +1695,7 @@ if(scholarForm&&scholarStatus){
       parent_name:String(fd.get('parent_name')||'').trim(),
       mobile:String(fd.get('mobile')||'').trim(),
       email:String(fd.get('email')||'').trim(),
-      current_fees:String(fd.get('current_fees')||'').trim(),
-      reason:String(fd.get('reason')||'').trim()
+      current_fees:String(fd.get('current_fees')||'').trim()
     };
     scholarStatus.textContent='';scholarStatus.dataset.state='';
     if(!p.student_type||!p.student_name||!p.dob||!p.class_grade||!p.stream||!p.school_name||!p.city||!p.parent_name||!p.mobile||!p.email||!p.current_fees){
