@@ -1437,15 +1437,19 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
           </div>
           <div class="sform-row">
             <label class="sfield"><span>Current Annual School / College Fees (₹) *</span>
-              <select name="current_fees" required>
+              <select name="current_fees" id="feesSelect" required>
                 <option value="" disabled selected>Select fee range</option>
                 <option>Below ₹15,000</option>
                 <option>₹16,000 – ₹35,000</option>
                 <option>₹36,000 – ₹60,000</option>
                 <option>₹61,000 – ₹80,000</option>
                 <option>₹81,000 – ₹1,00,000</option>
-                <option>Above ₹1,00,000</option>
+                <option value="Above ₹1,00,000">Above ₹1,00,000</option>
               </select>
+            </label>
+            <label class="sfield" id="feesExactWrap" style="display:none;">
+              <span>Enter Exact Annual Fees (₹) *</span>
+              <input type="number" name="current_fees_exact" id="feesExact" placeholder="e.g. 150000" min="100001" inputmode="numeric">
             </label>
           </div>
           <div class="sform-status" id="scholarStatus" aria-live="polite"></div>
@@ -2279,6 +2283,20 @@ if(demoForm&&formStatus){
   });
 })();
 
+/* ── FEES EXACT AMOUNT TOGGLE ────────────────────── */
+(function(){
+  var sel=document.getElementById('feesSelect');
+  var wrap=document.getElementById('feesExactWrap');
+  var inp=document.getElementById('feesExact');
+  if(!sel)return;
+  sel.addEventListener('change',function(){
+    var show=this.value==='Above ₹1,00,000';
+    wrap.style.display=show?'flex':'none';
+    inp.required=show;
+    if(!show)inp.value='';
+  });
+})();
+
 /* ── SCHOLARSHIP DROPDOWNS ───────────────────────── */
 (function(){
   var typeEl=document.getElementById('studentType');
@@ -2321,7 +2339,8 @@ if(scholarForm&&scholarStatus){
       parent_name:String(fd.get('parent_name')||'').trim(),
       mobile:String(fd.get('mobile')||'').trim(),
       email:String(fd.get('email')||'').trim(),
-      current_fees:String(fd.get('current_fees')||'').trim()
+      current_fees:String(fd.get('current_fees')||'').trim(),
+      current_fees_exact:String(fd.get('current_fees_exact')||'').trim()
     };
     scholarStatus.textContent='';scholarStatus.dataset.state='';
     if(!p.student_type||!p.student_name||!p.dob||!p.class_grade||!p.stream||!p.school_name||!p.city||!p.parent_name||!p.mobile||!p.email||!p.current_fees){
