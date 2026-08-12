@@ -635,23 +635,30 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 /* ── SCHOLARSHIP ─────────────────────────────────── */
 .scholar-sec{
   position:relative;overflow:hidden;padding:100px 0;
-  background:linear-gradient(150deg,#020816 0%,#071230 45%,#0c2060 100%);
+  background:linear-gradient(150deg,#0d1b3e 0%,#132456 40%,#1a2f70 70%,#0f2050 100%);
   content-visibility:auto;contain-intrinsic-size:0 900px;
+  border-top:1px solid rgba(251,191,36,.2);
 }
 .scholar-sec::before{
   content:'';position:absolute;inset:0;
-  background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px);
+  background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:32px 32px;pointer-events:none;
 }
+/* top gold accent line */
+.scholar-sec::after{
+  content:'';position:absolute;top:0;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,transparent,#fbbf24,#f59e0b,#fbbf24,transparent);
+  pointer-events:none;
+}
 .scholar-orb-a{
-  position:absolute;width:500px;height:500px;border-radius:50%;pointer-events:none;
-  top:-180px;right:-120px;
-  background:radial-gradient(circle,rgba(251,191,36,.08),transparent 65%);
+  position:absolute;width:600px;height:600px;border-radius:50%;pointer-events:none;
+  top:-200px;right:-150px;
+  background:radial-gradient(circle,rgba(251,191,36,.18),transparent 60%);
 }
 .scholar-orb-b{
-  position:absolute;width:380px;height:380px;border-radius:50%;pointer-events:none;
-  bottom:-140px;left:-80px;
-  background:radial-gradient(circle,rgba(37,99,235,.1),transparent 65%);
+  position:absolute;width:450px;height:450px;border-radius:50%;pointer-events:none;
+  bottom:-160px;left:-100px;
+  background:radial-gradient(circle,rgba(37,99,235,.22),transparent 60%);
 }
 .scholar-inner{position:relative;z-index:1;}
 .scholar-header{text-align:center;margin-bottom:60px;}
@@ -672,36 +679,36 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
   background:linear-gradient(135deg,#fbbf24,#f59e0b,#fde68a);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
-.scholar-sub{font-size:1rem;color:rgba(255,255,255,.45);max-width:580px;margin:0 auto;line-height:1.8;}
+.scholar-sub{font-size:1rem;color:rgba(255,255,255,.65);max-width:580px;margin:0 auto;line-height:1.8;}
 
 /* benefits grid */
 .scholar-benefits{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:64px;}
 .benefit-card{
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
   border-radius:16px;padding:26px 18px 22px;text-align:center;
   transition:all .3s cubic-bezier(.23,1,.32,1);position:relative;overflow:hidden;
 }
 .benefit-card::before{
   content:'';position:absolute;inset:0;border-radius:16px;opacity:0;
-  background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(37,99,235,.08));
+  background:linear-gradient(135deg,rgba(251,191,36,.18),rgba(37,99,235,.12));
   transition:opacity .3s;
 }
-.benefit-card:hover{transform:translateY(-6px);border-color:rgba(251,191,36,.22);
-  box-shadow:0 16px 48px rgba(0,0,0,.3),0 0 0 1px rgba(251,191,36,.08);}
+.benefit-card:hover{transform:translateY(-6px);border-color:rgba(251,191,36,.45);
+  box-shadow:0 16px 48px rgba(0,0,0,.35),0 0 0 1px rgba(251,191,36,.2);}
 .benefit-card:hover::before{opacity:1;}
 .benefit-card-inner{position:relative;z-index:1;}
 .benefit-icon{
   width:56px;height:56px;border-radius:16px;margin:0 auto 14px;
   display:flex;align-items:center;justify-content:center;font-size:1.5rem;
-  background:linear-gradient(135deg,rgba(251,191,36,.18),rgba(245,158,11,.08));
-  border:1px solid rgba(251,191,36,.18);
+  background:rgba(251,191,36,.2);
+  border:1px solid rgba(251,191,36,.35);
 }
 .benefit-card h3{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3;}
-.benefit-card p{font-size:.74rem;color:rgba(255,255,255,.36);line-height:1.6;}
+.benefit-card p{font-size:.74rem;color:rgba(255,255,255,.58);line-height:1.6;}
 .benefit-highlight{
   display:inline-block;margin-top:10px;padding:3px 10px;border-radius:20px;
   font-size:.65rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
-  background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.2);color:#fbbf24;
+  background:rgba(251,191,36,.2);border:1px solid rgba(251,191,36,.4);color:#fde68a;
 }
 
 /* scholarship layout: form left, info right */
@@ -709,7 +716,7 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 
 /* form */
 .scholar-form-card{
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);
   border-radius:20px;padding:40px;position:relative;overflow:hidden;
 }
 .scholar-form-card::before{
@@ -717,19 +724,19 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
   background:linear-gradient(90deg,#fbbf24,#f59e0b,#2563eb);
 }
 .sform-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:6px;}
-.sform-sub{font-size:.83rem;color:rgba(255,255,255,.38);margin-bottom:28px;}
+.sform-sub{font-size:.83rem;color:rgba(255,255,255,.58);margin-bottom:28px;}
 .sform{display:flex;flex-direction:column;gap:14px;}
 .sform-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .sfield{display:flex;flex-direction:column;gap:5px;}
-.sfield label{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.8px;}
+.sfield label{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.8px;}
 .sfield input,.sfield select{
-  padding:12px 14px;border:1.5px solid rgba(255,255,255,.1);border-radius:10px;
-  background:rgba(255,255,255,.05);color:#fff;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;
+  padding:12px 14px;border:1.5px solid rgba(255,255,255,.2);border-radius:10px;
+  background:rgba(255,255,255,.1);color:#fff;font-family:'Inter',sans-serif;font-size:.9rem;outline:none;
   transition:all .22s;
 }
-.sfield input::placeholder{color:rgba(255,255,255,.22);}
-.sfield select{color:rgba(255,255,255,.6);}
-.sfield select option{background:#0b1f48;color:#fff;}
+.sfield input::placeholder{color:rgba(255,255,255,.38);}
+.sfield select{color:rgba(255,255,255,.85);}
+.sfield select option{background:#132456;color:#fff;}
 .sfield input:focus,.sfield select:focus{
   border-color:#fbbf24;background:rgba(251,191,36,.06);
   box-shadow:0 0 0 4px rgba(251,191,36,.08);
@@ -756,14 +763,28 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 .scholar-info{padding-top:8px;}
 .scholar-info-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:16px;line-height:1.2;}
 .scholar-info-title span{background:linear-gradient(135deg,#fbbf24,#fde68a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.scholar-info p{font-size:.9rem;color:rgba(255,255,255,.42);line-height:1.82;margin-bottom:24px;}
+.scholar-info p{font-size:.9rem;color:rgba(255,255,255,.62);line-height:1.82;margin-bottom:24px;}
 .scholar-perks{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
 .perk-row{display:flex;align-items:flex-start;gap:12px;}
 .perk-icon{width:38px;height:38px;border-radius:10px;flex-shrink:0;
   background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.18);
   display:flex;align-items:center;justify-content:center;font-size:.9rem;}
 .perk-text strong{display:block;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:2px;}
-.perk-text span{font-size:.78rem;color:rgba(255,255,255,.35);}
+.perk-text span{font-size:.78rem;color:rgba(255,255,255,.55);}
+.talent-hub-card{
+  background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);
+  border-radius:14px;padding:20px 22px;margin-top:24px;
+}
+.talent-hub-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:800;
+  color:#fde68a;margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.talent-hub-body{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.7;}
+.talent-hub-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.talent-hub-tag{
+  padding:3px 12px;border-radius:20px;font-size:.66rem;font-weight:700;
+  background:rgba(251,191,36,.18);border:1px solid rgba(251,191,36,.3);color:#fbbf24;
+}
 .scholar-eligibility{
   background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.14);
   border-radius:14px;padding:20px 22px;
@@ -1092,9 +1113,22 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
             <label class="sfield"><span>Mobile Number *</span><input type="tel" name="mobile" placeholder="10-digit mobile" inputmode="tel" required></label>
             <label class="sfield"><span>Email Address *</span><input type="email" name="email" placeholder="Enter email" required></label>
           </div>
-          <label class="sfield"><span>Why do you deserve this scholarship?</span>
-            <input type="text" name="reason" placeholder="Brief reason (optional)">
-          </label>
+          <div class="sform-row">
+            <label class="sfield"><span>Current Annual School / College Fees (₹) *</span>
+              <select name="current_fees" required>
+                <option value="" disabled selected>Select fee range</option>
+                <option>Below ₹10,000</option>
+                <option>₹10,000 – ₹25,000</option>
+                <option>₹25,000 – ₹50,000</option>
+                <option>₹50,000 – ₹1,00,000</option>
+                <option>₹1,00,000 – ₹2,00,000</option>
+                <option>Above ₹2,00,000</option>
+              </select>
+            </label>
+            <label class="sfield"><span>Why do you deserve this scholarship?</span>
+              <input type="text" name="reason" placeholder="Brief reason (optional)">
+            </label>
+          </div>
           <div class="sform-status" id="scholarStatus" aria-live="polite"></div>
           <button class="sform-submit" type="submit">Apply for Scholarship →</button>
           <p class="sform-note">Your details are safe with us. We will never share your information with third parties.</p>
@@ -1115,24 +1149,20 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
             <div class="perk-text"><strong>Recognized Certificate</strong><span>Official Edvieye certificate upon completion of the AI course.</span></div>
           </div>
           <div class="perk-row">
-            <div class="perk-icon">👥</div>
-            <div class="perk-text"><strong>Mentorship Network</strong><span>Direct access to tech professionals and education experts via Talent Hub.</span></div>
-          </div>
-          <div class="perk-row">
             <div class="perk-icon">📱</div>
             <div class="perk-text"><strong>AI Tools &amp; Resources</strong><span>Premium access to Edvieye's AI platform and curated learning materials.</span></div>
           </div>
         </div>
-        <div class="scholar-eligibility">
-          <div class="eligibility-title">Eligibility Criteria</div>
-          <ul class="eligibility-list">
-            <li>School: Class 6 to Class 12 (any board)</li>
-            <li>College: 1st year to final year (any stream)</li>
-            <li>Enrolled in any recognized institution in Gujarat</li>
-            <li>Minimum 60% marks in previous academic year</li>
-            <li>Genuine interest in technology and AI</li>
-            <li>Parent / guardian consent required for school students</li>
-          </ul>
+        <div class="talent-hub-card">
+          <div class="talent-hub-title">🌐 Talent Hub Platform</div>
+          <div class="talent-hub-body">Gain exclusive access to Edvieye's Talent Hub — a dedicated platform that connects students with industry leaders, internship opportunities, live projects, and career guidance. Build your profile, showcase your skills, and get noticed by top recruiters and educators across India.</div>
+          <div class="talent-hub-tags">
+            <span class="talent-hub-tag">Industry Connect</span>
+            <span class="talent-hub-tag">Internships</span>
+            <span class="talent-hub-tag">Live Projects</span>
+            <span class="talent-hub-tag">Career Guidance</span>
+            <span class="talent-hub-tag">Skill Profile</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1632,10 +1662,11 @@ if(scholarForm&&scholarStatus){
       parent_name:String(fd.get('parent_name')||'').trim(),
       mobile:String(fd.get('mobile')||'').trim(),
       email:String(fd.get('email')||'').trim(),
+      current_fees:String(fd.get('current_fees')||'').trim(),
       reason:String(fd.get('reason')||'').trim()
     };
     scholarStatus.textContent='';scholarStatus.dataset.state='';
-    if(!p.student_type||!p.student_name||!p.dob||!p.class_grade||!p.stream||!p.school_name||!p.city||!p.parent_name||!p.mobile||!p.email){
+    if(!p.student_type||!p.student_name||!p.dob||!p.class_grade||!p.stream||!p.school_name||!p.city||!p.parent_name||!p.mobile||!p.email||!p.current_fees){
       scholarStatus.dataset.state='error';scholarStatus.textContent='Please fill in all required fields.';return;
     }
     btn.disabled=true;btn.textContent='Submitting…';
