@@ -839,6 +839,13 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 
 /* header */
 .th-header{text-align:center;margin-bottom:72px;}
+.th-logo{
+  width:140px;height:140px;object-fit:contain;
+  margin:0 auto 24px;display:block;
+  filter:drop-shadow(0 0 28px rgba(139,92,246,.45));
+  animation:logoFloat 4s ease-in-out infinite;
+}
+@keyframes logoFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 .th-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
   padding:6px 18px;border-radius:100px;margin-bottom:20px;
@@ -1371,12 +1378,12 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
             <label class="sfield"><span>Current Annual School / College Fees (₹) *</span>
               <select name="current_fees" required>
                 <option value="" disabled selected>Select fee range</option>
-                <option>Below ₹10,000</option>
-                <option>₹10,000 – ₹25,000</option>
-                <option>₹25,000 – ₹50,000</option>
-                <option>₹50,000 – ₹1,00,000</option>
-                <option>₹1,00,000 – ₹2,00,000</option>
-                <option>Above ₹2,00,000</option>
+                <option>Below ₹15,000</option>
+                <option>₹16,000 – ₹35,000</option>
+                <option>₹36,000 – ₹60,000</option>
+                <option>₹61,000 – ₹80,000</option>
+                <option>₹81,000 – ₹1,00,000</option>
+                <option>Above ₹1,00,000</option>
               </select>
             </label>
           </div>
@@ -1509,6 +1516,7 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 
     <!-- Header -->
     <div class="th-header reveal">
+      <img src="/talent-hub-logo.png" alt="Talent Hub – Discover Develop Shine" class="th-logo">
       <div class="th-eyebrow"><span class="th-eyebrow-dot"></span>Skills &amp; Arts Platform</div>
       <h2 class="th-title">Talent Hub — <span class="th-grad">Skills &amp; Arts</span></h2>
       <p class="th-sub">A digital community where students discover, showcase, and grow their talents — dance, music, sports, art, and beyond. Your stage. Your skills. Your story.</p>
@@ -1592,62 +1600,6 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
           <h3>Writing &amp; Literature</h3>
           <p>Poetry, creative writing, blogging &amp; storytelling</p>
           <span class="th-cat-tag">Expression</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Talent Showcase Feed -->
-    <div class="th-showcase-header reveal">
-      <div class="th-showcase-title">Talent <span>Showcase Feed</span></div>
-      <div class="th-showcase-sub">Discover what students across Gujarat are creating and performing</div>
-    </div>
-    <div class="th-feed">
-      <div class="th-feed-card reveal rd1">
-        <div class="th-feed-thumb" style="background:linear-gradient(135deg,#2d1b69,#4c1d95);">🎤</div>
-        <div class="th-feed-body">
-          <div class="th-feed-user">
-            <div class="th-feed-avatar" style="background:rgba(139,92,246,.3);">👩</div>
-            <div><div class="th-feed-name">Priya Sharma</div><div class="th-feed-skill">🎵 Singing · Advanced</div></div>
-            <div class="th-badge-row"><span class="th-badge star">⭐ Rising Star</span></div>
-          </div>
-          <div class="th-feed-caption">"My latest college inter-department singing performance — won 1st place! 🎉"</div>
-          <div class="th-feed-stats">
-            <button class="th-stat-btn">❤️ 128</button>
-            <button class="th-stat-btn">💬 24</button>
-            <button class="th-stat-btn">↗ Share</button>
-          </div>
-        </div>
-      </div>
-      <div class="th-feed-card reveal rd2">
-        <div class="th-feed-thumb" style="background:linear-gradient(135deg,#1e3a5f,#1e40af);">🎨</div>
-        <div class="th-feed-body">
-          <div class="th-feed-user">
-            <div class="th-feed-avatar" style="background:rgba(245,158,11,.3);">👨</div>
-            <div><div class="th-feed-name">Rohan Mehta</div><div class="th-feed-skill">🎨 Digital Art · Intermediate</div></div>
-            <div class="th-badge-row"><span class="th-badge fire">🔥 Featured</span></div>
-          </div>
-          <div class="th-feed-caption">"My latest digital artwork inspired by Gujarat folk culture. Took 20 hours to complete."</div>
-          <div class="th-feed-stats">
-            <button class="th-stat-btn">❤️ 96</button>
-            <button class="th-stat-btn">💬 15</button>
-            <button class="th-stat-btn">↗ Share</button>
-          </div>
-        </div>
-      </div>
-      <div class="th-feed-card reveal rd3">
-        <div class="th-feed-thumb" style="background:linear-gradient(135deg,#14532d,#166534);">⚽</div>
-        <div class="th-feed-body">
-          <div class="th-feed-user">
-            <div class="th-feed-avatar" style="background:rgba(22,163,74,.3);">👦</div>
-            <div><div class="th-feed-name">Dhruv Patel</div><div class="th-feed-skill">⚽ Football · Advanced</div></div>
-            <div class="th-badge-row"><span class="th-badge">🏆 Top Performer</span></div>
-          </div>
-          <div class="th-feed-caption">"Inter-college tournament highlights — our team reached the finals for the first time! 🏆"</div>
-          <div class="th-feed-stats">
-            <button class="th-stat-btn">❤️ 210</button>
-            <button class="th-stat-btn">💬 32</button>
-            <button class="th-stat-btn">↗ Share</button>
-          </div>
         </div>
       </div>
     </div>
