@@ -687,6 +687,23 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
   bottom:-160px;left:-100px;
   background:radial-gradient(circle,rgba(37,99,235,.22),transparent 60%);
 }
+/* Gujarat map + India flag decorative backgrounds */
+.scholar-guj-map{
+  position:absolute;left:-40px;bottom:40px;width:280px;height:330px;
+  opacity:.55;pointer-events:none;z-index:0;
+  filter:drop-shadow(0 0 18px rgba(251,191,36,.12));
+}
+.scholar-guj-map svg{width:100%;height:100%;}
+.scholar-india-flag{
+  position:absolute;right:30px;top:80px;width:170px;height:113px;
+  opacity:.08;pointer-events:none;z-index:0;border-radius:4px;overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.3);
+}
+.scholar-india-flag svg{width:100%;height:100%;}
+@media(max-width:640px){
+  .scholar-guj-map{width:160px;height:190px;left:-20px;bottom:10px;opacity:.35;}
+  .scholar-india-flag{width:90px;height:60px;right:10px;top:50px;opacity:.05;}
+}
 .scholar-inner{position:relative;z-index:1;}
 .scholar-header{text-align:center;margin-bottom:60px;}
 .scholar-eyebrow{
@@ -1341,6 +1358,67 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 <section class="scholar-sec" id="scholarship">
   <div class="scholar-orb-a"></div>
   <div class="scholar-orb-b"></div>
+
+  <!-- Gujarat Map watermark -->
+  <div class="scholar-guj-map" aria-hidden="true">
+    <svg viewBox="0 0 220 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 90,8 C 110,4 135,6 155,14 L 172,28 L 180,55 L 185,88 L 184,118 L 178,148 L 165,172 L 148,192 L 132,208 L 118,216 L 104,208 L 88,198 L 74,214 L 58,226 L 40,218 L 24,202 L 12,182 L 8,160 L 14,140 L 24,124 L 18,106 L 8,88 L 12,68 L 24,52 L 16,36 L 28,20 L 55,10 Z"
+        fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" stroke-linejoin="round"/>
+      <!-- Dot for Ahmedabad -->
+      <circle cx="148" cy="95" r="3" fill="rgba(251,191,36,0.5)"/>
+      <text x="153" y="99" font-size="7" fill="rgba(251,191,36,0.5)" font-family="Inter,sans-serif" font-weight="700">Ahmedabad</text>
+      <!-- Dot for Surat -->
+      <circle cx="155" cy="158" r="2.5" fill="rgba(255,255,255,0.3)"/>
+      <text x="160" y="162" font-size="6" fill="rgba(255,255,255,0.28)" font-family="Inter,sans-serif">Surat</text>
+      <!-- Dot for Rajkot -->
+      <circle cx="68" cy="148" r="2.5" fill="rgba(255,255,255,0.3)"/>
+      <text x="73" y="152" font-size="6" fill="rgba(255,255,255,0.28)" font-family="Inter,sans-serif">Rajkot</text>
+      <!-- Gujarat label -->
+      <text x="80" y="108" font-size="11" fill="rgba(255,255,255,0.12)" font-family="Plus Jakarta Sans,Inter,sans-serif" font-weight="900" letter-spacing="3">GUJARAT</text>
+    </svg>
+  </div>
+
+  <!-- India Flag watermark -->
+  <div class="scholar-india-flag" aria-hidden="true">
+    <svg viewBox="0 0 135 90" xmlns="http://www.w3.org/2000/svg">
+      <!-- Saffron -->
+      <rect width="135" height="30" fill="#FF9933" opacity="0.85"/>
+      <!-- White -->
+      <rect y="30" width="135" height="30" fill="#FFFFFF" opacity="0.85"/>
+      <!-- Green -->
+      <rect y="60" width="135" height="30" fill="#138808" opacity="0.85"/>
+      <!-- Ashoka Chakra -->
+      <circle cx="67.5" cy="45" r="10" fill="none" stroke="#000080" stroke-width="1.2" opacity="0.85"/>
+      <circle cx="67.5" cy="45" r="1.5" fill="#000080" opacity="0.85"/>
+      <!-- 24 spokes -->
+      <g stroke="#000080" stroke-width="0.7" opacity="0.85">
+        <line x1="67.5" y1="35.2" x2="67.5" y2="37.8"/>
+        <line x1="67.5" y1="52.2" x2="67.5" y2="54.8"/>
+        <line x1="57.7" y1="45" x2="60.3" y2="45"/>
+        <line x1="74.7" y1="45" x2="77.3" y2="45"/>
+        <line x1="60.6" y1="37.9" x2="62.4" y2="39.7"/>
+        <line x1="72.6" y1="50.3" x2="74.4" y2="52.1"/>
+        <line x1="74.4" y1="37.9" x2="72.6" y2="39.7"/>
+        <line x1="62.4" y1="50.3" x2="60.6" y2="52.1"/>
+        <line x1="59.2" y1="41.5" x2="61.4" y2="42.5"/>
+        <line x1="73.6" y1="47.5" x2="75.8" y2="48.5"/>
+        <line x1="75.8" y1="41.5" x2="73.6" y2="42.5"/>
+        <line x1="61.4" y1="47.5" x2="59.2" y2="48.5"/>
+        <line x1="63.0" y1="36.2" x2="64.0" y2="38.6"/>
+        <line x1="71.0" y1="51.4" x2="72.0" y2="53.8"/>
+        <line x1="72.0" y1="36.2" x2="71.0" y2="38.6"/>
+        <line x1="64.0" y1="51.4" x2="63.0" y2="53.8"/>
+        <line x1="59.6" y1="40.0" x2="61.8" y2="41.5"/>
+        <line x1="73.2" y1="48.5" x2="75.4" y2="50.0"/>
+        <line x1="75.4" y1="40.0" x2="73.2" y2="41.5"/>
+        <line x1="61.8" y1="48.5" x2="59.6" y2="50.0"/>
+        <line x1="64.0" y1="36.2" x2="64.8" y2="38.6"/>
+        <line x1="70.2" y1="51.4" x2="71.0" y2="53.8"/>
+        <line x1="71.0" y1="36.2" x2="70.2" y2="38.6"/>
+        <line x1="64.8" y1="51.4" x2="64.0" y2="53.8"/>
+      </g>
+    </svg>
+  </div>
   <div class="wrap scholar-inner">
 
     <!-- Header -->
