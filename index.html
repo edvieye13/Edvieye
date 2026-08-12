@@ -695,14 +695,13 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 }
 .scholar-guj-map svg{width:100%;height:100%;}
 .scholar-india-flag{
-  position:absolute;right:40px;top:80px;width:160px;height:auto;
-  opacity:.12;pointer-events:none;z-index:0;border-radius:6px;
-  filter:drop-shadow(0 8px 24px rgba(0,0,0,.5));
+  position:absolute;inset:0;width:100%;height:100%;
+  opacity:.07;pointer-events:none;z-index:0;overflow:hidden;
 }
-.scholar-india-flag img{width:100%;height:auto;display:block;border-radius:6px;}
+.scholar-india-flag img{width:100%;height:100%;object-fit:cover;display:block;}
 @media(max-width:640px){
   .scholar-guj-map{width:160px;height:190px;left:-20px;bottom:10px;opacity:.35;}
-  .scholar-india-flag{width:80px;right:10px;top:50px;opacity:.07;}
+  .scholar-india-flag{opacity:.05;}
 }
 .scholar-inner{position:relative;z-index:1;}
 .scholar-header{text-align:center;margin-bottom:60px;}
