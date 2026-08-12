@@ -812,6 +812,229 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
   padding:3px 12px;border-radius:20px;font-size:.66rem;font-weight:700;
   background:rgba(251,191,36,.18);border:1px solid rgba(251,191,36,.3);color:#fbbf24;
 }
+
+/* ══════════════════════════════════════════════════
+   TALENT HUB – SKILLS & ARTS
+══════════════════════════════════════════════════ */
+.th-sec{
+  position:relative;overflow:hidden;padding:110px 0 100px;
+  background:linear-gradient(150deg,#0d0621 0%,#160a38 40%,#1e0f52 70%,#130830 100%);
+  content-visibility:auto;contain-intrinsic-size:0 1200px;
+}
+.th-sec::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:34px 34px;
+}
+.th-orb-a{position:absolute;width:640px;height:640px;border-radius:50%;pointer-events:none;
+  top:-200px;right:-200px;
+  background:radial-gradient(circle,rgba(139,92,246,.2),transparent 60%);}
+.th-orb-b{position:absolute;width:500px;height:500px;border-radius:50%;pointer-events:none;
+  bottom:-200px;left:-150px;
+  background:radial-gradient(circle,rgba(236,72,153,.14),transparent 60%);}
+.th-orb-c{position:absolute;width:300px;height:300px;border-radius:50%;pointer-events:none;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(59,130,246,.1),transparent 60%);}
+.th-inner{position:relative;z-index:1;}
+
+/* header */
+.th-header{text-align:center;margin-bottom:72px;}
+.th-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 18px;border-radius:100px;margin-bottom:20px;
+  background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.4);
+  font-size:.7rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  color:#c4b5fd;
+}
+.th-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:#a78bfa;
+  box-shadow:0 0 8px #a78bfa;animation:pulse 2s ease-in-out infinite;}
+.th-title{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:clamp(2.2rem,4.2vw,3.4rem);font-weight:900;
+  color:#fff;line-height:1.08;letter-spacing:-.6px;margin-bottom:14px;
+}
+.th-title .th-grad{
+  background:linear-gradient(135deg,#c084fc,#818cf8,#38bdf8);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.th-sub{font-size:1rem;color:rgba(255,255,255,.55);max-width:620px;margin:0 auto 32px;line-height:1.8;}
+
+/* journey pills */
+.th-journey{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:0;}
+.th-pill{
+  padding:7px 18px;border-radius:100px;
+  font-size:.75rem;font-weight:700;letter-spacing:.5px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.7);
+}
+.th-pill.active{background:rgba(139,92,246,.25);border-color:rgba(139,92,246,.5);color:#c4b5fd;}
+.th-arrow{color:rgba(255,255,255,.25);font-size:.85rem;font-weight:700;}
+
+/* categories */
+.th-cat-label{
+  text-align:center;margin-bottom:28px;
+  font-size:.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+}
+.th-categories{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:80px;}
+.th-cat{
+  border-radius:18px;padding:28px 20px 22px;text-align:center;cursor:default;
+  position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);
+  transition:all .32s cubic-bezier(.23,1,.32,1);
+}
+.th-cat::before{content:'';position:absolute;inset:0;border-radius:18px;
+  opacity:0;transition:opacity .32s;background:var(--cat-glow);}
+.th-cat:hover{transform:translateY(-8px) scale(1.02);border-color:var(--cat-border);
+  box-shadow:0 20px 56px rgba(0,0,0,.4),0 0 0 1px var(--cat-border);}
+.th-cat:hover::before{opacity:1;}
+.th-cat-inner{position:relative;z-index:1;}
+.th-cat-icon{font-size:2rem;margin-bottom:12px;display:block;
+  filter:drop-shadow(0 0 12px var(--cat-shadow));}
+.th-cat h3{font-size:.88rem;font-weight:800;color:#fff;margin-bottom:6px;}
+.th-cat p{font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.55;}
+.th-cat-tag{
+  display:inline-block;margin-top:10px;padding:3px 11px;border-radius:20px;
+  font-size:.62rem;font-weight:700;letter-spacing:.5px;
+  background:var(--cat-tag-bg);border:1px solid var(--cat-border);color:var(--cat-color);
+}
+/* category color tokens */
+.cat-music{background:rgba(139,92,246,.12);--cat-color:#c4b5fd;--cat-border:rgba(139,92,246,.4);
+  --cat-glow:linear-gradient(135deg,rgba(139,92,246,.14),transparent);
+  --cat-shadow:rgba(139,92,246,.5);--cat-tag-bg:rgba(139,92,246,.15);}
+.cat-dance{background:rgba(236,72,153,.12);--cat-color:#f9a8d4;--cat-border:rgba(236,72,153,.4);
+  --cat-glow:linear-gradient(135deg,rgba(236,72,153,.14),transparent);
+  --cat-shadow:rgba(236,72,153,.5);--cat-tag-bg:rgba(236,72,153,.15);}
+.cat-arts{background:rgba(245,158,11,.12);--cat-color:#fde68a;--cat-border:rgba(245,158,11,.4);
+  --cat-glow:linear-gradient(135deg,rgba(245,158,11,.14),transparent);
+  --cat-shadow:rgba(245,158,11,.5);--cat-tag-bg:rgba(245,158,11,.15);}
+.cat-acting{background:rgba(239,68,68,.12);--cat-color:#fca5a5;--cat-border:rgba(239,68,68,.4);
+  --cat-glow:linear-gradient(135deg,rgba(239,68,68,.14),transparent);
+  --cat-shadow:rgba(239,68,68,.5);--cat-tag-bg:rgba(239,68,68,.15);}
+.cat-speaking{background:rgba(37,99,235,.14);--cat-color:#93c5fd;--cat-border:rgba(37,99,235,.45);
+  --cat-glow:linear-gradient(135deg,rgba(37,99,235,.16),transparent);
+  --cat-shadow:rgba(37,99,235,.5);--cat-tag-bg:rgba(37,99,235,.15);}
+.cat-sports{background:rgba(22,163,74,.12);--cat-color:#86efac;--cat-border:rgba(22,163,74,.4);
+  --cat-glow:linear-gradient(135deg,rgba(22,163,74,.14),transparent);
+  --cat-shadow:rgba(22,163,74,.5);--cat-tag-bg:rgba(22,163,74,.15);}
+.cat-photo{background:rgba(8,145,178,.12);--cat-color:#67e8f9;--cat-border:rgba(8,145,178,.4);
+  --cat-glow:linear-gradient(135deg,rgba(8,145,178,.14),transparent);
+  --cat-shadow:rgba(8,145,178,.5);--cat-tag-bg:rgba(8,145,178,.15);}
+.cat-writing{background:rgba(99,102,241,.12);--cat-color:#a5b4fc;--cat-border:rgba(99,102,241,.4);
+  --cat-glow:linear-gradient(135deg,rgba(99,102,241,.14),transparent);
+  --cat-shadow:rgba(99,102,241,.5);--cat-tag-bg:rgba(99,102,241,.15);}
+
+/* showcase */
+.th-showcase-header{text-align:center;margin-bottom:32px;}
+.th-showcase-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5rem;font-weight:800;
+  color:#fff;margin-bottom:8px;
+}
+.th-showcase-title span{background:linear-gradient(135deg,#c084fc,#818cf8);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.th-showcase-sub{font-size:.88rem;color:rgba(255,255,255,.45);}
+.th-feed{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:80px;}
+.th-feed-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;overflow:hidden;
+  transition:all .3s cubic-bezier(.23,1,.32,1);
+}
+.th-feed-card:hover{transform:translateY(-6px);border-color:rgba(139,92,246,.35);
+  box-shadow:0 20px 50px rgba(0,0,0,.4);}
+.th-feed-thumb{
+  height:160px;display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;position:relative;
+}
+.th-feed-thumb::after{
+  content:'▶';position:absolute;bottom:10px;right:12px;
+  font-size:.65rem;padding:4px 9px;border-radius:20px;
+  background:rgba(0,0,0,.5);color:rgba(255,255,255,.7);
+  backdrop-filter:blur(4px);
+}
+.th-feed-body{padding:16px 18px 18px;}
+.th-feed-user{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.th-feed-avatar{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+  border:2px solid rgba(255,255,255,.15);
+}
+.th-feed-name{font-size:.84rem;font-weight:700;color:#fff;}
+.th-feed-skill{font-size:.7rem;color:rgba(255,255,255,.4);}
+.th-feed-caption{font-size:.8rem;color:rgba(255,255,255,.55);margin-bottom:14px;line-height:1.5;}
+.th-feed-stats{display:flex;align-items:center;gap:16px;}
+.th-stat-btn{
+  display:flex;align-items:center;gap:5px;
+  font-size:.75rem;color:rgba(255,255,255,.4);
+  background:none;border:none;cursor:pointer;padding:0;
+  transition:color .2s;
+}
+.th-stat-btn:hover{color:rgba(255,255,255,.8);}
+.th-badge-row{display:flex;align-items:center;gap:6px;margin-left:auto;}
+.th-badge{
+  padding:2px 9px;border-radius:20px;font-size:.62rem;font-weight:700;
+  background:rgba(139,92,246,.2);border:1px solid rgba(139,92,246,.35);color:#c4b5fd;
+}
+.th-badge.star{background:rgba(251,191,36,.2);border-color:rgba(251,191,36,.35);color:#fde68a;}
+.th-badge.fire{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.35);color:#fca5a5;}
+
+/* features + recognition */
+.th-bottom{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.th-features-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:1.35rem;font-weight:800;
+  color:#fff;margin-bottom:20px;
+}
+.th-features-title span{background:linear-gradient(135deg,#c084fc,#818cf8);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.th-feat-list{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+.th-feat-row{display:flex;align-items:flex-start;gap:12px;}
+.th-feat-icon{
+  width:36px;height:36px;border-radius:10px;flex-shrink:0;
+  background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.25);
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;
+}
+.th-feat-text strong{display:block;font-size:.85rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.th-feat-text span{font-size:.76rem;color:rgba(255,255,255,.48);}
+
+/* recognition badges */
+.th-recognition{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;padding:28px;
+}
+.th-recognition-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:1.1rem;font-weight:800;
+  color:#fff;margin-bottom:6px;
+}
+.th-recognition-sub{font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:20px;}
+.th-badges-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.th-rec-badge{
+  display:flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;padding:11px 13px;transition:all .2s;
+}
+.th-rec-badge:hover{background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.3);}
+.th-rec-badge-icon{font-size:1.1rem;flex-shrink:0;}
+.th-rec-badge-text strong{display:block;font-size:.76rem;font-weight:700;color:#fff;}
+.th-rec-badge-text span{font-size:.65rem;color:rgba(255,255,255,.35);}
+.th-cta-row{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;}
+.btn-violet{
+  padding:14px 28px;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;
+  font-weight:700;box-shadow:0 6px 24px rgba(124,58,237,.4);
+}
+.btn-violet:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(124,58,237,.55);}
+.btn-outline-violet{
+  padding:13px 24px;background:rgba(139,92,246,.1);color:#c4b5fd;
+  border:1.5px solid rgba(139,92,246,.4);font-weight:700;
+}
+.btn-outline-violet:hover{background:rgba(139,92,246,.22);border-color:rgba(139,92,246,.7);}
+
+/* responsive */
+@media(max-width:1024px){.th-categories{grid-template-columns:repeat(4,1fr);}
+  .th-feed{grid-template-columns:repeat(2,1fr);}
+  .th-bottom{grid-template-columns:1fr;gap:40px;}}
+@media(max-width:768px){.th-categories{grid-template-columns:repeat(2,1fr);}
+  .th-feed{grid-template-columns:1fr;}
+  .th-badges-grid{grid-template-columns:1fr;}}
+@media(max-width:480px){.th-categories{grid-template-columns:1fr 1fr;}
+  .th-journey{gap:4px;}.th-pill{padding:5px 12px;font-size:.68rem;}}
 .scholar-eligibility{
   background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.14);
   border-radius:14px;padding:20px 22px;
@@ -903,6 +1126,7 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#scholarship" style="color:#d97706;font-weight:700;">Scholarship</a></li>
+      <li><a href="#talenthub" style="color:#a78bfa;font-weight:700;">Talent Hub</a></li>
       <li><a href="#how">Process</a></li>
       <li><a href="#ai">AI Engine</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -1273,6 +1497,237 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
         <canvas id="aiCanvas"></canvas>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ TALENT HUB ═════════════════════════════════ -->
+<section class="th-sec" id="talenthub">
+  <div class="th-orb-a"></div>
+  <div class="th-orb-b"></div>
+  <div class="th-orb-c"></div>
+  <div class="wrap th-inner">
+
+    <!-- Header -->
+    <div class="th-header reveal">
+      <div class="th-eyebrow"><span class="th-eyebrow-dot"></span>Skills &amp; Arts Platform</div>
+      <h2 class="th-title">Talent Hub — <span class="th-grad">Skills &amp; Arts</span></h2>
+      <p class="th-sub">A digital community where students discover, showcase, and grow their talents — dance, music, sports, art, and beyond. Your stage. Your skills. Your story.</p>
+      <div class="th-journey">
+        <span class="th-pill active">🔍 Discover</span>
+        <span class="th-arrow">→</span>
+        <span class="th-pill">🌟 Showcase</span>
+        <span class="th-arrow">→</span>
+        <span class="th-pill">🤝 Connect</span>
+        <span class="th-arrow">→</span>
+        <span class="th-pill">📈 Improve</span>
+        <span class="th-arrow">→</span>
+        <span class="th-pill">🚀 Get Opportunities</span>
+        <span class="th-arrow">→</span>
+        <span class="th-pill">🏆 Grow</span>
+      </div>
+    </div>
+
+    <!-- Talent Categories -->
+    <div class="th-cat-label reveal">Choose Your Talent Category</div>
+    <div class="th-categories">
+      <div class="th-cat cat-music reveal rd1">
+        <div class="th-cat-inner">
+          <span class="th-cat-icon">🎵</span>
+          <h3>Music</h3>
+          <p>Singing, instruments, composition &amp; music production</p>
+          <span class="th-cat-tag">Most Popular</span>
+        </div>
+      </div>
+      <div class="th-cat cat-dance reveal rd2">
+        <div class="th-cat-inner">
+          <span class="th-cat-icon">💃</span>
+          <h3>Dance</h3>
+          <p>Classical, contemporary, hip-hop, folk &amp; freestyle</p>
+          <span class="th-cat-tag">Trending</span>
+        </div>
+      </div>
+      <div class="th-cat cat-arts reveal rd3">
+        <div class="th-cat-inner">
+          <span class="th-cat-icon">🎨</span>
+          <h3>Arts &amp; Craft</h3>
+          <p>Drawing, painting, sketching, handicrafts &amp; DIY</p>
+          <span class="th-cat-tag">Creative</span>
+        </div>
+      </div>
+      <div class="th-cat cat-acting reveal rd4">
+        <div class="th-cat-inner">
+          <span class="th-cat-icon">🎭</span>
+          <h3>Acting &amp; Theatre</h3>
+          <p>Drama, theatre, acting, mimicry &amp; storytelling</p>
+          <span class="th-cat-tag">Live Stage</span>
+        </div>
+      </div>
+      <div class="th-cat cat-speaking reveal rd1">
+        <div class="th-cat-inner">
+          <span class="th-cat-icon">🎤</span>
+          <h3>Public Speaking</h3>
+          <p>Debate, anchoring, presentations &amp; communication</p>
+          <span class="th-cat-tag">Leadership</span>
+        </div>
+      </div>
+      <div class="th-cat cat-sports reveal rd2">
+        <div class="th-cat-inner">
+          <span class="th-cat-icon">⚽</span>
+          <h3>Sports</h3>
+          <p>Cricket, football, badminton, athletics &amp; more</p>
+          <span class="th-cat-tag">Active</span>
+        </div>
+      </div>
+      <div class="th-cat cat-photo reveal rd3">
+        <div class="th-cat-inner">
+          <span class="th-cat-icon">📸</span>
+          <h3>Photography &amp; Media</h3>
+          <p>Photography, videography, editing &amp; filmmaking</p>
+          <span class="th-cat-tag">Visual</span>
+        </div>
+      </div>
+      <div class="th-cat cat-writing reveal rd4">
+        <div class="th-cat-inner">
+          <span class="th-cat-icon">✍️</span>
+          <h3>Writing &amp; Literature</h3>
+          <p>Poetry, creative writing, blogging &amp; storytelling</p>
+          <span class="th-cat-tag">Expression</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Talent Showcase Feed -->
+    <div class="th-showcase-header reveal">
+      <div class="th-showcase-title">Talent <span>Showcase Feed</span></div>
+      <div class="th-showcase-sub">Discover what students across Gujarat are creating and performing</div>
+    </div>
+    <div class="th-feed">
+      <div class="th-feed-card reveal rd1">
+        <div class="th-feed-thumb" style="background:linear-gradient(135deg,#2d1b69,#4c1d95);">🎤</div>
+        <div class="th-feed-body">
+          <div class="th-feed-user">
+            <div class="th-feed-avatar" style="background:rgba(139,92,246,.3);">👩</div>
+            <div><div class="th-feed-name">Priya Sharma</div><div class="th-feed-skill">🎵 Singing · Advanced</div></div>
+            <div class="th-badge-row"><span class="th-badge star">⭐ Rising Star</span></div>
+          </div>
+          <div class="th-feed-caption">"My latest college inter-department singing performance — won 1st place! 🎉"</div>
+          <div class="th-feed-stats">
+            <button class="th-stat-btn">❤️ 128</button>
+            <button class="th-stat-btn">💬 24</button>
+            <button class="th-stat-btn">↗ Share</button>
+          </div>
+        </div>
+      </div>
+      <div class="th-feed-card reveal rd2">
+        <div class="th-feed-thumb" style="background:linear-gradient(135deg,#1e3a5f,#1e40af);">🎨</div>
+        <div class="th-feed-body">
+          <div class="th-feed-user">
+            <div class="th-feed-avatar" style="background:rgba(245,158,11,.3);">👨</div>
+            <div><div class="th-feed-name">Rohan Mehta</div><div class="th-feed-skill">🎨 Digital Art · Intermediate</div></div>
+            <div class="th-badge-row"><span class="th-badge fire">🔥 Featured</span></div>
+          </div>
+          <div class="th-feed-caption">"My latest digital artwork inspired by Gujarat folk culture. Took 20 hours to complete."</div>
+          <div class="th-feed-stats">
+            <button class="th-stat-btn">❤️ 96</button>
+            <button class="th-stat-btn">💬 15</button>
+            <button class="th-stat-btn">↗ Share</button>
+          </div>
+        </div>
+      </div>
+      <div class="th-feed-card reveal rd3">
+        <div class="th-feed-thumb" style="background:linear-gradient(135deg,#14532d,#166534);">⚽</div>
+        <div class="th-feed-body">
+          <div class="th-feed-user">
+            <div class="th-feed-avatar" style="background:rgba(22,163,74,.3);">👦</div>
+            <div><div class="th-feed-name">Dhruv Patel</div><div class="th-feed-skill">⚽ Football · Advanced</div></div>
+            <div class="th-badge-row"><span class="th-badge">🏆 Top Performer</span></div>
+          </div>
+          <div class="th-feed-caption">"Inter-college tournament highlights — our team reached the finals for the first time! 🏆"</div>
+          <div class="th-feed-stats">
+            <button class="th-stat-btn">❤️ 210</button>
+            <button class="th-stat-btn">💬 32</button>
+            <button class="th-stat-btn">↗ Share</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features + Recognition -->
+    <div class="th-bottom">
+      <div class="reveal-left">
+        <div class="th-features-title">A Social Platform <span>Built for Student Talent</span></div>
+        <div class="th-feat-list">
+          <div class="th-feat-row">
+            <div class="th-feat-icon">🔍</div>
+            <div class="th-feat-text"><strong>Discover Talent Profiles</strong><span>Browse student profiles by skill, class, school, or city across Gujarat.</span></div>
+          </div>
+          <div class="th-feat-row">
+            <div class="th-feat-icon">📹</div>
+            <div class="th-feat-text"><strong>Upload &amp; Showcase</strong><span>Share your videos, photos, and portfolio work with the student community.</span></div>
+          </div>
+          <div class="th-feat-row">
+            <div class="th-feat-icon">🤝</div>
+            <div class="th-feat-text"><strong>Connect &amp; Follow</strong><span>Follow talented students, comment on posts, and build your talent network.</span></div>
+          </div>
+          <div class="th-feat-row">
+            <div class="th-feat-icon">🚀</div>
+            <div class="th-feat-text"><strong>Find Opportunities</strong><span>Discover competitions, workshops, auditions &amp; events matched to your skills.</span></div>
+          </div>
+          <div class="th-feat-row">
+            <div class="th-feat-icon">🎓</div>
+            <div class="th-feat-text"><strong>Mentor &amp; Faculty Support</strong><span>Get discovered by teachers and mentors who can guide your talent journey.</span></div>
+          </div>
+          <div class="th-feat-row">
+            <div class="th-feat-icon">📊</div>
+            <div class="th-feat-text"><strong>Admin Talent Dashboard</strong><span>School admins can manage profiles, verify achievements, and feature exceptional students.</span></div>
+          </div>
+        </div>
+        <div class="th-cta-row">
+          <a href="#contact" class="btn btn-violet">Join Talent Hub</a>
+          <a href="#contact" class="btn btn-outline-violet">Learn More</a>
+        </div>
+      </div>
+
+      <div class="th-recognition reveal-right">
+        <div class="th-recognition-title">🏅 Recognition System</div>
+        <div class="th-recognition-sub">Motivate students with badges, titles, and verified talent profiles</div>
+        <div class="th-badges-grid">
+          <div class="th-rec-badge">
+            <span class="th-rec-badge-icon">⭐</span>
+            <div class="th-rec-badge-text"><strong>Rising Star</strong><span>Fast-growing talent</span></div>
+          </div>
+          <div class="th-rec-badge">
+            <span class="th-rec-badge-icon">🔥</span>
+            <div class="th-rec-badge-text"><strong>Featured Talent</strong><span>Highlighted by admin</span></div>
+          </div>
+          <div class="th-rec-badge">
+            <span class="th-rec-badge-icon">🏆</span>
+            <div class="th-rec-badge-text"><strong>Top Performer</strong><span>Consistently high engagement</span></div>
+          </div>
+          <div class="th-rec-badge">
+            <span class="th-rec-badge-icon">📅</span>
+            <div class="th-rec-badge-text"><strong>Talent of the Week</strong><span>Weekly spotlight winner</span></div>
+          </div>
+          <div class="th-rec-badge">
+            <span class="th-rec-badge-icon">🎖️</span>
+            <div class="th-rec-badge-text"><strong>Talent of the Month</strong><span>Monthly recognition award</span></div>
+          </div>
+          <div class="th-rec-badge">
+            <span class="th-rec-badge-icon">✅</span>
+            <div class="th-rec-badge-text"><strong>Verified Talent</strong><span>Achievement verified by mentor</span></div>
+          </div>
+          <div class="th-rec-badge">
+            <span class="th-rec-badge-icon">🥇</span>
+            <div class="th-rec-badge-text"><strong>Competition Badge</strong><span>Won a competition</span></div>
+          </div>
+          <div class="th-rec-badge">
+            <span class="th-rec-badge-icon">🌟</span>
+            <div class="th-rec-badge-text"><strong>Achievement Badge</strong><span>Special milestone reached</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
