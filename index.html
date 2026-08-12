@@ -1033,13 +1033,74 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 }
 .btn-outline-violet:hover{background:rgba(139,92,246,.22);border-color:rgba(139,92,246,.7);}
 
+/* talent hub interest form */
+.th-form-wrap{margin-top:72px;}
+.th-form-header{text-align:center;margin-bottom:40px;}
+.th-form-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:900;
+  color:#fff;margin-bottom:10px;line-height:1.15;
+}
+.th-form-title span{background:linear-gradient(135deg,#c084fc,#818cf8,#38bdf8);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.th-form-subtitle{font-size:.95rem;color:rgba(255,255,255,.5);max-width:520px;margin:0 auto;}
+.th-form-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(139,92,246,.25);
+  border-radius:24px;padding:48px;position:relative;overflow:hidden;
+  max-width:820px;margin:0 auto;
+}
+.th-form-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#7c3aed,#a78bfa,#38bdf8,#a78bfa,#7c3aed);
+}
+.th-form-card::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(139,92,246,.08),transparent 65%);
+}
+.th-form-body{position:relative;z-index:1;}
+.thf{display:flex;flex-direction:column;gap:16px;}
+.thf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.thf-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.thfield{display:flex;flex-direction:column;gap:6px;}
+.thfield span{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.65);
+  text-transform:uppercase;letter-spacing:.8px;}
+.thfield input,.thfield select{
+  padding:13px 15px;border:1.5px solid rgba(255,255,255,.15);border-radius:11px;
+  background:rgba(255,255,255,.08);color:#fff;
+  font-family:'Inter',sans-serif;font-size:.9rem;outline:none;transition:all .22s;
+}
+.thfield input::placeholder{color:rgba(255,255,255,.3);}
+.thfield select{color:rgba(255,255,255,.8);}
+.thfield select option{background:#160a38;color:#fff;}
+.thfield input:focus,.thfield select:focus{
+  border-color:#a78bfa;background:rgba(139,92,246,.1);
+  box-shadow:0 0 0 4px rgba(139,92,246,.12);
+}
+.thf-divider{height:1px;background:rgba(255,255,255,.08);margin:4px 0;}
+.thf-status{min-height:18px;font-size:.82rem;}
+.thf-status[data-state=success]{color:#86efac;}
+.thf-status[data-state=error]{color:#fca5a5;}
+.thf-submit{
+  width:100%;padding:16px;border:none;border-radius:100px;
+  background:linear-gradient(135deg,#7c3aed,#6d28d9,#4f46e5);color:#fff;
+  font-family:'Inter',sans-serif;font-size:1rem;font-weight:800;cursor:pointer;
+  box-shadow:0 6px 28px rgba(124,58,237,.45);transition:all .28s;
+  position:relative;overflow:hidden;letter-spacing:.3px;
+}
+.thf-submit::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+  transform:translateX(-100%);transition:transform .5s;}
+.thf-submit:hover::after{transform:translateX(100%);}
+.thf-submit:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(124,58,237,.6);}
+.thf-submit:disabled{opacity:.6;pointer-events:none;}
+.thf-note{font-size:.72rem;color:rgba(255,255,255,.28);text-align:center;margin-top:8px;line-height:1.5;}
+
 /* responsive */
 @media(max-width:1024px){.th-categories{grid-template-columns:repeat(4,1fr);}
-  .th-feed{grid-template-columns:repeat(2,1fr);}
   .th-bottom{grid-template-columns:1fr;gap:40px;}}
 @media(max-width:768px){.th-categories{grid-template-columns:repeat(2,1fr);}
-  .th-feed{grid-template-columns:1fr;}
-  .th-badges-grid{grid-template-columns:1fr;}}
+  .th-badges-grid{grid-template-columns:1fr;}
+  .thf-row,.thf-row-3{grid-template-columns:1fr;}
+  .th-form-card{padding:28px 20px;}}
 @media(max-width:480px){.th-categories{grid-template-columns:1fr 1fr;}
   .th-journey{gap:4px;}.th-pill{padding:5px 12px;font-size:.68rem;}}
 .scholar-eligibility{
@@ -1680,6 +1741,99 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
       </div>
     </div>
 
+    <!-- Interest Form -->
+    <div class="th-form-wrap reveal">
+      <div class="th-form-header">
+        <div class="th-eyebrow" style="margin-bottom:16px;"><span class="th-eyebrow-dot"></span>Register Your Interest</div>
+        <div class="th-form-title">Join the <span>Talent Hub</span> Platform</div>
+        <div class="th-form-subtitle">Tell us about your talent and we will reach out to onboard you to the Talent Hub community.</div>
+      </div>
+      <div class="th-form-card">
+        <div class="th-form-body">
+          <form class="thf" id="talentForm">
+
+            <div class="thf-row">
+              <label class="thfield"><span>Full Name *</span><input type="text" name="th_name" placeholder="Enter your full name" required></label>
+              <label class="thfield"><span>Date of Birth *</span><input type="date" name="th_dob" required></label>
+            </div>
+
+            <div class="thf-row">
+              <label class="thfield"><span>Student Type *</span>
+                <select name="th_student_type" id="thStudentType" required>
+                  <option value="" disabled selected>School or College?</option>
+                  <option value="School Student">School Student</option>
+                  <option value="College Student">College Student</option>
+                </select>
+              </label>
+              <label class="thfield"><span>Class / Year *</span>
+                <select name="th_class" id="thClass" required>
+                  <option value="" disabled selected>Select class / year</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="thfield"><span>School / College Name *</span>
+              <input type="text" name="th_institution" placeholder="Enter your school or college name" required>
+            </label>
+
+            <div class="thf-row">
+              <label class="thfield"><span>City / District *</span>
+                <input type="text" name="th_city" placeholder="e.g. Ahmedabad, Surat" required>
+              </label>
+              <label class="thfield"><span>Mobile Number *</span>
+                <input type="tel" name="th_mobile" placeholder="10-digit mobile" inputmode="tel" required>
+              </label>
+            </div>
+
+            <label class="thfield"><span>Email Address *</span>
+              <input type="email" name="th_email" placeholder="Enter your email address" required>
+            </label>
+
+            <div class="thf-divider"></div>
+
+            <div class="thf-row">
+              <label class="thfield"><span>Primary Talent / Skill *</span>
+                <select name="th_talent" required>
+                  <option value="" disabled selected>Select your talent</option>
+                  <option>🎵 Music</option>
+                  <option>🎤 Singing</option>
+                  <option>🎸 Instrumental Music</option>
+                  <option>💃 Dance</option>
+                  <option>🎨 Arts &amp; Drawing</option>
+                  <option>🖌️ Craft</option>
+                  <option>🎭 Acting &amp; Theatre</option>
+                  <option>🎤 Public Speaking</option>
+                  <option>⚽ Sports</option>
+                  <option>📸 Photography</option>
+                  <option>🎬 Videography</option>
+                  <option>✍️ Writing &amp; Literature</option>
+                  <option>🎙️ Anchoring</option>
+                  <option>🧩 Other</option>
+                </select>
+              </label>
+              <label class="thfield"><span>Skill Level *</span>
+                <select name="th_level" required>
+                  <option value="" disabled selected>Select your level</option>
+                  <option>Beginner</option>
+                  <option>Intermediate</option>
+                  <option>Advanced</option>
+                  <option>Professional</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="thfield"><span>Achievements / Awards (if any)</span>
+              <input type="text" name="th_achievements" placeholder="e.g. Won inter-school singing competition 2025 (optional)">
+            </label>
+
+            <div class="thf-status" id="thFormStatus" aria-live="polite"></div>
+            <button class="thf-submit" type="submit">🌟 Register My Talent</button>
+            <p class="thf-note">Your information is safe with us. We will contact you within 48 hours to complete your Talent Hub profile.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2059,6 +2213,71 @@ if(demoForm&&formStatus){
     finally{btn.disabled=false;btn.textContent=lbl;}
   });
 }
+
+/* ── TALENT HUB DROPDOWNS ────────────────────────── */
+(function(){
+  var typeEl=document.getElementById('thStudentType');
+  var classEl=document.getElementById('thClass');
+  if(!typeEl)return;
+  var schoolOpts=['Class 3','Class 4','Class 5','Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12'];
+  var collegeOpts=['1st Year','2nd Year','3rd Year','4th Year'];
+  function fill(sel,opts){
+    sel.innerHTML='<option value="" disabled selected>Select</option>';
+    opts.forEach(function(o){var op=document.createElement('option');op.value=o;op.textContent=o;sel.appendChild(op);});
+  }
+  typeEl.addEventListener('change',function(){
+    fill(classEl,this.value==='School Student'?schoolOpts:collegeOpts);
+  });
+})();
+
+/* ── TALENT HUB FORM ─────────────────────────────── */
+(function(){
+  var form=document.getElementById('talentForm');
+  var status=document.getElementById('thFormStatus');
+  if(!form)return;
+  form.addEventListener('submit',async function(ev){
+    ev.preventDefault();
+    var btn=form.querySelector('button[type=submit]'),lbl=btn.textContent;
+    var fd=new FormData(form);
+    var p={
+      th_name:String(fd.get('th_name')||'').trim(),
+      th_dob:String(fd.get('th_dob')||'').trim(),
+      th_student_type:String(fd.get('th_student_type')||'').trim(),
+      th_class:String(fd.get('th_class')||'').trim(),
+      th_institution:String(fd.get('th_institution')||'').trim(),
+      th_city:String(fd.get('th_city')||'').trim(),
+      th_mobile:String(fd.get('th_mobile')||'').trim(),
+      th_email:String(fd.get('th_email')||'').trim(),
+      th_talent:String(fd.get('th_talent')||'').trim(),
+      th_level:String(fd.get('th_level')||'').trim(),
+      th_achievements:String(fd.get('th_achievements')||'').trim()
+    };
+    status.textContent='';status.dataset.state='';
+    if(!p.th_name||!p.th_dob||!p.th_student_type||!p.th_class||!p.th_institution||!p.th_city||!p.th_mobile||!p.th_email||!p.th_talent||!p.th_level){
+      status.dataset.state='error';status.textContent='Please fill in all required fields.';return;
+    }
+    btn.disabled=true;btn.textContent='Submitting…';
+    try{
+      var body=new URLSearchParams(Object.assign({},p,{
+        _subject:'Talent Hub Registration — '+p.th_name+' ('+p.th_talent+')',
+        _template:'table',_url:'https://edvieye.com/#talenthub'
+      }));
+      var r=await fetch('https://formsubmit.co/ajax/info@edvieye.com',{
+        method:'POST',
+        headers:{Accept:'application/json','Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+        body:body.toString()
+      });
+      var d=await r.json().catch(function(){return{};});
+      if(!r.ok||d.success===false)throw new Error(d.message||'Unable to send.');
+      status.dataset.state='success';
+      status.textContent='🎉 Registered successfully! We will contact you within 48 hours to set up your Talent Hub profile.';
+      form.reset();
+    }catch(e){
+      status.dataset.state='error';
+      status.textContent=e.message||'Unable to submit right now. Please WhatsApp us directly.';
+    }finally{btn.disabled=false;btn.textContent=lbl;}
+  });
+})();
 
 /* ── SCHOLARSHIP DROPDOWNS ───────────────────────── */
 (function(){
