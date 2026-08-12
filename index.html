@@ -700,6 +700,8 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
   animation:scholarBgFade 8s ease-in-out infinite;
 }
 .scholar-bg-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.scholar-bg-map{display:flex;align-items:center;justify-content:center;filter:none;}
+.scholar-bg-map svg{width:70%;max-width:500px;height:auto;opacity:.22;}
 .scholar-bg-slide:nth-child(2){animation-delay:0s;}
 .scholar-bg-slide:nth-child(3){animation-delay:-4s;}
 @media(max-width:768px){
@@ -1365,9 +1367,27 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
   <div class="scholar-bg-slide" aria-hidden="true">
     <img src="/india-flag.jpg" alt="" draggable="false">
   </div>
-  <!-- Crossfade bg: map (offset by half cycle) -->
-  <div class="scholar-bg-slide" aria-hidden="true">
-    <img src="/india-map.jpg" alt="" draggable="false">
+  <!-- Crossfade bg: India map SVG (offset by half cycle) -->
+  <div class="scholar-bg-slide scholar-bg-map" aria-hidden="true">
+    <svg viewBox="0 0 400 480" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <path fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linejoin="round"
+        d="M200,18 L220,22 L242,20 L258,28 L270,22 L285,30 L295,42 L288,56 L298,66 L310,72
+           L318,85 L312,98 L320,112 L315,126 L305,135 L308,148 L300,160 L292,172 L285,185
+           L278,198 L272,212 L268,225 L260,238 L252,250 L244,262 L238,275 L232,290
+           L226,305 L220,320 L215,335 L210,350 L206,365 L204,380 L202,395 L200,415
+           L198,395 L196,380 L194,365 L190,350 L185,335 L180,320 L174,305 L168,290
+           L162,275 L156,262 L148,250 L140,238 L132,225 L128,212 L122,198 L115,185
+           L108,172 L100,160 L92,148 L95,135 L85,126 L80,112 L88,98 L82,85
+           L90,72 L102,66 L112,56 L105,42 L115,30 L130,22 L142,20 L158,28 L174,22 Z"/>
+      <!-- Gujarat bump -->
+      <path fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"
+        d="M92,148 L80,155 L68,162 L58,172 L52,185 L60,195 L72,190 L82,182 L90,172 L95,160 Z"/>
+      <!-- Northeast bump -->
+      <path fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"
+        d="M308,148 L318,155 L330,150 L340,158 L335,170 L322,168 L312,162 L305,155 Z"/>
+      <!-- Sri Lanka dot -->
+      <ellipse cx="210" cy="432" rx="8" ry="11" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+    </svg>
   </div>
 
   <div class="wrap scholar-inner">
