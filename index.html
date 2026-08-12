@@ -695,22 +695,25 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 }
 .scholar-guj-map svg{width:100%;height:100%;}
 .scholar-india-flag{
-  position:absolute;inset:0;width:100%;height:100%;
-  opacity:.08;pointer-events:none;z-index:0;overflow:hidden;
+  position:absolute;top:0;right:0;width:42%;height:100%;
+  opacity:.13;pointer-events:none;z-index:0;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(255,255,255,.6) 35%,white 100%);
+  mask-image:linear-gradient(to right,transparent 0%,rgba(255,255,255,.6) 35%,white 100%);
+  filter:grayscale(.4) brightness(.85);
 }
 .scholar-india-flag img{width:100%;height:100%;object-fit:cover;display:block;}
 .scholar-india-map{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:55%;max-width:520px;height:auto;
-  opacity:.09;pointer-events:none;z-index:0;
-  filter:drop-shadow(0 0 40px rgba(251,191,36,.15)) saturate(0) brightness(2);
-  mix-blend-mode:screen;
+  position:absolute;top:0;left:0;width:46%;height:100%;
+  opacity:.10;pointer-events:none;z-index:0;overflow:hidden;
+  -webkit-mask-image:linear-gradient(to left,transparent 0%,rgba(255,255,255,.6) 35%,white 100%);
+  mask-image:linear-gradient(to left,transparent 0%,rgba(255,255,255,.6) 35%,white 100%);
+  filter:grayscale(1) brightness(1.6) contrast(.8);
 }
-.scholar-india-map img{width:100%;height:auto;display:block;}
-@media(max-width:640px){
-  .scholar-guj-map{width:160px;height:190px;left:-20px;bottom:10px;opacity:.35;}
-  .scholar-india-flag{opacity:.05;}
-  .scholar-india-map{width:80%;opacity:.07;}
+.scholar-india-map img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+@media(max-width:768px){
+  .scholar-guj-map{width:160px;height:190px;left:-20px;bottom:10px;opacity:.3;}
+  .scholar-india-flag{width:60%;opacity:.08;}
+  .scholar-india-map{width:60%;opacity:.07;}
 }
 .scholar-inner{position:relative;z-index:1;}
 .scholar-header{text-align:center;margin-bottom:60px;}
