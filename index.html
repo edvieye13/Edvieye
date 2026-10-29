@@ -119,6 +119,43 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 }
 .btn-scholar:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(251,191,36,.6);}
 
+/* ── AI PORTALS ─────────────────────────────────── */
+.portals-sec{background:var(--bg);padding:100px 0;position:relative;}
+.portals-header{text-align:center;margin-bottom:56px;}
+.portals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;}
+.portal-card{
+  --pc1:#7c3aed;--pc2:#6d28d9;--pcsoft:rgba(124,58,237,.08);
+  background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;
+  box-shadow:0 8px 30px rgba(15,23,42,.06);transition:transform .3s,box-shadow .3s;
+}
+.portal-card:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(15,23,42,.1);}
+.pc-teacher{--pc1:#10b981;--pc2:#059669;--pcsoft:rgba(16,185,129,.08);}
+.pc-student{--pc1:#3b82f6;--pc2:#2563eb;--pcsoft:rgba(59,130,246,.08);}
+.portal-head{
+  display:flex;align-items:center;gap:14px;padding:24px 24px 22px;position:relative;
+  background:linear-gradient(135deg,var(--pc1),var(--pc2));color:#fff;
+}
+.portal-icon{width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-size:1.5rem;flex-shrink:0;}
+.portal-head h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.25rem;font-weight:800;line-height:1.2;}
+.portal-head p{font-size:.78rem;opacity:.85;margin-top:3px;}
+.portal-count{
+  position:absolute;top:14px;right:16px;font-size:.64rem;font-weight:700;letter-spacing:.5px;
+  background:rgba(255,255,255,.2);padding:3px 9px;border-radius:var(--r-pill);
+}
+.portal-list{list-style:none;padding:10px 24px 20px;}
+.portal-list li{
+  display:flex;align-items:center;gap:12px;padding:10px 0;
+  font-size:.87rem;color:var(--slate);border-bottom:1px solid #f1f5f9;
+}
+.portal-list li:last-child{border-bottom:none;}
+.portal-list li::before{
+  content:'✓';width:22px;height:22px;border-radius:7px;flex-shrink:0;
+  display:grid;place-items:center;font-size:.7rem;font-weight:800;
+  background:var(--pcsoft);color:var(--pc2);
+}
+@media(max-width:1024px){.portals-grid{grid-template-columns:1fr 1fr;}.pc-student{grid-column:1/-1;}}
+@media(max-width:768px){.portals-sec{padding:72px 0;}.portals-grid{grid-template-columns:1fr;}.pc-student{grid-column:auto;}}
+
 /* ── SCHOLARSHIP FLOAT BADGE ──────────────────────── */
 .scholar-float{
   position:fixed;left:24px;bottom:88px;z-index:800;
@@ -133,6 +170,7 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
 }
 .scholar-float:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 32px rgba(251,191,36,.65);}
 .scholar-float-icon{font-size:1.1rem;}
+.scholar-float.is-hidden{opacity:0;pointer-events:none;transform:translateY(16px);}
 @keyframes scholarPulse{
   0%,100%{box-shadow:0 6px 24px rgba(251,191,36,.5),0 0 0 0 rgba(251,191,36,.4);}
   50%{box-shadow:0 6px 24px rgba(251,191,36,.5),0 0 0 10px rgba(251,191,36,.0);}
@@ -1224,6 +1262,7 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
       <li><a href="#talenthub" style="color:#a78bfa;font-weight:700;">Talent Hub</a></li>
       <li><a href="#how">Process</a></li>
       <li><a href="#ai">AI Engine</a></li>
+      <li><a href="#portals">AI Portals</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="btn btn-blue" style="padding:10px 24px;font-size:.85rem;">Book Free Demo</a>
@@ -1622,6 +1661,94 @@ img{max-width:100%;display:block;}a{text-decoration:none;}
       <div class="ai-canvas-wrap reveal-right">
         <div class="ai-status"><span class="live-dot"></span>LIVE AI ENGINE</div>
         <canvas id="aiCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI PORTALS ═════════════════════════════════ -->
+<section class="portals-sec" id="portals">
+  <div class="wrap">
+    <div class="portals-header reveal">
+      <div class="sec-eyebrow">Smarter Tools · Better Learning · Brighter Future</div>
+      <h2 class="sec-title">AI for <span>Every Role</span> in Your School</h2>
+      <p class="sec-sub sec-sub-center">AI-powered features for Admins, Teachers and Students — all in one platform.</p>
+    </div>
+    <div class="portals-grid">
+      <div class="portal-card pc-admin reveal rd1">
+        <div class="portal-head">
+          <div class="portal-icon">🛠️</div>
+          <div><h3>Admin Portal</h3><p>Manage · Monitor · Optimize</p></div>
+          <span class="portal-count">16 AI tools</span>
+        </div>
+        <ul class="portal-list">
+          <li>AI task prioritization</li>
+          <li>AI performance insights</li>
+          <li>AI academic insights</li>
+          <li>AI room allocation optimization</li>
+          <li>AI event planning suggestions</li>
+          <li>AI message generator</li>
+          <li>AI message summarization</li>
+          <li>AI helper for everything</li>
+          <li>AI teaching performance analysis</li>
+          <li>AI syllabus completion alerts</li>
+          <li>AI class performance insights</li>
+          <li>AI marks analysis</li>
+          <li>AI weak student detection</li>
+          <li>AI weak teacher workload alerts</li>
+          <li>AI attendance pattern analysis</li>
+          <li>AI all report generator</li>
+        </ul>
+      </div>
+      <div class="portal-card pc-teacher reveal rd2">
+        <div class="portal-head">
+          <div class="portal-icon">👩‍🏫</div>
+          <div><h3>Teacher Portal</h3><p>Teach · Guide · Inspire</p></div>
+          <span class="portal-count">13 AI tools</span>
+        </div>
+        <ul class="portal-list">
+          <li>AI teaching suggestions</li>
+          <li>AI syllabus completion alerts</li>
+          <li>AI lesson generator</li>
+          <li>AI quiz generator</li>
+          <li>AI question generator</li>
+          <li>AI answer explanation</li>
+          <li>AI teaching assistant chatbot</li>
+          <li>AI homework checker</li>
+          <li>AI question paper generator</li>
+          <li>AI class performance insights</li>
+          <li>AI marks analysis</li>
+          <li>AI personalized improvement plans</li>
+          <li>AI message generator</li>
+        </ul>
+      </div>
+      <div class="portal-card pc-student reveal rd3">
+        <div class="portal-head">
+          <div class="portal-icon">🎓</div>
+          <div><h3>Student Portal</h3><p>Learn · Grow · Achieve</p></div>
+          <span class="portal-count">19 AI tools</span>
+        </div>
+        <ul class="portal-list">
+          <li>AI lesson generator</li>
+          <li>AI quiz generator</li>
+          <li>AI question generator</li>
+          <li>AI answer explanation</li>
+          <li>AI learning resource recommendations</li>
+          <li>AI book recommendations</li>
+          <li>AI teaching assistant chatbot</li>
+          <li>AI helper for everything</li>
+          <li>AI doubt solver</li>
+          <li>AI exam preparation assistant</li>
+          <li>AI revision assistant</li>
+          <li>AI content summarizer</li>
+          <li>Personal Growth AI</li>
+          <li>AI career guide</li>
+          <li>AI personalized improvement plans</li>
+          <li>AI weak subject analysis</li>
+          <li>AI study planner</li>
+          <li>AI schedule reminders</li>
+          <li>AI productivity suggestions</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -2048,6 +2175,11 @@ if(window.matchMedia('(pointer:fine)').matches){
 
 /* ── SCROLL REVEAL ─────────────────────────────────── */
 (function(){
+  (function(){
+    var fl=document.querySelector('.scholar-float'),ft=document.querySelector('.site-footer');
+    if(!fl||!ft||!('IntersectionObserver' in window))return;
+    new IntersectionObserver(function(e){fl.classList.toggle('is-hidden',e[0].isIntersecting);}).observe(ft);
+  })();
   var els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
   if(!window.IntersectionObserver){els.forEach(function(e){e.classList.add('visible');});return;}
   var io=new IntersectionObserver(function(entries){
